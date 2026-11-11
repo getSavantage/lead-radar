@@ -44,10 +44,15 @@ def test_booking_detected_from_documented_link_fields() -> None:
 
 
 def test_booking_link_fields_are_configurable() -> None:
-    raw = {"title": "X", "book_online": "https://book.example/x"}
+    raw = {"title": "X", "schedule_link": "https://book.example/x"}
     assert detect_booking(raw, Detection()) == (None, [])
-    custom = Detection(booking_link_fields=["book_online"])
-    assert detect_booking(raw, custom) == ("https://book.example/x", ["book_online"])
+    custom = Detection(booking_link_fields=["schedule_link"])
+    assert detect_booking(raw, custom) == ("https://book.example/x", ["schedule_link"])
+
+
+def test_undocumented_book_online_field_seen_in_real_responses_counts() -> None:
+    raw = {"title": "X", "book_online": "https://book.servicetitan.com/abc?rwg_token=t"}
+    assert detect_booking(raw, Detection()) == (raw["book_online"], ["book_online"])
 
 
 def test_tolerates_sparse_and_messy_results() -> None:

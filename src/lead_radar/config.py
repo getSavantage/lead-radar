@@ -84,11 +84,12 @@ class Tiers(_Strict):
 class Detection(_Strict):
     """How raw SerpApi fields are turned into signals."""
 
-    booking_link_fields: list[str] = ["reserve_a_table", "order_online"]
+    booking_link_fields: list[str] = ["book_online", "reserve_a_table", "order_online"]
     """Keys of a ``local_results`` item whose value is a booking/ordering URL.
 
-    These two are the ones documented at https://serpapi.com/maps-local-results. Add a key
-    here if SerpApi starts returning another one for your niche.
+    ``reserve_a_table`` and ``order_online`` are documented at
+    https://serpapi.com/maps-local-results. ``book_online`` is not documented, but real
+    responses for home-service businesses carry it (e.g. a ServiceTitan booking link).
     """
     booking_keywords: list[str] = ["online appointments", "book online", "online booking"]
     """Matched (case-insensitively) against ``service_options`` keys and ``extensions`` values."""
