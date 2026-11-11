@@ -46,6 +46,8 @@ pipeline on bundled sample data without spending anything.
 
 `lead-radar web` is the everyday way to use Lead Radar:
 
+![New search with a cost estimate](docs/new-search.png)
+
 1. **New search.** Type a niche, add one or more locations, choose how many businesses per
    location and whether to analyse reviews.
 2. **Estimate cost.** Shows Google Maps pages, review lookups, what is already cached (free)
