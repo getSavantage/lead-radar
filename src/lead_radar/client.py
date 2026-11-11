@@ -44,6 +44,8 @@ class Transport(Protocol):
 
     def account(self) -> dict[str, Any]: ...
 
+    def locations(self, query: str, limit: int) -> list[dict[str, Any]]: ...
+
 
 def api_key_from_env() -> str:
     key = os.environ.get(API_KEY_ENV, "").strip()
@@ -137,6 +139,15 @@ class SerpApiTransport:
             raise SerpApiRequestError("The SerpApi Account API returned an unexpected response.")
         return data
 
+    def locations(self, query: str, limit: int) -> list[dict[str, Any]]:
+        try:
+            data = self._client.locations({"q": query, "limit": limit})
+        except Exception as exc:
+            raise translate_error(exc, secret=self._api_key) from None
+        if not isinstance(data, list):
+            raise SerpApiRequestError("The SerpApi Locations API returned an unexpected response.")
+        return [item for item in data if isinstance(item, dict)]
+
 
 @dataclass(frozen=True)
 class RetryPolicy:
@@ -190,6 +201,17 @@ class SerpApiGateway:
     def account(self) -> AccountInfo:
         """Account API: free, never counted against the quota, never cached."""
         return AccountInfo.model_validate(self._with_retries(self._transport.account))
+
+    def locations(self, query: str, limit: int = 10) -> list[dict[str, Any]]:
+        """Locations API: free and not counted. Cached, since place names rarely move."""
+        params = {"engine": "locations", "q": query, "limit": limit}
+        cached = self.peek(params)
+        if cached is not None and isinstance(cached.get("locations"), list):
+            return list(cached["locations"])
+        found = self._with_retries(lambda: self._transport.locations(query, limit))
+        if self._cache is not None:
+            self._cache.put(params, {"locations": found})
+        return found
 
     def _checked_search(self, params: dict[str, Any]) -> dict[str, Any]:
         response = self._transport.search(params)

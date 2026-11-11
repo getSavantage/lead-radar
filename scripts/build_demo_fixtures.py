@@ -29,6 +29,7 @@ from lead_radar.demo import (
     reviews_fixture_name,
     slug,
 )
+from lead_radar.locations import pick
 
 rng = random.Random(20261101)
 
@@ -290,7 +291,35 @@ def maps_page(
     return page
 
 
-def write(name: str, payload: dict[str, Any]) -> None:
+# Recorded from https://serpapi.com/locations.json?q=Tampa and ?q=St.%20Petersburg (the
+# Locations API is free and needs no key). The DMA Region entry is the one a plain
+# `location=Tampa, FL` was matched to, which is why Lead Radar resolves cities itself.
+LOCATIONS: list[dict[str, Any]] = [
+    {"name": "Tampa", "canonical_name": "Tampa,Florida,United States", "country_code": "US",
+     "target_type": "City", "reach": 3980000, "gps": [-82.4571776, 27.950575]},
+    {"name": "New Tampa", "canonical_name": "New Tampa,Florida,United States",
+     "country_code": "US", "target_type": "Neighborhood", "reach": 408000,
+     "gps": [-82.3533659, 28.1437181]},
+    {"name": "Tampa International Airport",
+     "canonical_name": "Tampa International Airport,Florida,United States", "country_code": "US",
+     "target_type": "Airport", "reach": 118000, "gps": [-82.5370781, 27.9834776]},
+    {"name": "St. Petersburg", "canonical_name": "St. Petersburg,Florida,United States",
+     "country_code": "US", "target_type": "City", "reach": 614000,
+     "gps": [-82.6267345, 27.7518284]},
+    {"name": "Tampa-St Petersburg (Sarasota), FL",
+     "canonical_name": "Tampa-St Petersburg (Sarasota),FL,Florida,United States",
+     "country_code": "US", "target_type": "DMA Region", "gps": [-82.8145258, 27.9334641]},
+]  # fmt: skip
+
+
+def maps_key(location: str) -> str:
+    """The ``ll`` Lead Radar will send for a demo location, which names its fixture."""
+    resolved = pick(location, LOCATIONS)
+    assert resolved is not None, location
+    return resolved.ll(DEMO_REQUEST.zoom)
+
+
+def write(name: str, payload: Any) -> None:
     path = DEMO_DATA_DIR / name
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", "utf-8")
 
@@ -309,18 +338,19 @@ def main() -> None:
                           *st_pete_new[4:8], overlap[2], st_pete_new[8]]  # fmt: skip
 
     write(
-        maps_fixture_name(tampa, 0),
+        maps_fixture_name(maps_key(tampa), 0),
         maps_page(tampa, 0, [b for b, _ in tampa_businesses[:20]], more=True),
     )
     write(
-        maps_fixture_name(tampa, 20),
+        maps_fixture_name(maps_key(tampa), 20),
         maps_page(tampa, 20, [b for b, _ in tampa_businesses[20:]], more=False),
     )
     write(
-        maps_fixture_name(st_pete, 0),
+        maps_fixture_name(maps_key(st_pete), 0),
         maps_page(st_pete, 0, [b for b, _ in st_pete_businesses], more=False),
     )
 
+    write("locations.json", LOCATIONS)
     for business, profile in [*tampa_businesses, *st_pete_new]:
         write(reviews_fixture_name(business["data_id"]), make_reviews(business, profile))
 

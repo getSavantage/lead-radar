@@ -145,6 +145,8 @@ SaveReports = Callable[[RunResult], tuple[Path, Path]]
 
 def _finish(result: RunResult, save: SaveReports, open_report: bool) -> None:
     """Shared tail of ``search`` and ``demo``: summary, files, exit code."""
+    for typed, place in result.resolved_locations.items():
+        console.print(f"[dim]{typed} -> map centred on {place}[/]", highlight=False)
     if result.stop_reason:
         console.print(f"[yellow]{result.stop_reason}[/]")
     for warning in result.warnings:

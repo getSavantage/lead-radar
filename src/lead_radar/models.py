@@ -333,6 +333,8 @@ class RunResult(BaseModel):
     stop_reason: str | None = None
     """Set when the run ended early (Ctrl+C, out of credits...) and results are partial."""
     warnings: list[str] = Field(default_factory=list)
+    resolved_locations: dict[str, str] = Field(default_factory=dict)
+    """Location as typed -> the place the map was centred on, e.g. "Tampa, Florida, ..."."""
 
     def tier_counts(self) -> dict[Tier, int]:
         return {tier: sum(1 for lead in self.leads if lead.tier is tier) for tier in Tier}

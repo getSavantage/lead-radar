@@ -203,6 +203,6 @@ def test_cache_info_and_clear(monkeypatch: pytest.MonkeyPatch) -> None:
     runner.invoke(cli.app, ["search", "roofing contractor", "-l", "Tampa, FL", "--yes"])
 
     info = runner.invoke(cli.app, ["cache", "info"])
-    assert "google_maps" in info.output
+    assert "google_maps" in info.output and "locations" in info.output
     cleared = runner.invoke(cli.app, ["cache", "clear", "--yes"])
-    assert "Deleted 2 cached responses" in cleared.output
+    assert "Deleted 3 cached responses" in cleared.output  # 2 Maps pages + 1 location lookup

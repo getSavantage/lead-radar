@@ -122,6 +122,11 @@
     <div class="stat"><b>{{ result.stats.cache_hits }}</b><span>served from cache</span></div>
   </section>
 
+  {% if result.resolved_locations %}
+  <p class="sub">Map centred on
+    {% for typed, place in result.resolved_locations.items() %}{{ place }}{% if not loop.last %}; {% endif %}{% endfor %}.
+  </p>
+  {% endif %}
   {% if result.stop_reason or result.warnings %}
   <div class="notice" role="status">
     {% if result.stop_reason %}<strong>Partial results.</strong> {{ result.stop_reason }}{% endif %}

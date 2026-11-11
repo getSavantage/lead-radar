@@ -133,11 +133,16 @@ def test_demo_data_end_to_end(
     assert len(place_ids) == len(set(place_ids)) == 38
     assert result.duplicates_removed == 3
     maps_calls = [c for c in demo_transport.calls if c["engine"] == "google_maps"]
-    assert [(c["location"], c.get("start", 0)) for c in maps_calls] == [
-        ("Tampa, FL", 0),
-        ("Tampa, FL", 20),
-        ("St. Petersburg, FL", 0),
+    assert [(c["ll"], c.get("start", 0)) for c in maps_calls] == [
+        ("@27.950575,-82.4571776,12z", 0),
+        ("@27.950575,-82.4571776,12z", 20),
+        ("@27.7518284,-82.6267345,12z", 0),
     ]
+    assert result.resolved_locations == {
+        "Tampa, FL": "Tampa, Florida, United States (city)",
+        "St. Petersburg, FL": "St. Petersburg, Florida, United States (city)",
+    }
+    assert result.warnings == []
     assert result.stats.api_calls == 3 + 38
     scores = [lead.score for lead in result.leads]
     assert scores == sorted(scores, reverse=True)
@@ -243,11 +248,12 @@ def test_estimate_never_calls_the_api_and_rerun_is_free(tmp_path: Path) -> None:
 def test_estimate_with_partly_cached_pages(tmp_path: Path) -> None:
     cache = ResponseCache(tmp_path)
     req = request(max_results=60)
-    cache.put(
-        pipeline.build_maps_params(req.query, "Tampa, FL"), maps_page(titles("a", 20), more=True)
-    )
+    gateway = SerpApiGateway(ScriptedTransport(), cache=cache)
+    resolved = pipeline.resolve_location(gateway, "Tampa, FL")
+    first_page = pipeline.build_maps_params(req.query, "Tampa, FL", resolved=resolved)
+    cache.put(first_page, maps_page(titles("a", 20), more=True))
 
-    estimate = pipeline.estimate(req, SerpApiGateway(ScriptedTransport(), cache=cache), CONFIG)
+    estimate = pipeline.estimate(req, gateway, CONFIG)
     assert (estimate.maps_calls, estimate.cached_calls, estimate.exact) == (2, 1, False)
 
 

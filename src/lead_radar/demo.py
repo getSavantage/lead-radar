@@ -67,7 +67,8 @@ class FixtureTransport:
         self.calls.append(dict(params))
         engine = params.get("engine")
         if engine == "google_maps":
-            location = str(params.get("location") or params.get("ll") or "")
+            # Resolved locations arrive as "ll", so their fixtures are named after the coordinates.
+            location = str(params.get("ll") or params.get("location") or "")
             name = maps_fixture_name(location, int(params.get("start", 0)))
         elif engine == "google_maps_reviews":
             name = reviews_fixture_name(str(params.get("data_id") or params.get("place_id")))
@@ -77,3 +78,9 @@ class FixtureTransport:
 
     def account(self) -> dict[str, Any]:
         return self._load("account.json") or {}
+
+    def locations(self, query: str, limit: int) -> list[dict[str, Any]]:
+        """Candidates recorded from the real (free, keyless) Locations API."""
+        recorded = json.loads((self.directory / "locations.json").read_text("utf-8"))
+        needle = query.lower()
+        return [c for c in recorded if needle in str(c.get("name", "")).lower()][:limit]

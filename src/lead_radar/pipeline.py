@@ -15,6 +15,7 @@ from typing import Any, Literal
 from lead_radar.client import SerpApiGateway
 from lead_radar.config import ScoringConfig
 from lead_radar.errors import BadRequestError, SerpApiRequestError
+from lead_radar.locations import ResolvedLocation, pick, split_query
 from lead_radar.models import (
     Business,
     CreditEstimate,
@@ -59,21 +60,31 @@ def max_pages(max_results: int) -> int:
 
 
 def build_maps_params(
-    query: str, location: str, *, start: int = 0, zoom: int = 12, hl: str = "en"
+    query: str,
+    location: str,
+    *,
+    start: int = 0,
+    zoom: int = 12,
+    hl: str = "en",
+    resolved: ResolvedLocation | None = None,
 ) -> dict[str, Any]:
     """Parameters for ``engine=google_maps`` with ``type=search``.
 
-    A location can be given two ways:
+    The search origin is chosen in this order:
 
-    * a place name ("Tampa, FL"): sent as ``location`` together with ``z``, which SerpApi
-      resolves to GPS coordinates server-side;
-    * explicit coordinates in SerpApi's ``ll`` format ("@27.9506,-82.4572,12z"): sent as ``ll``.
-      ``ll`` cannot be combined with ``location`` or ``z``, so neither is sent.
+    * explicit coordinates in SerpApi's ``ll`` format ("@27.9506,-82.4572,12z"): sent as is;
+    * a place name resolved through the Locations API: sent as ``ll`` built from its GPS
+      coordinates and ``zoom`` (see :mod:`lead_radar.locations` for why);
+    * otherwise the raw name as ``location`` plus ``z``, left to SerpApi to interpret.
+
+    ``ll`` cannot be combined with ``location`` or ``z``, so those are only sent in the last case.
     """
     params: dict[str, Any] = {"engine": "google_maps", "type": "search", "q": query, "hl": hl}
     location = location.strip()
     if _LL_PATTERN.match(location):
         params["ll"] = location
+    elif resolved is not None:
+        params["ll"] = resolved.ll(zoom)
     else:
         params["location"] = location
         params["z"] = zoom
@@ -99,6 +110,7 @@ def _collect_location(
     config: ScoringConfig,
     state: _Collection,
     on_progress: ProgressCallback | None = None,
+    resolved: ResolvedLocation | None = None,
 ) -> None:
     """Page through one location until results run out or ``max_results`` is reached.
 
@@ -115,7 +127,12 @@ def _collect_location(
                 Progress("maps", f"{location}: page {page + 1} (start={start})", page, pages)
             )
         params = build_maps_params(
-            request.query, location, start=start, zoom=request.zoom, hl=request.hl
+            request.query,
+            location,
+            start=start,
+            zoom=request.zoom,
+            hl=request.hl,
+            resolved=resolved,
         )
         response = fetch(params)
         if response is None:
@@ -162,6 +179,28 @@ def _collect_location(
             return  # Google is repeating itself; stop spending credits.
 
 
+def resolve_location(gateway: SerpApiGateway, location: str) -> ResolvedLocation | None:
+    """Pin a place name to coordinates with the free Locations API; ``None`` if not possible."""
+    if _LL_PATTERN.match(location.strip()):
+        return None
+    name, _ = split_query(location)
+    if not name:
+        return None
+    try:
+        return pick(location, gateway.locations(name))
+    except SerpApiRequestError:
+        return None
+
+
+def _resolve_all(gateway: SerpApiGateway, request: SearchRequest) -> dict[str, ResolvedLocation]:
+    resolved = {}
+    for location in request.locations:
+        match = resolve_location(gateway, location)
+        if match is not None:
+            resolved[location] = match
+    return resolved
+
+
 def _review_targets(
     businesses: list[Business], request: SearchRequest, config: ScoringConfig
 ) -> list[Business]:
@@ -189,8 +228,9 @@ def estimate(
             cached += 1
         return response
 
+    resolved = _resolve_all(gateway, request)
     for location in request.locations:
-        _collect_location(peek, request, location, config, state)
+        _collect_location(peek, request, location, config, state, resolved=resolved.get(location))
 
     exact = state.missing_pages == 0
     review_calls = 0
@@ -242,9 +282,25 @@ def run(
         if on_progress:
             on_progress(event)
 
+    resolved: dict[str, ResolvedLocation] = {}
     try:
+        resolved = _resolve_all(gateway, request)
         for location in request.locations:
-            _collect_location(gateway.search, request, location, config, state, progress)
+            if location not in resolved and not _LL_PATTERN.match(location):
+                state.warnings.append(
+                    f"Could not pin '{location}' to a place with the SerpApi Locations API, so "
+                    "Google interpreted the text itself. Results may be off-centre; try "
+                    "'City, ST' or coordinates like @27.95,-82.46,12z."
+                )
+            _collect_location(
+                gateway.search,
+                request,
+                location,
+                config,
+                state,
+                progress,
+                resolved=resolved.get(location),
+            )
 
         if request.with_reviews:
             targets = _review_targets(list(state.businesses.values()), request, config)
@@ -284,4 +340,8 @@ def run(
         interrupted=interrupted,
         stop_reason=stop_reason,
         warnings=state.warnings,
+        resolved_locations={
+            text: f"{match.canonical_name.replace(',', ', ')} ({match.target_type.lower()})"
+            for text, match in resolved.items()
+        },
     )

@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Tampa",
+    "canonical_name": "Tampa,Florida,United States",
+    "country_code": "US",
+    "target_type": "City",
+    "reach": 3980000,
+    "gps": [
+      -82.4571776,
+      27.950575
+    ]
+  },
+  {
+    "name": "New Tampa",
+    "canonical_name": "New Tampa,Florida,United States",
+    "country_code": "US",
+    "target_type": "Neighborhood",
+    "reach": 408000,
+    "gps": [
+      -82.3533659,
+      28.1437181
+    ]
+  },
+  {
+    "name": "Tampa International Airport",
+    "canonical_name": "Tampa International Airport,Florida,United States",
+    "country_code": "US",
+    "target_type": "Airport",
+    "reach": 118000,
+    "gps": [
+      -82.5370781,
+      27.9834776
+    ]
+  },
+  {
+    "name": "St. Petersburg",
+    "canonical_name": "St. Petersburg,Florida,United States",
+    "country_code": "US",
+    "target_type": "City",
+    "reach": 614000,
+    "gps": [
+      -82.6267345,
+      27.7518284
+    ]
+  },
+  {
+    "name": "Tampa-St Petersburg (Sarasota), FL",
+    "canonical_name": "Tampa-St Petersburg (Sarasota),FL,Florida,United States",
+    "country_code": "US",
+    "target_type": "DMA Region",
+    "gps": [
+      -82.8145258,
+      27.9334641
+    ]
+  }
+]

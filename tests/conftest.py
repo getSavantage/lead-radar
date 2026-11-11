@@ -28,6 +28,9 @@ class ScriptedTransport:
         self.script = list(script)
         self.calls: list[dict[str, Any]] = []
         self.account_response: dict[str, Any] | BaseException = {"total_searches_left": 100}
+        self.locations_response: list[dict[str, Any]] | None = None
+        """``None`` answers like the real Locations API would for the demo cities."""
+        self.location_queries: list[str] = []
 
     def search(self, params: dict[str, Any]) -> dict[str, Any]:
         self.calls.append(dict(params))
@@ -42,6 +45,12 @@ class ScriptedTransport:
         if isinstance(self.account_response, BaseException):
             raise self.account_response
         return self.account_response
+
+    def locations(self, query: str, limit: int) -> list[dict[str, Any]]:
+        self.location_queries.append(query)
+        if self.locations_response is None:
+            return FixtureTransport().locations(query, limit)
+        return self.locations_response
 
 
 def maps_page(titles: list[str], *, more: bool, prefix: str = "place") -> dict[str, Any]:
