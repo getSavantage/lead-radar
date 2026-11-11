@@ -1,0 +1,97 @@
+# Lead Radar scoring config.
+#
+# A lead's opportunity score is the sum of the points of every rule that fires, capped at 100.
+# Copy this file, change what you like, and pass it with `--config my_scoring.yaml`.
+# You only need to keep the keys you change. Unknown keys are rejected, so typos fail loudly.
+version: 1
+
+# Score thresholds for the badges in the report. Anything below `warm` is "cold".
+tiers:
+  hot: 50
+  warm: 25
+
+# How raw SerpApi fields become signals.
+detection:
+  # Keys of a google_maps `local_results` item that hold a booking/ordering URL.
+  # These are the ones documented at https://serpapi.com/maps-local-results.
+  booking_link_fields: [reserve_a_table, order_online]
+  # Matched case-insensitively against `service_options` keys and `extensions` values.
+  booking_keywords: ["online appointments", "book online", "online booking"]
+  # A "website" on one of these domains is a profile page, not a real site.
+  social_domains:
+    - facebook.com
+    - instagram.com
+    - linktr.ee
+    - yelp.com
+    - nextdoor.com
+    - business.site
+    - sites.google.com
+  # Regexes (case-insensitive) that mark a review as a missed-call complaint.
+  complaint_phrases:
+    - 'never (called|phoned|rang)( \w+)? back'
+    - '(didn''?t|did not|don''?t|do not|doesn''?t|won''?t|wouldn''?t) (call|phone)( \w+)? back'
+    - 'no (call ?back|return call)'
+    - '(never|didn''?t|did not|don''?t|won''?t) return(ed)? (my|our|any|the) (phone )?calls?'
+    - 'no (one|body) (answer(s|ed)?|picks? up|picked up)'
+    - 'nobody (answer(s|ed)?|picks? up|picked up)'
+    - 'no answer'
+    - '(never|don''?t|doesn''?t|didn''?t|won''?t) (answer|pick up)'
+    - 'voice ?mail'
+    - '(couldn''?t|could not|can''?t|cannot|unable to) (reach|get (a ?hold|ahold|through))'
+    - 'never (heard|got) back'
+    - 'never (responded|replied|got back to)'
+    - 'no (response|reply)'
+  # Only reviews rated at or below this count as complaints. This keeps praise such as
+  # "they answered right away, the others sent me to voicemail" from counting.
+  complaint_max_rating: 3.0
+  # How far back a review still counts as "recent".
+  recent_days: 180
+
+rules:
+  # --- Rules that work from the Maps listing alone (no extra credits) ---
+  no_website:
+    enabled: true
+    points: 20
+  # The only "website" is a Facebook/Instagram/Yelp-style profile.
+  social_only_website:
+    enabled: true
+    points: 12
+  no_online_booking:
+    enabled: true
+    points: 10
+  # Fewer than `ratio` x the median review count of businesses found in the same location.
+  low_review_count:
+    enabled: true
+    points: 15
+    ratio: 0.5
+    min_peers: 5
+  # Google marks the listing as unclaimed (`unclaimed_listing: true`).
+  unclaimed_listing:
+    enabled: true
+    points: 10
+  low_rating:
+    enabled: true
+    points: 5
+    below: 4.0
+  no_hours_listed:
+    enabled: true
+    points: 5
+
+  # --- Rules that need review data (run with --reviews: 1 extra search per lead) ---
+  # Recent low-rated reviews that mention unanswered calls, voicemail, no call back...
+  missed_call_complaints:
+    enabled: true
+    points_per_complaint: 10
+    max_points: 20
+  # The owner replies to at most `max_response_rate` of recent reviews.
+  unanswered_reviews:
+    enabled: true
+    points: 10
+    max_response_rate: 0.3
+    min_reviews: 5
+  # Recent reviews average at least `min_drop` stars below the overall rating.
+  rating_dropping:
+    enabled: true
+    points: 5
+    min_drop: 0.4
+    min_reviews: 5
