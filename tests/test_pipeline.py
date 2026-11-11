@@ -261,3 +261,18 @@ def test_adding_reviews_to_a_cached_search_only_costs_the_reviews(tmp_path: Path
         with_limit, SerpApiGateway(ScriptedTransport(), cache=cache), CONFIG
     )
     assert (estimate.maps_calls, estimate.review_calls, estimate.exact) == (0, 10, True)
+
+
+def test_should_stop_cancels_before_the_next_request_and_keeps_results() -> None:
+    transport = ScriptedTransport(maps_page(titles("a", 20), more=True))  # a 2nd call would raise
+    calls_before_stop = 1
+    result = pipeline.run(
+        request(max_results=100),
+        SerpApiGateway(transport),
+        CONFIG,
+        should_stop=lambda: len(transport.calls) >= calls_before_stop,
+    )
+
+    assert result.interrupted
+    assert result.stop_reason is not None and result.stop_reason.startswith("Cancelled")
+    assert len(result.leads) == 20 and len(transport.calls) == 1

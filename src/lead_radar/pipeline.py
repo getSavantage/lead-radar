@@ -38,6 +38,10 @@ _LL_PATTERN = re.compile(r"^@-?\d+(\.\d+)?,-?\d+(\.\d+)?,\d+(\.\d+)?[zm]$")
 _Fetch = Callable[[dict[str, Any]], dict[str, Any] | None]
 
 
+class _StopRequested(Exception):
+    """Raised inside :func:`run` when ``should_stop()`` returns True."""
+
+
 @dataclass(frozen=True)
 class Progress:
     stage: Literal["maps", "reviews", "scoring"]
@@ -216,12 +220,14 @@ def run(
     *,
     now: datetime | None = None,
     on_progress: ProgressCallback | None = None,
+    should_stop: Callable[[], bool] | None = None,
 ) -> RunResult:
     """Execute a run and return scored leads.
 
-    Ctrl+C, running out of credits or a rate limit mid-run do not lose work: whatever was
-    collected so far is scored and returned with ``stop_reason`` set. An error before anything
-    was collected (for example an invalid key) is raised.
+    Ctrl+C, a ``should_stop()`` request (the web UI's Cancel button), running out of credits
+    or a rate limit mid-run do not lose work: whatever was collected so far is scored and
+    returned with ``stop_reason`` set. An error before anything was collected (for example an
+    invalid key) is raised.
     """
     now = now or datetime.now(UTC)
     state = _Collection()
@@ -229,15 +235,21 @@ def run(
     interrupted = False
     stop_reason: str | None = None
 
+    def progress(event: Progress) -> None:
+        # Called before every API request, so a stop request never waits for more than one.
+        if should_stop is not None and should_stop():
+            raise _StopRequested
+        if on_progress:
+            on_progress(event)
+
     try:
         for location in request.locations:
-            _collect_location(gateway.search, request, location, config, state, on_progress)
+            _collect_location(gateway.search, request, location, config, state, progress)
 
         if request.with_reviews:
             targets = _review_targets(list(state.businesses.values()), request, config)
             for index, business in enumerate(targets):
-                if on_progress:
-                    on_progress(Progress("reviews", business.name, index, len(targets)))
+                progress(Progress("reviews", business.name, index, len(targets)))
                 params = build_reviews_params(business, hl=request.hl, num=request.reviews_per_lead)
                 if params is None:
                     continue
@@ -252,6 +264,9 @@ def run(
     except KeyboardInterrupt:
         interrupted = True
         stop_reason = "Interrupted with Ctrl+C. Results below are partial."
+    except _StopRequested:
+        interrupted = True
+        stop_reason = "Cancelled. Results below are partial."
     except SerpApiRequestError as exc:
         if not state.businesses:
             raise
