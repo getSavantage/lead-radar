@@ -29,6 +29,9 @@ class JobAlreadyRunningError(RuntimeError):
 @dataclass
 class Job:
     id: str
+    query: str = ""
+    locations: list[str] = field(default_factory=list)
+    with_reviews: bool = False
     status: JobStatus = "running"
     stage: str = "starting"
     message: str = "Starting…"
@@ -45,6 +48,9 @@ class Job:
     def snapshot(self) -> dict[str, Any]:
         return {
             "id": self.id,
+            "query": self.query,
+            "locations": self.locations,
+            "with_reviews": self.with_reviews,
             "status": self.status,
             "stage": self.stage,
             "message": self.message,
@@ -72,11 +78,23 @@ class JobManager:
     def get(self, job_id: str) -> Job | None:
         return self._jobs.get(job_id)
 
-    def start(self, work: Work) -> Job:
+    def start(
+        self,
+        work: Work,
+        *,
+        query: str = "",
+        locations: list[str] | None = None,
+        with_reviews: bool = False,
+    ) -> Job:
         with self._lock:
             if any(job.status == "running" for job in self._jobs.values()):
                 raise JobAlreadyRunningError("Another search is still running.")
-            job = Job(id=secrets.token_hex(6))
+            job = Job(
+                id=secrets.token_hex(6),
+                query=query,
+                locations=list(locations or []),
+                with_reviews=with_reviews,
+            )
             self._jobs[job.id] = job
         threading.Thread(target=self._execute, args=(job, work), daemon=True).start()
         return job

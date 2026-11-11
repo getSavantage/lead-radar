@@ -155,6 +155,7 @@ def create_app(
 
     @app.post("/api/jobs", status_code=202)
     def start_job(body: StartJob) -> dict[str, str]:
+        described = DEMO_REQUEST if body.demo else body.to_request()
         if body.demo:
 
             def work(job: Job) -> str:
@@ -191,7 +192,12 @@ def create_app(
                 return store.save(result).id
 
         try:
-            job = jobs.start(work)
+            job = jobs.start(
+                work,
+                query=described.query,
+                locations=described.locations,
+                with_reviews=described.with_reviews,
+            )
         except JobAlreadyRunningError as exc:
             raise HTTPException(409, str(exc)) from None
         return {"job_id": job.id}
