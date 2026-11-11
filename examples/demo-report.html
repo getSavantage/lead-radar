@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lead Radar · roofing contractor</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --surface: #ffffff; --ink: #1b1d22; --muted: #666b76; --line: #e3e1da;
+    --accent: #0f5c4d; --accent-soft: #e2efeb;
+    --hot: #b3261e; --hot-bg: #fbe9e7; --warm: #8a5a00; --warm-bg: #fbf0d3;
+    --cold: #4a5568; --cold-bg: #e9ecf1; --notice-bg: #fff4d6; --notice-ink: #5c4300;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171b; --surface: #1d2026; --ink: #e9e7e1; --muted: #9aa0ab; --line: #2e323b;
+      --accent: #6fcdb6; --accent-soft: #1d332e;
+      --hot: #ff9d93; --hot-bg: #47201d; --warm: #f2c668; --warm-bg: #3d3112;
+      --cold: #b1b9c7; --cold-bg: #2b303a; --notice-bg: #3d3112; --notice-ink: #f2dca0;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 32px 16px 48px; }
+  header h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.01em; text-wrap: balance; }
+  header .eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  header p { margin: 0; color: var(--muted); }
+  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+  .stat {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 16px; min-width: 120px;
+  }
+  .stat b { display: block; font-size: 24px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .stat span { color: var(--muted); font-size: 13px; }
+  .stat.hot b { color: var(--hot); } .stat.warm b { color: var(--warm); }
+  .notice {
+    background: var(--notice-bg); color: var(--notice-ink); border-radius: 10px;
+    padding: 12px 16px; margin: 0 0 16px;
+  }
+  .notice ul { margin: 4px 0 0; padding-left: 20px; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .toolbar input[type=search] {
+    flex: 1 1 220px; max-width: 340px; padding: 8px 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit;
+  }
+  .chip {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    border-radius: 999px; padding: 6px 14px; font: inherit; cursor: pointer;
+  }
+  .chip[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .count { color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .table-scroll {
+    overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  }
+  table { border-collapse: collapse; width: 100%; min-width: 980px; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  tbody tr:last-child td { border-bottom: 0; }
+  thead th {
+    position: sticky; top: 0; background: var(--surface); font-size: 12px; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--muted); white-space: nowrap;
+  }
+  th button {
+    all: unset; cursor: pointer; display: inline-flex; gap: 4px; align-items: center;
+  }
+  th button:focus-visible, .chip:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+  th button::after { content: "↕"; opacity: 0.35; }
+  th[aria-sort=ascending] button::after { content: "↑"; opacity: 1; }
+  th[aria-sort=descending] button::after { content: "↓"; opacity: 1; }
+  .badge {
+    display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+    min-width: 56px; padding: 6px 8px; border-radius: 10px; font-variant-numeric: tabular-nums;
+  }
+  .badge b { font-size: 20px; line-height: 1.1; }
+  .badge small { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .badge.hot { background: var(--hot-bg); color: var(--hot); }
+  .badge.warm { background: var(--warm-bg); color: var(--warm); }
+  .badge.cold { background: var(--cold-bg); color: var(--cold); }
+  .name { font-weight: 600; }
+  .sub { color: var(--muted); font-size: 13px; }
+  a { color: var(--accent); }
+  .missing { color: var(--hot); }
+  .why { margin: 0; padding: 0; list-style: none; min-width: 300px; }
+  .why li { display: flex; gap: 8px; padding: 1px 0; }
+  .why .pts {
+    flex: none; min-width: 34px; text-align: right; font-weight: 600; color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .empty { padding: 32px; text-align: center; color: var(--muted); }
+  footer { margin-top: 24px; color: var(--muted); font-size: 13px; }
+  @media print { .toolbar { display: none; } .table-scroll { overflow: visible; border: 0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Lead Radar</div>
+    <h1>roofing contractor in Tampa, FL · St. Petersburg, FL</h1>
+    <p>Generated 2026-11-01 12:00 UTC.
+      Ranked by how likely each business is to need help with missed calls, online booking and review follow-up.</p>
+  </header>
+
+  <section class="stats" aria-label="Summary">
+    <div class="stat"><b>38</b><span>businesses</span></div>
+    <div class="stat hot"><b>15</b><span>hot leads</span></div>
+    <div class="stat warm"><b>10</b><span>warm leads</span></div>
+    <div class="stat"><b>13</b><span>cold</span></div>
+    <div class="stat"><b>3</b><span>duplicates removed</span></div>
+    <div class="stat"><b>41</b><span>SerpApi searches used</span></div>
+    <div class="stat"><b>0</b><span>served from cache</span></div>
+  </section>
+
+
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="Filter by name, address, reason…" aria-label="Filter leads">
+    <button class="chip" data-tier="all" aria-pressed="true">All</button>
+    <button class="chip" data-tier="hot" aria-pressed="false">Hot</button>
+    <button class="chip" data-tier="warm" aria-pressed="false">Warm</button>
+    <button class="chip" data-tier="cold" aria-pressed="false">Cold</button>
+    <span class="count" id="count" aria-live="polite"></span>
+  </div>
+
+  <div class="table-scroll">
+    <table id="leads">
+      <thead>
+        <tr>
+          <th data-sort="num" aria-sort="descending"><button>Score</button></th>
+          <th data-sort="text"><button>Business</button></th>
+          <th>Contact</th>
+          <th data-sort="num"><button>Rating</button></th>
+          <th data-sort="num"><button>Reviews</button></th>
+          <th>Why this score</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-tier="hot">
+          <td data-value="85">
+            <span class="badge hot"><b>85</b><small>hot</small></span>
+          </td>
+          <td data-value="driftwood family roofing">
+            <div class="name">Driftwood Family Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">6636 4th St N, Tampa, FL 33641</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0116">(813) 555-0116</a></div>
+<div class="missing">No website</div>          </td>
+          <td class="num" data-value="3.8">
+★ 3.8          </td>
+          <td class="num" data-value="44">44</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>No website on the listing</span></li>
+              <li><span class="pts">+20</span><span>3 recent reviews mention unanswered calls (e.g. &#34;voicemail&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+15</span><span>44 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 12% of the last 8 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Rating 3.8 is below 4</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 3.25 vs. 3.8 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Driftwood+Family+Roofing&amp;query_place_id=ChIJ8-AMjKdJfhqhM4X-fpv_sEs" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="80">
+            <span class="badge hot"><b>80</b><small>hot</small></span>
+          </td>
+          <td data-value="gulfport family roofing">
+            <div class="name">Gulfport Family Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">1930 S MacDill Ave, St. Petersburg, FL 33779</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(727)555-0136">(727) 555-0136</a></div>
+<div class="missing">No website</div>          </td>
+          <td class="num" data-value="4.0">
+★ 4.0          </td>
+          <td class="num" data-value="21">21</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>No website on the listing</span></li>
+              <li><span class="pts">+20</span><span>3 recent reviews mention unanswered calls (e.g. &#34;voicemail&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+15</span><span>21 reviews vs. a local median of 152 in St. Petersburg, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 25% of the last 8 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 3.38 vs. 4 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gulfport+Family+Roofing&amp;query_place_id=ChIJ2R5J-TTjLCQmPRGGzpPdYOV" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="77">
+            <span class="badge hot"><b>77</b><small>hot</small></span>
+          </td>
+          <td data-value="citrus park exteriors &amp; roofing">
+            <div class="name">Citrus Park Exteriors &amp; Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">7892 Gandy Blvd, St. Petersburg, FL 33770</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(727)555-0129">(727) 555-0129</a></div>
+<div><a href="https://www.facebook.com/citrusparkexteriorsroofing" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+          </td>
+          <td class="num" data-value="3.8">
+★ 3.8          </td>
+          <td class="num" data-value="51">51</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>4 recent reviews mention unanswered calls (e.g. &#34;no answer&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+15</span><span>51 reviews vs. a local median of 152 in St. Petersburg, FL</span></li>
+              <li><span class="pts">+12</span><span>Only web presence is a facebook.com page</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 12% of the last 8 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Rating 3.8 is below 4</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 2.75 vs. 3.8 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Citrus+Park+Exteriors+%26+Roofing&amp;query_place_id=ChIJnfM_gefiu5ugtqq0J-q1aSk" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="75">
+            <span class="badge hot"><b>75</b><small>hot</small></span>
+          </td>
+          <td data-value="lealman family roofing">
+            <div class="name">Lealman Family Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">9244 Central Ave, Tampa, FL 33656</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0126">(813) 555-0126</a></div>
+<div class="missing">No website</div>          </td>
+          <td class="num" data-value="4.0">
+★ 4.0          </td>
+          <td class="num" data-value="45">45</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>No website on the listing</span></li>
+              <li><span class="pts">+20</span><span>2 recent reviews mention unanswered calls (e.g. &#34;voicemail&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+15</span><span>45 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 11% of the last 9 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Lealman+Family+Roofing&amp;query_place_id=ChIJWhpCqOLhJ2EC76eHAQXaRl7" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="75">
+            <span class="badge hot"><b>75</b><small>hot</small></span>
+          </td>
+          <td data-value="egret family roofing">
+            <div class="name">Egret Family Roofing</div>
+            <div class="sub">Roofing contractor · unclaimed listing</div>
+            <div class="sub">8991 4th St N, Tampa, FL 33671</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0106">(813) 555-0106</a></div>
+<div class="missing">No website</div>          </td>
+          <td class="num" data-value="4.0">
+★ 4.0          </td>
+          <td class="num" data-value="18">18</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>No website on the listing</span></li>
+              <li><span class="pts">+20</span><span>3 recent reviews mention unanswered calls (e.g. &#34;voicemail&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+15</span><span>18 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Google Business Profile is unclaimed</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Egret+Family+Roofing&amp;query_place_id=ChIJF3dx-ZjfBoQCCdWgN4S1q5F" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="72">
+            <span class="badge hot"><b>72</b><small>hot</small></span>
+          </td>
+          <td data-value="heron exteriors &amp; roofing">
+            <div class="name">Heron Exteriors &amp; Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">2156 E Hillsborough Ave, Tampa, FL 33658</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0109">(813) 555-0109</a></div>
+<div><a href="https://www.facebook.com/heronexteriorsroofing" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+          </td>
+          <td class="num" data-value="3.9">
+★ 3.9          </td>
+          <td class="num" data-value="47">47</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>3 recent reviews mention unanswered calls (e.g. &#34;never called back&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+15</span><span>47 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+12</span><span>Only web presence is a facebook.com page</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 20% of the last 10 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Rating 3.9 is below 4</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Heron+Exteriors+%26+Roofing&amp;query_place_id=ChIJMaWTGrm2tvRIUjr7xUSeMOQ" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="55">
+            <span class="badge hot"><b>55</b><small>hot</small></span>
+          </td>
+          <td data-value="bayshore roofing co.">
+            <div class="name">Bayshore Roofing Co.</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">7904 W Waters Ave, Tampa, FL 33655</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0101">(813) 555-0101</a></div>
+<div class="missing">No website</div>          </td>
+          <td class="num" data-value="4.1">
+★ 4.1          </td>
+          <td class="num" data-value="24">24</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>No website on the listing</span></li>
+              <li><span class="pts">+15</span><span>24 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 7 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bayshore+Roofing+Co.&amp;query_place_id=ChIJK9VIlirP8XXAzoVF6_h276_" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="55">
+            <span class="badge hot"><b>55</b><small>hot</small></span>
+          </td>
+          <td data-value="mangrove roofing co.">
+            <div class="name">Mangrove Roofing Co.</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">3882 Gandy Blvd, Tampa, FL 33679</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0111">(813) 555-0111</a></div>
+<div class="missing">No website</div>          </td>
+          <td class="num" data-value="4.6">
+★ 4.6          </td>
+          <td class="num" data-value="23">23</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>No website on the listing</span></li>
+              <li><span class="pts">+15</span><span>23 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 9 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mangrove+Roofing+Co.&amp;query_place_id=ChIJ-CKq6Hr4wyLmzKUV6WYcirw" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="55">
+            <span class="badge hot"><b>55</b><small>hot</small></span>
+          </td>
+          <td data-value="gandy roofing co.">
+            <div class="name">Gandy Roofing Co.</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">1867 N Dale Mabry Hwy, Tampa, FL 33631</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0121">(813) 555-0121</a></div>
+<div class="missing">No website</div>          </td>
+          <td class="num" data-value="4.1">
+★ 4.1          </td>
+          <td class="num" data-value="5">5</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>No website on the listing</span></li>
+              <li><span class="pts">+15</span><span>5 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 10 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gandy+Roofing+Co.&amp;query_place_id=ChIJNhxy83gaJBJt1UPy7abq3Al" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="55">
+            <span class="badge hot"><b>55</b><small>hot</small></span>
+          </td>
+          <td data-value="seminole heights roofing co.">
+            <div class="name">Seminole Heights Roofing Co.</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">3438 W Waters Ave, St. Petersburg, FL 33724</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(727)555-0131">(727) 555-0131</a></div>
+<div class="missing">No website</div>          </td>
+          <td class="num" data-value="4.4">
+★ 4.4          </td>
+          <td class="num" data-value="5">5</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>No website on the listing</span></li>
+              <li><span class="pts">+15</span><span>5 reviews vs. a local median of 152 in St. Petersburg, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 7 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Seminole+Heights+Roofing+Co.&amp;query_place_id=ChIJU0VCK2A2SKx9duZhGSnfAdp" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="52">
+            <span class="badge hot"><b>52</b><small>hot</small></span>
+          </td>
+          <td data-value="skyway exteriors &amp; roofing">
+            <div class="name">Skyway Exteriors &amp; Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">5786 N Florida Ave, Tampa, FL 33655</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0119">(813) 555-0119</a></div>
+<div><a href="https://www.facebook.com/skywayexteriorsroofing" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+          </td>
+          <td class="num" data-value="4.3">
+★ 4.3          </td>
+          <td class="num" data-value="87">87</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>3 recent reviews mention unanswered calls (e.g. &#34;no answer&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+12</span><span>Only web presence is a facebook.com page</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 30% of the last 10 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Skyway+Exteriors+%26+Roofing&amp;query_place_id=ChIJDAOfaPKQPDPlGY2VGwkUDnO" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="52">
+            <span class="badge hot"><b>52</b><small>hot</small></span>
+          </td>
+          <td data-value="cypress roof repair">
+            <div class="name">Cypress Roof Repair</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">8678 W Kennedy Blvd, Tampa, FL 33687</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0114">(813) 555-0114</a></div>
+<div><a href="https://www.facebook.com/cypressroofrepair" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+          </td>
+          <td class="num" data-value="4.5">
+★ 4.5          </td>
+          <td class="num" data-value="43">43</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+15</span><span>43 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+12</span><span>Only web presence is a facebook.com page</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 10 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>No opening hours on the listing</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Cypress+Roof+Repair&amp;query_place_id=ChIJq_YryTGzzVWVNy8A70dDuQt" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="52">
+            <span class="badge hot"><b>52</b><small>hot</small></span>
+          </td>
+          <td data-value="hillsborough roof repair">
+            <div class="name">Hillsborough Roof Repair</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">2964 34th St S, Tampa, FL 33643</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0104">(813) 555-0104</a></div>
+<div><a href="https://www.facebook.com/hillsboroughroofrepair" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+          </td>
+          <td class="num" data-value="4.8">
+★ 4.8          </td>
+          <td class="num" data-value="43">43</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+15</span><span>43 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+12</span><span>Only web presence is a facebook.com page</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 9 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 4.22 vs. 4.8 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hillsborough+Roof+Repair&amp;query_place_id=ChIJfYsgU_-eyxx4heSoTNI1ZIn" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="52">
+            <span class="badge hot"><b>52</b><small>hot</small></span>
+          </td>
+          <td data-value="riverview roof repair">
+            <div class="name">Riverview Roof Repair</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">6351 N Dale Mabry Hwy, St. Petersburg, FL 33792</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(727)555-0134">(727) 555-0134</a></div>
+<div><a href="https://www.facebook.com/riverviewroofrepair" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+          </td>
+          <td class="num" data-value="4.7">
+★ 4.7          </td>
+          <td class="num" data-value="22">22</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+15</span><span>22 reviews vs. a local median of 152 in St. Petersburg, FL</span></li>
+              <li><span class="pts">+12</span><span>Only web presence is a facebook.com page</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 8 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 3.75 vs. 4.7 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Riverview+Roof+Repair&amp;query_place_id=ChIJTnoytbcDpdGLV_eJQWcClW5" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="hot">
+          <td data-value="50">
+            <span class="badge hot"><b>50</b><small>hot</small></span>
+          </td>
+          <td data-value="davis island roof pros">
+            <div class="name">Davis Island Roof Pros</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">3773 S MacDill Ave, St. Petersburg, FL 33750</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(727)555-0132">(727) 555-0132</a></div>
+<div><a href="https://www.davis-island-roof-pros.example/" target="_blank" rel="noopener noreferrer">davis-island-roof-pros.example</a></div>
+          </td>
+          <td class="num" data-value="4.2">
+★ 4.2          </td>
+          <td class="num" data-value="152">152</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>4 recent reviews mention unanswered calls (e.g. &#34;never heard back&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 11% of the last 9 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>No opening hours on the listing</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 2.78 vs. 4.2 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Davis+Island+Roof+Pros&amp;query_place_id=ChIJGsAcmVjCDCnuo6aN1deptsC" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="47">
+            <span class="badge warm"><b>47</b><small>warm</small></span>
+          </td>
+          <td data-value="snell isle roof repair">
+            <div class="name">Snell Isle Roof Repair</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">4957 34th St S, Tampa, FL 33672</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0124">(813) 555-0124</a></div>
+<div><a href="https://www.facebook.com/snellisleroofrepair" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+          </td>
+          <td class="num" data-value="4.8">
+★ 4.8          </td>
+          <td class="num" data-value="42">42</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+15</span><span>42 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+12</span><span>Only web presence is a facebook.com page</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 10 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Snell+Isle+Roof+Repair&amp;query_place_id=ChIJOmL9HPKnIij1uHFm4Ztp7X-" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="45">
+            <span class="badge warm"><b>45</b><small>warm</small></span>
+          </td>
+          <td data-value="old northeast roof pros">
+            <div class="name">Old Northeast Roof Pros</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">3168 N Florida Ave, Tampa, FL 33695</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0122">(813) 555-0122</a></div>
+<div><a href="https://www.old-northeast-roof-pros.example/" target="_blank" rel="noopener noreferrer">old-northeast-roof-pros.example</a></div>
+          </td>
+          <td class="num" data-value="4.1">
+★ 4.1          </td>
+          <td class="num" data-value="206">206</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>3 recent reviews mention unanswered calls (e.g. &#34;couldn&#39;t reach&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 12% of the last 8 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 2.62 vs. 4.1 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Old+Northeast+Roof+Pros&amp;query_place_id=ChIJJSa09koJxPg8A0JMiT1Gp0G" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="45">
+            <span class="badge warm"><b>45</b><small>warm</small></span>
+          </td>
+          <td data-value="gulf breeze roof pros">
+            <div class="name">Gulf Breeze Roof Pros</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">1153 E Hillsborough Ave, Tampa, FL 33617</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0102">(813) 555-0102</a></div>
+<div><a href="https://www.gulf-breeze-roof-pros.example/" target="_blank" rel="noopener noreferrer">gulf-breeze-roof-pros.example</a></div>
+          </td>
+          <td class="num" data-value="4.2">
+★ 4.2          </td>
+          <td class="num" data-value="140">140</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>4 recent reviews mention unanswered calls (e.g. &#34;couldn&#39;t reach&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 9 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 3.44 vs. 4.2 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gulf+Breeze+Roof+Pros&amp;query_place_id=ChIJnEVVuM7_DHUIkT974xgi1x4" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="45">
+            <span class="badge warm"><b>45</b><small>warm</small></span>
+          </td>
+          <td data-value="pelican roof pros">
+            <div class="name">Pelican Roof Pros</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">7113 Central Ave, Tampa, FL 33646</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0112">(813) 555-0112</a></div>
+<div><a href="https://www.pelican-roof-pros.example/" target="_blank" rel="noopener noreferrer">pelican-roof-pros.example</a></div>
+          </td>
+          <td class="num" data-value="3.6">
+★ 3.6          </td>
+          <td class="num" data-value="119">119</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+20</span><span>3 recent reviews mention unanswered calls (e.g. &#34;didn&#39;t return my calls&#34;) in the last 180 days</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 9% of the last 11 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Rating 3.6 is below 4</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pelican+Roof+Pros&amp;query_place_id=ChIJbGnnltU8gYE7jwkrqkUtxiK" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="35">
+            <span class="badge warm"><b>35</b><small>warm</small></span>
+          </td>
+          <td data-value="tarpon roofers">
+            <div class="name">Tarpon Roofers</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">4641 N Florida Ave, Tampa, FL 33621</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0108">(813) 555-0108</a></div>
+<div><a href="https://www.tarpon-roofers.example/" target="_blank" rel="noopener noreferrer">tarpon-roofers.example</a></div>
+          </td>
+          <td class="num" data-value="4.3">
+★ 4.3          </td>
+          <td class="num" data-value="44">44</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+15</span><span>44 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 6 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Tarpon+Roofers&amp;query_place_id=ChIJ3E5u0eCTfYRkIa0Gi5hPwpk" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="35">
+            <span class="badge warm"><b>35</b><small>warm</small></span>
+          </td>
+          <td data-value="sawgrass roofing &amp; sheet metal">
+            <div class="name">Sawgrass Roofing &amp; Sheet Metal</div>
+            <div class="sub">Roofing contractor · unclaimed listing</div>
+            <div class="sub">9508 4th St N, Tampa, FL 33611</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0117">(813) 555-0117</a></div>
+<div><a href="https://www.sawgrass-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer">sawgrass-roofing-sheet-metal.example</a></div>
+          </td>
+          <td class="num" data-value="-1">
+<span class="sub">n/a</span>          </td>
+          <td class="num" data-value="0">0</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+15</span><span>0 reviews vs. a local median of 119 in Tampa, FL</span></li>
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Google Business Profile is unclaimed</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sawgrass+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJR8mENvE-KOEHGKGHTcvYa4X" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="30">
+            <span class="badge warm"><b>30</b><small>warm</small></span>
+          </td>
+          <td data-value="palm river roofing solutions">
+            <div class="name">Palm River Roofing Solutions</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">1535 N Florida Ave, Tampa, FL 33654</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0105">(813) 555-0105</a></div>
+<div><a href="https://www.palm-river-roofing-solutions.example/" target="_blank" rel="noopener noreferrer">palm-river-roofing-solutions.example</a></div>
+          </td>
+          <td class="num" data-value="4.6">
+★ 4.6          </td>
+          <td class="num" data-value="297">297</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 22% of the last 9 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>No opening hours on the listing</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 2.78 vs. 4.6 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Palm+River+Roofing+Solutions&amp;query_place_id=ChIJj030p7vnAvOstz1ifsUzgOp" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="30">
+            <span class="badge warm"><b>30</b><small>warm</small></span>
+          </td>
+          <td data-value="harborview roofers">
+            <div class="name">Harborview Roofers</div>
+            <div class="sub">Roofing contractor · unclaimed listing</div>
+            <div class="sub">7556 N Florida Ave, Tampa, FL 33652</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0128">(813) 555-0128</a></div>
+<div><a href="https://www.harborview-roofers.example/" target="_blank" rel="noopener noreferrer">harborview-roofers.example</a></div>
+          </td>
+          <td class="num" data-value="4.5">
+★ 4.5          </td>
+          <td class="num" data-value="126">126</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Google Business Profile is unclaimed</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 11 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Harborview+Roofers&amp;query_place_id=ChIJQI1Ax14GzTGwxC67W-TBJND" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="25">
+            <span class="badge warm"><b>25</b><small>warm</small></span>
+          </td>
+          <td data-value="seagrape roofing solutions">
+            <div class="name">Seagrape Roofing Solutions</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">7599 N Dale Mabry Hwy, Tampa, FL 33647</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0115">(813) 555-0115</a></div>
+<div><a href="https://www.seagrape-roofing-solutions.example/" target="_blank" rel="noopener noreferrer">seagrape-roofing-solutions.example</a></div>
+          </td>
+          <td class="num" data-value="4.4">
+★ 4.4          </td>
+          <td class="num" data-value="320">320</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 25% of the last 12 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 3.25 vs. 4.4 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Seagrape+Roofing+Solutions&amp;query_place_id=ChIJ36QSRiL88rGYoBrOoyKrJLm" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="warm">
+          <td data-value="25">
+            <span class="badge warm"><b>25</b><small>warm</small></span>
+          </td>
+          <td data-value="bay pines roofing solutions">
+            <div class="name">Bay Pines Roofing Solutions</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">3759 4th St N, St. Petersburg, FL 33750</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(727)555-0135">(727) 555-0135</a></div>
+<div><a href="https://www.bay-pines-roofing-solutions.example/" target="_blank" rel="noopener noreferrer">bay-pines-roofing-solutions.example</a></div>
+          </td>
+          <td class="num" data-value="4.7">
+★ 4.7          </td>
+          <td class="num" data-value="276">276</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 11% of the last 9 recent reviews</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 2.44 vs. 4.7 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bay+Pines+Roofing+Solutions&amp;query_place_id=ChIJ0o7Qhlsfe9CrcGLkqoTsJfr" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="20">
+            <span class="badge cold"><b>20</b><small>cold</small></span>
+          </td>
+          <td data-value="coquina roofers">
+            <div class="name">Coquina Roofers</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">2707 4th St N, Tampa, FL 33634</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0118">(813) 555-0118</a></div>
+<div><a href="https://www.coquina-roofers.example/" target="_blank" rel="noopener noreferrer">coquina-roofers.example</a></div>
+          </td>
+          <td class="num" data-value="4.7">
+★ 4.7          </td>
+          <td class="num" data-value="137">137</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+10</span><span>Owner replied to 0% of the last 9 recent reviews</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Coquina+Roofers&amp;query_place_id=ChIJkuqnbLXi-cZrU8Z9jZr9dHt" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="15">
+            <span class="badge cold"><b>15</b><small>cold</small></span>
+          </td>
+          <td data-value="sandhill roofing">
+            <div class="name">Sandhill Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">6226 Gandy Blvd, Tampa, FL 33650</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0110">(813) 555-0110</a></div>
+<div><a href="https://www.sandhill-roofing.example/" target="_blank" rel="noopener noreferrer">sandhill-roofing.example</a></div>
+          </td>
+          <td class="num" data-value="4.8">
+★ 4.8          </td>
+          <td class="num" data-value="774">774</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 3.89 vs. 4.8 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sandhill+Roofing&amp;query_place_id=ChIJoGMP_DdREbmycfzli2IsZ7l" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="15">
+            <span class="badge cold"><b>15</b><small>cold</small></span>
+          </td>
+          <td data-value="kenwood roofing group">
+            <div class="name">Kenwood Roofing Group</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">377 Gandy Blvd, Tampa, FL 33689</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0123">(813) 555-0123</a></div>
+<div><a href="https://www.kenwood-roofing-group.example/" target="_blank" rel="noopener noreferrer">kenwood-roofing-group.example</a></div>
+          </td>
+          <td class="num" data-value="4.6">
+★ 4.6          </td>
+          <td class="num" data-value="390">390</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+5</span><span>No opening hours on the listing</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kenwood+Roofing+Group&amp;query_place_id=ChIJrRIiSRPp5nOv-5Q1cCOROKy" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="15">
+            <span class="badge cold"><b>15</b><small>cold</small></span>
+          </td>
+          <td data-value="tyrone roofing solutions">
+            <div class="name">Tyrone Roofing Solutions</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">6886 S MacDill Ave, Tampa, FL 33629</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0125">(813) 555-0125</a></div>
+<div><a href="https://www.tyrone-roofing-solutions.example/" target="_blank" rel="noopener noreferrer">tyrone-roofing-solutions.example</a></div>
+          </td>
+          <td class="num" data-value="4.6">
+★ 4.6          </td>
+          <td class="num" data-value="126">126</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+              <li><span class="pts">+5</span><span>Recent reviews average 2.33 vs. 4.6 overall (rating is dropping)</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Tyrone+Roofing+Solutions&amp;query_place_id=ChIJ6F3bZlx5J08P03p7QZIaUC5" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="10">
+            <span class="badge cold"><b>10</b><small>cold</small></span>
+          </td>
+          <td data-value="pinellas point roofing">
+            <div class="name">Pinellas Point Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">5135 W Waters Ave, Tampa, FL 33660</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0120">(813) 555-0120</a></div>
+<div><a href="https://www.pinellas-point-roofing.example/" target="_blank" rel="noopener noreferrer">pinellas-point-roofing.example</a></div>
+          </td>
+          <td class="num" data-value="4.8">
+★ 4.8          </td>
+          <td class="num" data-value="605">605</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pinellas+Point+Roofing&amp;query_place_id=ChIJbtP22bFvvSCmGIbCFrC6ut-" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="10">
+            <span class="badge cold"><b>10</b><small>cold</small></span>
+          </td>
+          <td data-value="pass-a-grille roofing &amp; sheet metal">
+            <div class="name">Pass-a-Grille Roofing &amp; Sheet Metal</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">6144 4th St N, St. Petersburg, FL 33786</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(727)555-0137">(727) 555-0137</a></div>
+<div><a href="https://www.pass-a-grille-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer">pass-a-grille-roofing-sheet-metal.example</a></div>
+          </td>
+          <td class="num" data-value="4.8">
+★ 4.8          </td>
+          <td class="num" data-value="513">513</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pass-a-Grille+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJGCv3UrdfJoIJWx6yKwvh-XE" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="10">
+            <span class="badge cold"><b>10</b><small>cold</small></span>
+          </td>
+          <td data-value="manatee roofing &amp; sheet metal">
+            <div class="name">Manatee Roofing &amp; Sheet Metal</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">3497 Gandy Blvd, Tampa, FL 33638</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0107">(813) 555-0107</a></div>
+<div><a href="https://www.manatee-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer">manatee-roofing-sheet-metal.example</a></div>
+          </td>
+          <td class="num" data-value="4.9">
+★ 4.9          </td>
+          <td class="num" data-value="228">228</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Manatee+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJSUMYdiNpCzJ4-9zoQh13eA7" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="10">
+            <span class="badge cold"><b>10</b><small>cold</small></span>
+          </td>
+          <td data-value="osprey roofing group">
+            <div class="name">Osprey Roofing Group</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">7713 Central Ave, Tampa, FL 33622</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0113">(813) 555-0113</a></div>
+<div><a href="https://www.osprey-roofing-group.example/" target="_blank" rel="noopener noreferrer">osprey-roofing-group.example</a></div>
+          </td>
+          <td class="num" data-value="4.8">
+★ 4.8          </td>
+          <td class="num" data-value="223">223</td>
+          <td>
+            <ul class="why">
+              <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
+            </ul>
+          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Osprey+Roofing+Group&amp;query_place_id=ChIJMRU1IDzNQTJvVLG6-9TYXZK" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="0">
+            <span class="badge cold"><b>0</b><small>cold</small></span>
+          </td>
+          <td data-value="westshore roofing">
+            <div class="name">Westshore Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">6458 Central Ave, St. Petersburg, FL 33754</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(727)555-0130">(727) 555-0130</a></div>
+<div><a href="https://www.westshore-roofing.example/" target="_blank" rel="noopener noreferrer">westshore-roofing.example</a></div>
+<div class="sub">Online booking: online appointments, Online appointments</div>
+          </td>
+          <td class="num" data-value="4.7">
+★ 4.7          </td>
+          <td class="num" data-value="556">556</td>
+          <td>
+<span class="sub">No automation gaps detected</span>          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Westshore+Roofing&amp;query_place_id=ChIJUqphFESbVDd4rH3LsKOJr4d" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="0">
+            <span class="badge cold"><b>0</b><small>cold</small></span>
+          </td>
+          <td data-value="coral ridge roofing &amp; sheet metal">
+            <div class="name">Coral Ridge Roofing &amp; Sheet Metal</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">7540 4th St N, Tampa, FL 33633</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0127">(813) 555-0127</a></div>
+<div><a href="https://www.coral-ridge-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer">coral-ridge-roofing-sheet-metal.example</a></div>
+<div class="sub">Online booking: online appointments, Online appointments</div>
+          </td>
+          <td class="num" data-value="4.9">
+★ 4.9          </td>
+          <td class="num" data-value="489">489</td>
+          <td>
+<span class="sub">No automation gaps detected</span>          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Coral+Ridge+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJFKqYsAUM8koYNOZwjxgL4mU" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="0">
+            <span class="badge cold"><b>0</b><small>cold</small></span>
+          </td>
+          <td data-value="suncoast roofing">
+            <div class="name">Suncoast Roofing</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">3622 W Waters Ave, Tampa, FL 33614</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0100">(813) 555-0100</a></div>
+<div><a href="https://www.suncoast-roofing.example/" target="_blank" rel="noopener noreferrer">suncoast-roofing.example</a></div>
+<div class="sub">Online booking: online appointments, Online appointments</div>
+          </td>
+          <td class="num" data-value="4.7">
+★ 4.7          </td>
+          <td class="num" data-value="362">362</td>
+          <td>
+<span class="sub">No automation gaps detected</span>          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Suncoast+Roofing&amp;query_place_id=ChIJnpDUe0mrf60GH54Uq_X-6Nw" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="0">
+            <span class="badge cold"><b>0</b><small>cold</small></span>
+          </td>
+          <td data-value="channelside roofing group">
+            <div class="name">Channelside Roofing Group</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">3055 W Kennedy Blvd, St. Petersburg, FL 33789</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(727)555-0133">(727) 555-0133</a></div>
+<div><a href="https://www.channelside-roofing-group.example/" target="_blank" rel="noopener noreferrer">channelside-roofing-group.example</a></div>
+<div class="sub">Online booking: online appointments, Online appointments</div>
+          </td>
+          <td class="num" data-value="4.6">
+★ 4.6          </td>
+          <td class="num" data-value="183">183</td>
+          <td>
+<span class="sub">No automation gaps detected</span>          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Channelside+Roofing+Group&amp;query_place_id=ChIJwmMlLMmuVhf7Cg845XDJkCF" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        <tr data-tier="cold">
+          <td data-value="0">
+            <span class="badge cold"><b>0</b><small>cold</small></span>
+          </td>
+          <td data-value="ybor roofing group">
+            <div class="name">Ybor Roofing Group</div>
+            <div class="sub">Roofing contractor</div>
+            <div class="sub">3889 Central Ave, Tampa, FL 33698</div>
+          </td>
+          <td>
+<div class="num"><a href="tel:(813)555-0103">(813) 555-0103</a></div>
+<div><a href="https://www.ybor-roofing-group.example/" target="_blank" rel="noopener noreferrer">ybor-roofing-group.example</a></div>
+<div class="sub">Online booking: online appointments, Online appointments</div>
+          </td>
+          <td class="num" data-value="4.7">
+★ 4.7          </td>
+          <td class="num" data-value="119">119</td>
+          <td>
+<span class="sub">No automation gaps detected</span>          </td>
+          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Ybor+Roofing+Group&amp;query_place_id=ChIJKQ5Smt6a5TE1nsXGdHQruPg" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    Lead Radar 0.1.0 · Data from the SerpApi Google Maps API and Google Maps Reviews API.
+    Scores are heuristics for prioritising outreach, not facts about a business.
+  </footer>
+</div>
+<script>
+(function () {
+  var table = document.getElementById("leads");
+  if (!table) return;
+  var tbody = table.tBodies[0];
+  var rows = Array.prototype.slice.call(tbody.rows);
+  var query = document.getElementById("q");
+  var count = document.getElementById("count");
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var tier = "all";
+
+  function applyFilter() {
+    var needle = query.value.trim().toLowerCase();
+    var shown = 0;
+    rows.forEach(function (row) {
+      var ok = (tier === "all" || row.dataset.tier === tier) &&
+               (!needle || row.textContent.toLowerCase().indexOf(needle) !== -1);
+      row.hidden = !ok;
+      if (ok) shown += 1;
+    });
+    count.textContent = shown + " of " + rows.length + " shown";
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      tier = chip.dataset.tier;
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
+      applyFilter();
+    });
+  });
+  query.addEventListener("input", applyFilter);
+
+  Array.prototype.forEach.call(table.tHead.rows[0].cells, function (th, index) {
+    var kind = th.dataset.sort;
+    if (!kind) return;
+    th.querySelector("button").addEventListener("click", function () {
+      var ascending = th.getAttribute("aria-sort") === "descending";
+      if (!th.hasAttribute("aria-sort")) ascending = kind === "text";
+      Array.prototype.forEach.call(table.tHead.rows[0].cells, function (other) {
+        other.removeAttribute("aria-sort");
+      });
+      th.setAttribute("aria-sort", ascending ? "ascending" : "descending");
+      rows.sort(function (a, b) {
+        var x = a.cells[index].dataset.value, y = b.cells[index].dataset.value;
+        var diff = kind === "num" ? parseFloat(x) - parseFloat(y) : x.localeCompare(y);
+        return ascending ? diff : -diff;
+      });
+      rows.forEach(function (row) { tbody.appendChild(row); });
+    });
+  });
+
+  applyFilter();
+})();
+</script>
+</body>
+</html>

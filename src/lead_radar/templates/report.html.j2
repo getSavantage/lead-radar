@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lead Radar · {{ request.query }}</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --surface: #ffffff; --ink: #1b1d22; --muted: #666b76; --line: #e3e1da;
+    --accent: #0f5c4d; --accent-soft: #e2efeb;
+    --hot: #b3261e; --hot-bg: #fbe9e7; --warm: #8a5a00; --warm-bg: #fbf0d3;
+    --cold: #4a5568; --cold-bg: #e9ecf1; --notice-bg: #fff4d6; --notice-ink: #5c4300;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171b; --surface: #1d2026; --ink: #e9e7e1; --muted: #9aa0ab; --line: #2e323b;
+      --accent: #6fcdb6; --accent-soft: #1d332e;
+      --hot: #ff9d93; --hot-bg: #47201d; --warm: #f2c668; --warm-bg: #3d3112;
+      --cold: #b1b9c7; --cold-bg: #2b303a; --notice-bg: #3d3112; --notice-ink: #f2dca0;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 32px 16px 48px; }
+  header h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.01em; text-wrap: balance; }
+  header .eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  header p { margin: 0; color: var(--muted); }
+  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+  .stat {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 16px; min-width: 120px;
+  }
+  .stat b { display: block; font-size: 24px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .stat span { color: var(--muted); font-size: 13px; }
+  .stat.hot b { color: var(--hot); } .stat.warm b { color: var(--warm); }
+  .notice {
+    background: var(--notice-bg); color: var(--notice-ink); border-radius: 10px;
+    padding: 12px 16px; margin: 0 0 16px;
+  }
+  .notice ul { margin: 4px 0 0; padding-left: 20px; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+  .toolbar input[type=search] {
+    flex: 1 1 220px; max-width: 340px; padding: 8px 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit;
+  }
+  .chip {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    border-radius: 999px; padding: 6px 14px; font: inherit; cursor: pointer;
+  }
+  .chip[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .count { color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .table-scroll {
+    overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  }
+  table { border-collapse: collapse; width: 100%; min-width: 980px; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  tbody tr:last-child td { border-bottom: 0; }
+  thead th {
+    position: sticky; top: 0; background: var(--surface); font-size: 12px; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--muted); white-space: nowrap;
+  }
+  th button {
+    all: unset; cursor: pointer; display: inline-flex; gap: 4px; align-items: center;
+  }
+  th button:focus-visible, .chip:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+  th button::after { content: "↕"; opacity: 0.35; }
+  th[aria-sort=ascending] button::after { content: "↑"; opacity: 1; }
+  th[aria-sort=descending] button::after { content: "↓"; opacity: 1; }
+  .badge {
+    display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+    min-width: 56px; padding: 6px 8px; border-radius: 10px; font-variant-numeric: tabular-nums;
+  }
+  .badge b { font-size: 20px; line-height: 1.1; }
+  .badge small { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .badge.hot { background: var(--hot-bg); color: var(--hot); }
+  .badge.warm { background: var(--warm-bg); color: var(--warm); }
+  .badge.cold { background: var(--cold-bg); color: var(--cold); }
+  .name { font-weight: 600; }
+  .sub { color: var(--muted); font-size: 13px; }
+  a { color: var(--accent); }
+  .missing { color: var(--hot); }
+  .why { margin: 0; padding: 0; list-style: none; min-width: 300px; }
+  .why li { display: flex; gap: 8px; padding: 1px 0; }
+  .why .pts {
+    flex: none; min-width: 34px; text-align: right; font-weight: 600; color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .empty { padding: 32px; text-align: center; color: var(--muted); }
+  footer { margin-top: 24px; color: var(--muted); font-size: 13px; }
+  @media print { .toolbar { display: none; } .table-scroll { overflow: visible; border: 0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Lead Radar</div>
+    <h1>{{ request.query }} in {{ request.locations | join(" · ") }}</h1>
+    <p>Generated {{ result.generated_at.strftime("%Y-%m-%d %H:%M %Z") }}.
+      Ranked by how likely each business is to need help with missed calls, online booking and review follow-up.</p>
+  </header>
+
+  <section class="stats" aria-label="Summary">
+    <div class="stat"><b>{{ leads | length }}</b><span>businesses</span></div>
+    <div class="stat hot"><b>{{ hot }}</b><span>hot leads</span></div>
+    <div class="stat warm"><b>{{ warm }}</b><span>warm leads</span></div>
+    <div class="stat"><b>{{ cold }}</b><span>cold</span></div>
+    <div class="stat"><b>{{ result.duplicates_removed }}</b><span>duplicates removed</span></div>
+    <div class="stat"><b>{{ result.stats.api_calls }}</b><span>SerpApi searches used</span></div>
+    <div class="stat"><b>{{ result.stats.cache_hits }}</b><span>served from cache</span></div>
+  </section>
+
+  {% if result.stop_reason or result.warnings %}
+  <div class="notice" role="status">
+    {% if result.stop_reason %}<strong>Partial results.</strong> {{ result.stop_reason }}{% endif %}
+    {% if result.warnings %}
+    <ul>{% for warning in result.warnings %}<li>{{ warning }}</li>{% endfor %}</ul>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% if not with_reviews %}
+  <p class="sub">Review signals (missed-call complaints, owner replies, rating trend) were not collected for this run.
+    Re-run with <code>--reviews</code> to include them.</p>
+  {% endif %}
+
+  {% if leads %}
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="Filter by name, address, reason…" aria-label="Filter leads">
+    <button class="chip" data-tier="all" aria-pressed="true">All</button>
+    <button class="chip" data-tier="hot" aria-pressed="false">Hot</button>
+    <button class="chip" data-tier="warm" aria-pressed="false">Warm</button>
+    <button class="chip" data-tier="cold" aria-pressed="false">Cold</button>
+    <span class="count" id="count" aria-live="polite"></span>
+  </div>
+
+  <div class="table-scroll">
+    <table id="leads">
+      <thead>
+        <tr>
+          <th data-sort="num" aria-sort="descending"><button>Score</button></th>
+          <th data-sort="text"><button>Business</button></th>
+          <th>Contact</th>
+          <th data-sort="num"><button>Rating</button></th>
+          <th data-sort="num"><button>Reviews</button></th>
+          <th>Why this score</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for lead in leads %}
+        {% set b = lead.business %}
+        <tr data-tier="{{ lead.tier.value }}">
+          <td data-value="{{ lead.score }}">
+            <span class="badge {{ lead.tier.value }}"><b>{{ lead.score }}</b><small>{{ lead.tier.value }}</small></span>
+          </td>
+          <td data-value="{{ b.name | lower }}">
+            <div class="name">{{ b.name }}</div>
+            <div class="sub">{{ b.category or "" }}{% if b.unclaimed_listing %} · unclaimed listing{% endif %}</div>
+            <div class="sub">{{ b.address or "" }}</div>
+          </td>
+          <td>
+            {% if b.phone %}<div class="num"><a href="tel:{{ b.phone | replace(' ', '') }}">{{ b.phone }}</a></div>
+            {% else %}<div class="missing">No phone</div>{% endif %}
+            {% if b.website %}<div><a href="{{ b.website }}" target="_blank" rel="noopener noreferrer">{{ b.website_domain }}</a></div>
+            {% else %}<div class="missing">No website</div>{% endif %}
+            {% if b.booking_link %}<div><a href="{{ b.booking_link }}" target="_blank" rel="noopener noreferrer">Online booking</a></div>
+            {% elif b.has_online_booking %}<div class="sub">Online booking: {{ b.booking_signals | join(", ") | replace("_", " ") }}</div>
+            {% endif %}
+          </td>
+          <td class="num" data-value="{{ b.rating if b.rating is not none else -1 }}">
+            {% if b.rating is not none %}★ {{ "%.1f" | format(b.rating) }}{% else %}<span class="sub">n/a</span>{% endif %}
+          </td>
+          <td class="num" data-value="{{ b.review_count or 0 }}">{{ b.review_count or 0 }}</td>
+          <td>
+            {% if lead.reasons %}
+            <ul class="why">
+              {% for reason in lead.reasons %}
+              <li><span class="pts">+{{ reason.points }}</span><span>{{ reason.message }}</span></li>
+              {% endfor %}
+            </ul>
+            {% else %}<span class="sub">No automation gaps detected</span>{% endif %}
+          </td>
+          <td><a href="{{ b.maps_url }}" target="_blank" rel="noopener noreferrer">Maps</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="table-scroll"><div class="empty">No businesses were found for this search.</div></div>
+  {% endif %}
+
+  <footer>
+    Lead Radar {{ version }} · Data from the SerpApi Google Maps API{% if with_reviews %} and Google Maps Reviews API{% endif %}.
+    Scores are heuristics for prioritising outreach, not facts about a business.
+  </footer>
+</div>
+<script>
+(function () {
+  var table = document.getElementById("leads");
+  if (!table) return;
+  var tbody = table.tBodies[0];
+  var rows = Array.prototype.slice.call(tbody.rows);
+  var query = document.getElementById("q");
+  var count = document.getElementById("count");
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+  var tier = "all";
+
+  function applyFilter() {
+    var needle = query.value.trim().toLowerCase();
+    var shown = 0;
+    rows.forEach(function (row) {
+      var ok = (tier === "all" || row.dataset.tier === tier) &&
+               (!needle || row.textContent.toLowerCase().indexOf(needle) !== -1);
+      row.hidden = !ok;
+      if (ok) shown += 1;
+    });
+    count.textContent = shown + " of " + rows.length + " shown";
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      tier = chip.dataset.tier;
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
+      applyFilter();
+    });
+  });
+  query.addEventListener("input", applyFilter);
+
+  Array.prototype.forEach.call(table.tHead.rows[0].cells, function (th, index) {
+    var kind = th.dataset.sort;
+    if (!kind) return;
+    th.querySelector("button").addEventListener("click", function () {
+      var ascending = th.getAttribute("aria-sort") === "descending";
+      if (!th.hasAttribute("aria-sort")) ascending = kind === "text";
+      Array.prototype.forEach.call(table.tHead.rows[0].cells, function (other) {
+        other.removeAttribute("aria-sort");
+      });
+      th.setAttribute("aria-sort", ascending ? "ascending" : "descending");
+      rows.sort(function (a, b) {
+        var x = a.cells[index].dataset.value, y = b.cells[index].dataset.value;
+        var diff = kind === "num" ? parseFloat(x) - parseFloat(y) : x.localeCompare(y);
+        return ascending ? diff : -diff;
+      });
+      rows.forEach(function (row) { tbody.appendChild(row); });
+    });
+  });
+
+  applyFilter();
+})();
+</script>
+</body>
+</html>
