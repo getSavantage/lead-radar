@@ -5,10 +5,10 @@ automation help: missed-call handling, online booking and review follow-up.
 
 Built on the [SerpApi](https://serpapi.com) Google Maps, Google Maps Reviews and Account APIs.
 
-![Lead Radar HTML report](docs/report.png)
+![Lead Radar web app](docs/web-app.png)
 
-*The report above is [`examples/demo-report.html`](examples/demo-report.html), generated from
-the bundled sample data. No real businesses are shown.*
+*The web app showing a report built from the bundled sample data. No real businesses are
+shown. The same report as a standalone file: [`examples/demo-report.html`](examples/demo-report.html).*
 
 ## The problem
 
@@ -33,15 +33,39 @@ Lead Radar turns one command into a ranked call list, and every score comes with
 ```bash
 git clone <this repo> && cd lead-radar
 python3.11 -m venv .venv && source .venv/bin/activate
-pip install -e ".[ui]"
+pip install -e .
 
-lead-radar demo --open          # full pipeline on sample data: no API key, no credits
+cp .env.example .env            # paste your key from https://serpapi.com/manage-api-key
+lead-radar web                  # opens http://localhost:8000
 ```
 
-For live data, add your key ([get one here](https://serpapi.com/manage-api-key)):
+No key yet? `lead-radar web` still starts, with a **Try the demo** button that runs the whole
+pipeline on bundled sample data without spending anything.
+
+## The web app
+
+`lead-radar web` is the everyday way to use Lead Radar:
+
+1. **New search.** Type a niche, add one or more locations, choose how many businesses per
+   location and whether to analyse reviews.
+2. **Estimate cost.** Shows Google Maps pages, review lookups, what is already cached (free)
+   and your remaining SerpApi searches. Nothing is spent yet.
+3. **Run.** The button states the exact upper bound you are agreeing to. The server
+   re-estimates before starting and refuses a run dearer than what you confirmed, and editing
+   the form discards the estimate. A progress view follows the run; **Cancel** stops before
+   the next request and keeps everything found so far.
+4. **Reports.** Every run is saved and listed in the sidebar. Open one to filter and sort the
+   leads, then **Download CSV** or **Download HTML**.
+
+The server listens on `127.0.0.1` only, keeps the API key on the server side, and is a thin
+layer over the same `pipeline.estimate()`, `pipeline.run()` and run store that the CLI uses.
+Runs started from the CLI appear in the web app's history too.
+
+## Command line
+
+The CLI has everything the web app has, for scripting or a terminal workflow:
 
 ```bash
-cp .env.example .env            # then paste your key into .env
 lead-radar account              # plan and searches left (free call)
 lead-radar search "roofing contractor" -l "Tampa, FL" --max-results 20
 ```
@@ -69,18 +93,19 @@ Before anything is spent you see what the run can cost and what you have left:
 Use up to 31 SerpApi searches? [Y/n]:
 ```
 
-The run writes `out/leads-<niche>-<location>-<timestamp>.csv` and a matching `.html` report:
-one self-contained file with a sortable, filterable table, score badges, click-to-call phone
-numbers and links to each website and Google Maps listing.
+Each run is saved to `out/runs/<run id>/`: a CSV, and an HTML report that is one
+self-contained file with a sortable, filterable table, score badges, click-to-call phone
+numbers and links to each website and Google Maps listing. The run also shows up in
+`lead-radar web`.
 
 | Command | What it does |
 | --- | --- |
-| `lead-radar search QUERY -l LOCATION...` | Search, score, write CSV + HTML |
+| `lead-radar web` | Web app: search, browse and download reports |
+| `lead-radar search QUERY -l LOCATION...` | Search, score, save CSV + HTML |
 | `lead-radar demo` | Same pipeline on bundled sample data, offline |
 | `lead-radar account` | Plan, searches left, hourly usage |
 | `lead-radar init-config` | Write the default scoring rules to `scoring.yaml` |
 | `lead-radar cache info` / `cache clear` | Inspect or empty the response cache |
-| `lead-radar ui` | Streamlit web UI |
 
 Useful `search` flags: `--reviews`, `--review-limit N`, `--max-results N` (per location),
 `--zoom`, `--config scoring.yaml`, `--yes` (skip confirmation), `--no-cache`, `--out DIR`.
@@ -220,17 +245,6 @@ detection:
 
 Scores are heuristics for prioritising outreach, not facts about a business.
 
-## Web UI
-
-```bash
-lead-radar ui
-```
-
-The Streamlit app is a thin layer over the same `pipeline.estimate()` and `pipeline.run()`
-the CLI uses; it contains no search or scoring logic. The flow mirrors the CLI: estimate
-credits first, then run. Changing any input invalidates the estimate, so the "Run" button
-always states the cost of exactly what will run. Without an API key it starts in demo mode.
-
 ## Project structure
 
 ```
@@ -243,24 +257,28 @@ src/lead_radar/
   scoring.py    One small function per rule; returns score + reasons
   config.py     Scoring config schema; default_scoring.yaml is the editable copy
   export.py     CSV and self-contained HTML report (templates/report.html.j2)
+  store.py      Saved runs (out/runs/<id>/), shared by the CLI and the web app
   cli.py        Typer + Rich CLI
-  ui.py         Streamlit UI
+  web/          FastAPI app (app.py, jobs.py) + plain HTML/CSS/JS front end (static/)
   demo.py       Offline transport that replays JSON fixtures (demo_data/)
   errors.py     Error types mapped from SerpApi's HTTP status codes
-tests/          150 tests, all offline
+tests/          178 tests, all offline
 examples/       Sample CSV and HTML report, generated from the fixtures
 scripts/        build_demo_fixtures.py regenerates demo_data/
 ```
 
 Everything above `client.py` depends only on a two-method `Transport` protocol (`search`,
-`account`). That seam is what lets the tests, the demo command and the UI demo mode run the
-real pipeline without a network connection.
+`account`). That seam is what lets the tests, the demo command and the web app's demo mode
+run the real pipeline without a network connection.
+
+The front end has no build step: `index.html`, `styles.css` and `app.js` are served as-is, and
+all logic stays in Python. The browser only ever sees run summaries and rendered reports.
 
 ## Development
 
 ```bash
-pip install -e ".[ui,dev]"
-pytest          # 150 tests, about 2 seconds, no network
+pip install -e ".[dev]"
+pytest          # 178 tests, about 3 seconds, no network
 ruff check . && ruff format --check .
 mypy            # strict
 ```
@@ -275,7 +293,9 @@ The tests cover pagination (stop conditions, `start` values), dedupe across page
 locations, every scoring rule and its thresholds, config validation, CSV/HTML export
 (including formula-injection and HTML-escaping of hostile business names), the credit
 estimate, retries, error mapping, key redaction, partial results on Ctrl+C or exhausted
-credits, the CLI, and a headless smoke test of the Streamlit app. One test fails if
+credits, cancellation, the CLI, the run store (including path traversal in run ids) and the
+web API end to end: estimate, cost confirmation, background runs, cancel, one run at a time,
+viewing, downloading and deleting reports. One test fails if
 `examples/` drifts from what the code generates.
 
 ## License
