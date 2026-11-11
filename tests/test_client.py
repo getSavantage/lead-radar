@@ -120,7 +120,10 @@ def test_transport_does_not_mutate_caller_params(monkeypatch: pytest.MonkeyPatch
     assert "api_key" not in params
 
 
-def test_missing_key_has_actionable_message(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_missing_key_has_actionable_message(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.chdir(tmp_path)  # no .env here or above
     monkeypatch.delenv("SERPAPI_API_KEY", raising=False)
     with pytest.raises(MissingApiKeyError, match=r"\.env"):
         api_key_from_env()
@@ -171,6 +174,27 @@ def test_search_status_error_is_retried_and_never_cached(tmp_path: Path) -> None
 
     assert gateway.search(dict(PARAMS)) == OK
     assert cache.get(PARAMS) == OK
+
+
+def test_key_added_to_env_file_is_picked_up_without_restart(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv("SERPAPI_API_KEY", raising=False)
+    with pytest.raises(MissingApiKeyError):
+        api_key_from_env()
+
+    (tmp_path / ".env").write_text("SERPAPI_API_KEY=from-file\n", "utf-8")
+    assert api_key_from_env() == "from-file"
+
+
+def test_environment_variable_wins_over_env_file(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / ".env").write_text("SERPAPI_API_KEY=from-file\n", "utf-8")
+    monkeypatch.setenv("SERPAPI_API_KEY", "from-platform")
+    assert api_key_from_env() == "from-platform"
 
 
 def test_backoff_is_capped() -> None:

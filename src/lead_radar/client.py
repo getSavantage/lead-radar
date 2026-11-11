@@ -18,6 +18,7 @@ from dataclasses import dataclass
 from typing import Any, Protocol, TypeVar
 
 import serpapi
+from dotenv import find_dotenv, load_dotenv
 
 from lead_radar.cache import ResponseCache
 from lead_radar.errors import (
@@ -48,6 +49,13 @@ class Transport(Protocol):
 
 
 def api_key_from_env() -> str:
+    """Read the key from the environment, or from a ``.env`` file in or above the current folder.
+
+    The ``.env`` file is re-read on every call, so a key added while ``lead-radar web`` is
+    running is picked up without a restart. A variable already set in the environment (as on a
+    hosting platform) always wins over the file.
+    """
+    load_dotenv(find_dotenv(usecwd=True), override=False)
     key = os.environ.get(API_KEY_ENV, "").strip()
     if not key:
         raise MissingApiKeyError

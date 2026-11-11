@@ -94,8 +94,8 @@ async function loadAccount() {
     box.replaceChildren(el("div", { class: "balance-demo" },
       icon("key"),
       el("div", {},
-        el("b", { text: "Demo mode" }),
-        "Add SERPAPI_API_KEY to .env and restart to run live searches."),
+        el("b", { text: "No SerpApi key yet" }),
+        "Only sample data for now. Add your key to the .env file, then refresh this page."),
     ));
     return;
   }
@@ -251,8 +251,8 @@ function renderCostIdle() {
         el("span", { class: "icon-wrap" }, icon("key")),
         el("div", {},
           el("strong", { text: "Live searches need a SerpApi key" }),
-          el("p", {}, "Put ", el("code", { text: "SERPAPI_API_KEY" }), " in the ", el("code", { text: ".env" }),
-            " file and restart ", el("code", { text: "lead-radar web" }), "."))),
+          el("p", {}, "Add the line ", el("code", { text: "SERPAPI_API_KEY=your_key" }),
+            " to the ", el("code", { text: ".env" }), " file in the project folder, then refresh this page."))),
       el("p", { class: "hint", text: `Meanwhile, try the full app on sample data: “${state.status.demo.query}” in ${state.status.demo.locations.join(" and ")}. No key, no cost.` }),
       demo,
     );

@@ -19,8 +19,9 @@ class MissingApiKeyError(LeadRadarError):
 
     def __init__(self) -> None:
         super().__init__(
-            "SERPAPI_API_KEY is not set. Export it or put it in a .env file "
-            "(see .env.example). Get a key at https://serpapi.com/manage-api-key"
+            "SERPAPI_API_KEY is not set. Add a line SERPAPI_API_KEY=your_key to the .env file "
+            "in the project folder (see .env.example). Get a key at "
+            "https://serpapi.com/manage-api-key"
         )
 
 
