@@ -109,7 +109,7 @@ def test_html_lists_every_lead_with_badge_reasons_and_links(demo_result: RunResu
     assert html.count('<tr data-tier="') == 38
     top = demo_result.leads[0]
     assert top.business.name in html
-    assert f'<span class="badge hot"><b>{top.score}</b>' in html
+    assert f'<div class="ring hot" style="--pct: {top.score}"><b>{top.score}</b></div>' in html
     assert top.reasons[0].message in html
     assert 'href="https://www.google.com/maps/search/?api=1&amp;query=' in html
     assert 'href="tel:' in html

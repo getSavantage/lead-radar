@@ -6,134 +6,226 @@
 <title>Lead Radar · roofing contractor</title>
 <style>
   :root {
-    --bg: #f6f5f1; --surface: #ffffff; --ink: #1b1d22; --muted: #666b76; --line: #e3e1da;
-    --accent: #0f5c4d; --accent-soft: #e2efeb;
-    --hot: #b3261e; --hot-bg: #fbe9e7; --warm: #8a5a00; --warm-bg: #fbf0d3;
-    --cold: #4a5568; --cold-bg: #e9ecf1; --notice-bg: #fff4d6; --notice-ink: #5c4300;
+    --bg: #f4f5f7; --surface: #ffffff; --surface-2: #f9fafb; --ink: #0d1117; --ink-2: #374151;
+    --muted: #6b7280; --line: #e5e7eb; --line-2: #d1d5db; --row-hover: #fafbfc;
+    --accent: #c8f34a; --accent-ink: #0d1117; --accent-text: #4d7c0f; --accent-soft: #f3fbd9;
+    --hot: #e5432d; --hot-soft: #fdecea; --warm: #d97706; --warm-soft: #fdf3e1;
+    --cold: #98a2b3; --cold-soft: #eef0f3; --track: #eceef1;
+    --notice: #fff8e6; --notice-ink: #7a4b00; --notice-line: #f6e2b3;
+    --shadow: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.06);
+    --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #15171b; --surface: #1d2026; --ink: #e9e7e1; --muted: #9aa0ab; --line: #2e323b;
-      --accent: #6fcdb6; --accent-soft: #1d332e;
-      --hot: #ff9d93; --hot-bg: #47201d; --warm: #f2c668; --warm-bg: #3d3112;
-      --cold: #b1b9c7; --cold-bg: #2b303a; --notice-bg: #3d3112; --notice-ink: #f2dca0;
+      --bg: #0a0d12; --surface: #11161d; --surface-2: #0e1319; --ink: #e8eaed; --ink-2: #c4c9d1;
+      --muted: #8b93a1; --line: #1f2630; --line-2: #2a323e; --row-hover: #141a22;
+      --accent-text: #c8f34a; --accent-soft: #1d2410;
+      --hot: #ff6b55; --hot-soft: #2a1512; --warm: #f5a524; --warm-soft: #2a1f0c;
+      --cold: #6b7483; --cold-soft: #1a1f27; --track: #1f2630;
+      --notice: #251d0b; --notice-ink: #f2d59a; --notice-line: #3a2e12;
+      --shadow: none;
     }
   }
   * { box-sizing: border-box; }
   body {
-    margin: 0; background: var(--bg); color: var(--ink);
-    font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.5 var(--font);
+    -webkit-font-smoothing: antialiased; font-feature-settings: "cv11", "ss01";
   }
-  .wrap { max-width: 1280px; margin: 0 auto; padding: 32px 16px 48px; }
-  header h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.01em; text-wrap: balance; }
-  header .eyebrow {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--accent);
+  a { color: inherit; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 40px 24px 56px; }
+  .embedded .wrap { max-width: none; padding: 0 0 8px; }
+  .icon { width: 15px; height: 15px; flex: none; stroke: currentColor; fill: none; stroke-width: 2;
+          stroke-linecap: round; stroke-linejoin: round; vertical-align: -2px; }
+
+  /* header (standalone file only) */
+  .masthead { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font: 600 14px var(--display); }
+  .masthead .mark { width: 26px; height: 26px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; }
+  h1 { font: 700 34px/1.15 var(--display); letter-spacing: -0.025em; margin: 0 0 8px; text-wrap: balance; }
+  .lede { color: var(--muted); margin: 0 0 28px; max-width: 70ch; }
+
+  /* summary */
+  .summary {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; overflow: hidden;
+    background: var(--line); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
   }
-  header p { margin: 0; color: var(--muted); }
-  .stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
-  .stat {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
-    padding: 12px 16px; min-width: 120px;
-  }
-  .stat b { display: block; font-size: 24px; line-height: 1.2; font-variant-numeric: tabular-nums; }
-  .stat span { color: var(--muted); font-size: 13px; }
-  .stat.hot b { color: var(--hot); } .stat.warm b { color: var(--warm); }
+  .kpi { background: var(--surface); padding: 18px 20px 16px; }
+  .kpi .label { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; font-weight: 500; }
+  .kpi .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .kpi b { display: block; font: 600 32px/1.1 var(--display); letter-spacing: -0.02em; margin-top: 6px;
+           font-variant-numeric: tabular-nums; }
+  .kpi.hot b { color: var(--hot); } .kpi.warm b { color: var(--warm); }
+  .distribution { grid-column: 1 / -1; background: var(--surface); padding: 0 20px 18px; }
+  .bar { display: flex; height: 8px; border-radius: 999px; overflow: hidden; background: var(--track); gap: 2px; }
+  .bar span { display: block; height: 100%; }
+  .meta-line { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; color: var(--muted); font-size: 13px; }
+  .meta-line b { color: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .note { color: var(--muted); font-size: 13px; margin: 14px 2px 0; display: flex; gap: 8px; align-items: flex-start; }
   .notice {
-    background: var(--notice-bg); color: var(--notice-ink); border-radius: 10px;
-    padding: 12px 16px; margin: 0 0 16px;
+    display: flex; gap: 10px; margin: 16px 0 0; padding: 12px 16px; border-radius: 12px;
+    background: var(--notice); color: var(--notice-ink); border: 1px solid var(--notice-line);
   }
-  .notice ul { margin: 4px 0 0; padding-left: 20px; }
-  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
-  .toolbar input[type=search] {
-    flex: 1 1 220px; max-width: 340px; padding: 8px 12px; border-radius: 8px;
-    border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit;
+  .notice ul { margin: 4px 0 0; padding-left: 18px; }
+  .notice .icon { margin-top: 3px; }
+
+  /* toolbar */
+  .toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 28px 0 12px; }
+  .search { position: relative; flex: 1 1 260px; max-width: 380px; }
+  .search .icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+  .search input {
+    width: 100%; height: 40px; padding: 0 12px 0 36px; border-radius: 10px; border: 1px solid var(--line-2);
+    background: var(--surface); color: var(--ink); font: inherit;
   }
+  .search input::placeholder { color: var(--muted); }
+  .segmented { display: inline-flex; padding: 3px; gap: 2px; border-radius: 11px; background: var(--track); }
   .chip {
-    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
-    border-radius: 999px; padding: 6px 14px; font: inherit; cursor: pointer;
+    border: 0; background: transparent; color: var(--ink-2); font: 500 13px var(--font); cursor: pointer;
+    padding: 7px 12px; border-radius: 8px; display: inline-flex; gap: 6px; align-items: center;
   }
-  .chip[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
-  .count { color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
-  .table-scroll {
-    overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
-  }
-  table { border-collapse: collapse; width: 100%; min-width: 980px; }
-  th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .chip .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .chip[aria-pressed=true] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+  .count { color: var(--muted); margin-left: auto; font-size: 13px; font-variant-numeric: tabular-nums; }
+
+  /* table */
+  .table-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+                box-shadow: var(--shadow); overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 860px; table-layout: fixed; }
+  th, td { text-align: left; vertical-align: top; padding: 16px 14px; border-bottom: 1px solid var(--line); }
+  th:first-child, td:first-child { padding-left: 18px; }
   tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover td { background: var(--row-hover); }
   thead th {
-    position: sticky; top: 0; background: var(--surface); font-size: 12px; letter-spacing: 0.05em;
-    text-transform: uppercase; color: var(--muted); white-space: nowrap;
+    position: sticky; top: 0; z-index: 1; background: var(--surface-2); padding-top: 11px; padding-bottom: 11px;
+    font-size: 12px; font-weight: 600; color: var(--muted); white-space: nowrap;
   }
-  th button {
-    all: unset; cursor: pointer; display: inline-flex; gap: 4px; align-items: center;
-  }
-  th button:focus-visible, .chip:focus-visible, a:focus-visible, input:focus-visible {
-    outline: 2px solid var(--accent); outline-offset: 2px;
-  }
-  th button::after { content: "↕"; opacity: 0.35; }
+  th button { all: unset; cursor: pointer; display: inline-flex; gap: 4px; align-items: center; }
+  th button::after { content: "↕"; opacity: 0.35; font-size: 11px; }
+  th[aria-sort=ascending] button, th[aria-sort=descending] button { color: var(--ink); }
   th[aria-sort=ascending] button::after { content: "↑"; opacity: 1; }
   th[aria-sort=descending] button::after { content: "↓"; opacity: 1; }
-  .badge {
-    display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
-    min-width: 56px; padding: 6px 8px; border-radius: 10px; font-variant-numeric: tabular-nums;
+  :focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
+  .search input:focus-visible { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgb(200 243 74 / 0.45); }
+
+  .ring {
+    --pct: 0; --c: var(--cold);
+    width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+    background: conic-gradient(var(--c) calc(var(--pct) * 1%), var(--track) 0);
   }
-  .badge b { font-size: 20px; line-height: 1.1; }
-  .badge small { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-  .badge.hot { background: var(--hot-bg); color: var(--hot); }
-  .badge.warm { background: var(--warm-bg); color: var(--warm); }
-  .badge.cold { background: var(--cold-bg); color: var(--cold); }
-  .name { font-weight: 600; }
-  .sub { color: var(--muted); font-size: 13px; }
-  a { color: var(--accent); }
-  .missing { color: var(--hot); }
-  .why { margin: 0; padding: 0; list-style: none; min-width: 300px; }
-  .why li { display: flex; gap: 8px; padding: 1px 0; }
-  .why .pts {
-    flex: none; min-width: 34px; text-align: right; font-weight: 600; color: var(--accent);
-    font-variant-numeric: tabular-nums;
+  .ring b {
+    width: 38px; height: 38px; border-radius: 50%; background: var(--surface); display: grid; place-items: center;
+    font: 600 15px var(--display); font-variant-numeric: tabular-nums;
   }
+  tbody tr:hover .ring b { background: var(--row-hover); }
+  .ring.hot { --c: var(--hot); } .ring.warm { --c: var(--warm); }
+  .tier { display: block; margin-top: 6px; width: 48px; text-align: center; font-size: 11px; font-weight: 600;
+          letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+  .tier.hot { color: var(--hot); } .tier.warm { color: var(--warm); }
+
+  .biz { min-width: 200px; }
+  thead th:nth-child(1) { width: 84px; } thead th:nth-child(2) { width: 25%; }
+  thead th:nth-child(3) { width: 184px; } thead th:nth-child(4) { width: 72px; }
+  thead th:nth-child(5) { width: 84px; } thead th:nth-child(7) { width: 64px; }
+  .name { font-weight: 600; font-size: 15px; line-height: 1.35; }
+  .sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+  .tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 999px;
+         font-size: 12px; font-weight: 500; background: var(--cold-soft); color: var(--ink-2); white-space: nowrap; }
+  .tag.bad { background: var(--hot-soft); color: var(--hot); }
+  .tag.good { background: var(--accent-soft); color: var(--accent-text); }
+  .tag .icon { width: 12px; height: 12px; }
+
+  .contact { display: grid; gap: 6px; justify-items: start; min-width: 0; }
+  .contact a, .contact .tag { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .contact a { display: inline-flex; gap: 8px; align-items: center; text-decoration: none; color: var(--ink-2); }
+  .contact a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .contact .icon { color: var(--muted); }
   .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .empty { padding: 32px; text-align: center; color: var(--muted); }
-  footer { margin-top: 24px; color: var(--muted); font-size: 13px; }
-  .embedded .wrap { padding-top: 4px; }
-  .embedded .stats { margin-top: 0; }
-  @media print { .toolbar { display: none; } .table-scroll { overflow: visible; border: 0; } }
+  .rating { display: inline-flex; gap: 5px; align-items: center; font-weight: 600; }
+  .rating .icon { fill: #f5a524; stroke: none; }
+  .muted { color: var(--muted); }
+
+  .why { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .why li { display: flex; gap: 10px; align-items: baseline; color: var(--ink-2); }
+  .why .pts {
+    flex: none; min-width: 36px; padding: 1px 0; border-radius: 6px; text-align: center;
+    font: 600 12px var(--display); background: var(--track); color: var(--ink); font-variant-numeric: tabular-nums;
+  }
+  .why li:first-child .pts { background: var(--accent); color: var(--accent-ink); }
+  .clean { color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
+
+  .maps {
+    display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 9px;
+    border: 1px solid var(--line-2); color: var(--ink-2);
+  }
+  .maps:hover { border-color: var(--ink); color: var(--ink); }
+  .empty { padding: 56px 24px; text-align: center; color: var(--muted); }
+  footer { margin-top: 28px; color: var(--muted); font-size: 12px; }
+
+  @media (max-width: 600px) {
+    .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    h1 { font-size: 26px; }
+    .wrap { padding: 24px 16px 40px; }
+  }
+  @media print { .toolbar { display: none; } .table-card { overflow: visible; box-shadow: none; } }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+</svg>
 <div class="wrap">
+  <div class="masthead">
+    <span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#c8f34a" stroke-width="2"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="#c8f34a" stroke-width="2" opacity=".55"/><circle cx="12" cy="12" r="1.8" fill="#c8f34a"/></svg></span>
+    Lead Radar
+  </div>
   <header>
-    <div class="eyebrow">Lead Radar</div>
     <h1>roofing contractor in Tampa, FL · St. Petersburg, FL</h1>
-    <p>Generated 2026-11-01 12:00 UTC.
+    <p class="lede">Generated 2026-11-01 12:00 UTC.
       Ranked by how likely each business is to need help with missed calls, online booking and review follow-up.</p>
   </header>
 
-  <section class="stats" aria-label="Summary">
-    <div class="stat"><b>38</b><span>businesses</span></div>
-    <div class="stat hot"><b>15</b><span>hot leads</span></div>
-    <div class="stat warm"><b>10</b><span>warm leads</span></div>
-    <div class="stat"><b>13</b><span>cold</span></div>
-    <div class="stat"><b>3</b><span>duplicates removed</span></div>
-    <div class="stat"><b>41</b><span>SerpApi searches used</span></div>
-    <div class="stat"><b>0</b><span>served from cache</span></div>
+  <section class="summary" aria-label="Summary">
+    <div class="kpi"><span class="label">Businesses</span><b>38</b></div>
+    <div class="kpi hot"><span class="label"><span class="dot" style="background:var(--hot)"></span>Hot leads</span><b>15</b></div>
+    <div class="kpi warm"><span class="label"><span class="dot" style="background:var(--warm)"></span>Warm leads</span><b>10</b></div>
+    <div class="kpi"><span class="label"><span class="dot" style="background:var(--cold)"></span>Cold</span><b>13</b></div>
+    <div class="distribution">
+      <div class="bar" role="img" aria-label="15 hot, 10 warm, 13 cold">
+<span style="width:39.47%;background:var(--hot)"></span><span style="width:26.32%;background:var(--warm)"></span><span style="width:34.21%;background:var(--cold)"></span>      </div>
+      <div class="meta-line">
+        <span><b>41</b> SerpApi searches used</span>
+        <span><b>0</b> served from cache</span>
+        <span><b>3</b> duplicates removed</span>
+      </div>
+    </div>
   </section>
 
-  <p class="sub">Map centred on
-Tampa, Florida, United States (city); St. Petersburg, Florida, United States (city).
+  <p class="note"><svg class="icon"><use href="#i-pin"/></svg>
+    <span>Map centred on Tampa, Florida, United States (city); St. Petersburg, Florida, United States (city).</span>
   </p>
 
   <div class="toolbar">
-    <input type="search" id="q" placeholder="Filter by name, address, reason…" aria-label="Filter leads">
-    <button class="chip" data-tier="all" aria-pressed="true">All</button>
-    <button class="chip" data-tier="hot" aria-pressed="false">Hot</button>
-    <button class="chip" data-tier="warm" aria-pressed="false">Warm</button>
-    <button class="chip" data-tier="cold" aria-pressed="false">Cold</button>
+    <label class="search"><svg class="icon"><use href="#i-search"/></svg>
+      <input type="search" id="q" placeholder="Filter by name, address, reason…" aria-label="Filter leads"></label>
+    <div class="segmented" role="group" aria-label="Filter by tier">
+      <button class="chip" data-tier="all" aria-pressed="true">All <span class="n">38</span></button>
+      <button class="chip" data-tier="hot" aria-pressed="false">Hot <span class="n">15</span></button>
+      <button class="chip" data-tier="warm" aria-pressed="false">Warm <span class="n">10</span></button>
+      <button class="chip" data-tier="cold" aria-pressed="false">Cold <span class="n">13</span></button>
+    </div>
     <span class="count" id="count" aria-live="polite"></span>
   </div>
 
-  <div class="table-scroll">
+  <div class="table-card">
     <table id="leads">
       <thead>
         <tr>
@@ -143,24 +235,27 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
           <th data-sort="num"><button>Rating</button></th>
           <th data-sort="num"><button>Reviews</button></th>
           <th>Why this score</th>
-          <th>Links</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr data-tier="hot">
           <td data-value="85">
-            <span class="badge hot"><b>85</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 85"><b>85</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="driftwood family roofing">
+          <td class="biz" data-value="driftwood family roofing">
             <div class="name">Driftwood Family Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">6636 4th St N, Tampa, FL 33641</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0116">(813) 555-0116</a></div>
-<div class="missing">No website</div>          </td>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0116"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0116</a>
+<span><span class="tag bad">No website</span></span>            </div>
+          </td>
           <td class="num" data-value="3.8">
-★ 3.8          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>3.8</span>          </td>
           <td class="num" data-value="44">44</td>
           <td>
             <ul class="why">
@@ -173,22 +268,25 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 3.25 vs. 3.8 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Driftwood+Family+Roofing&amp;query_place_id=ChIJ8-AMjKdJfhqhM4X-fpv_sEs" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Driftwood+Family+Roofing&amp;query_place_id=ChIJ8-AMjKdJfhqhM4X-fpv_sEs" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Driftwood Family Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="80">
-            <span class="badge hot"><b>80</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 80"><b>80</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="gulfport family roofing">
+          <td class="biz" data-value="gulfport family roofing">
             <div class="name">Gulfport Family Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">1930 S MacDill Ave, St. Petersburg, FL 33779</div>
           </td>
           <td>
-<div class="num"><a href="tel:(727)555-0136">(727) 555-0136</a></div>
-<div class="missing">No website</div>          </td>
+            <div class="contact">
+<a class="num" href="tel:(727)555-0136"><svg class="icon"><use href="#i-phone"/></svg>(727) 555-0136</a>
+<span><span class="tag bad">No website</span></span>            </div>
+          </td>
           <td class="num" data-value="4.0">
-★ 4.0          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.0</span>          </td>
           <td class="num" data-value="21">21</td>
           <td>
             <ul class="why">
@@ -200,23 +298,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 3.38 vs. 4 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gulfport+Family+Roofing&amp;query_place_id=ChIJ2R5J-TTjLCQmPRGGzpPdYOV" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Gulfport+Family+Roofing&amp;query_place_id=ChIJ2R5J-TTjLCQmPRGGzpPdYOV" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Gulfport Family Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="77">
-            <span class="badge hot"><b>77</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 77"><b>77</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="citrus park exteriors &amp; roofing">
+          <td class="biz" data-value="citrus park exteriors &amp; roofing">
             <div class="name">Citrus Park Exteriors &amp; Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">7892 Gandy Blvd, St. Petersburg, FL 33770</div>
           </td>
           <td>
-<div class="num"><a href="tel:(727)555-0129">(727) 555-0129</a></div>
-<div><a href="https://www.facebook.com/citrusparkexteriorsroofing" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+            <div class="contact">
+<a class="num" href="tel:(727)555-0129"><svg class="icon"><use href="#i-phone"/></svg>(727) 555-0129</a>
+<a href="https://www.facebook.com/citrusparkexteriorsroofing" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>facebook.com</a>
+            </div>
           </td>
           <td class="num" data-value="3.8">
-★ 3.8          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>3.8</span>          </td>
           <td class="num" data-value="51">51</td>
           <td>
             <ul class="why">
@@ -229,22 +330,25 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 2.75 vs. 3.8 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Citrus+Park+Exteriors+%26+Roofing&amp;query_place_id=ChIJnfM_gefiu5ugtqq0J-q1aSk" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Citrus+Park+Exteriors+%26+Roofing&amp;query_place_id=ChIJnfM_gefiu5ugtqq0J-q1aSk" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Citrus Park Exteriors &amp; Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="75">
-            <span class="badge hot"><b>75</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 75"><b>75</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="lealman family roofing">
+          <td class="biz" data-value="lealman family roofing">
             <div class="name">Lealman Family Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">9244 Central Ave, Tampa, FL 33656</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0126">(813) 555-0126</a></div>
-<div class="missing">No website</div>          </td>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0126"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0126</a>
+<span><span class="tag bad">No website</span></span>            </div>
+          </td>
           <td class="num" data-value="4.0">
-★ 4.0          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.0</span>          </td>
           <td class="num" data-value="45">45</td>
           <td>
             <ul class="why">
@@ -255,22 +359,25 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 11% of the last 9 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Lealman+Family+Roofing&amp;query_place_id=ChIJWhpCqOLhJ2EC76eHAQXaRl7" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Lealman+Family+Roofing&amp;query_place_id=ChIJWhpCqOLhJ2EC76eHAQXaRl7" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Lealman Family Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="75">
-            <span class="badge hot"><b>75</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 75"><b>75</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="egret family roofing">
+          <td class="biz" data-value="egret family roofing">
             <div class="name">Egret Family Roofing</div>
-            <div class="sub">Roofing contractor · unclaimed listing</div>
+            <div class="sub">Roofing contractor</div>
             <div class="sub">8991 4th St N, Tampa, FL 33671</div>
-          </td>
+<div class="tags"><span class="tag bad">Unclaimed listing</span></div>          </td>
           <td>
-<div class="num"><a href="tel:(813)555-0106">(813) 555-0106</a></div>
-<div class="missing">No website</div>          </td>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0106"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0106</a>
+<span><span class="tag bad">No website</span></span>            </div>
+          </td>
           <td class="num" data-value="4.0">
-★ 4.0          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.0</span>          </td>
           <td class="num" data-value="18">18</td>
           <td>
             <ul class="why">
@@ -281,23 +388,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Google Business Profile is unclaimed</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Egret+Family+Roofing&amp;query_place_id=ChIJF3dx-ZjfBoQCCdWgN4S1q5F" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Egret+Family+Roofing&amp;query_place_id=ChIJF3dx-ZjfBoQCCdWgN4S1q5F" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Egret Family Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="72">
-            <span class="badge hot"><b>72</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 72"><b>72</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="heron exteriors &amp; roofing">
+          <td class="biz" data-value="heron exteriors &amp; roofing">
             <div class="name">Heron Exteriors &amp; Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">2156 E Hillsborough Ave, Tampa, FL 33658</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0109">(813) 555-0109</a></div>
-<div><a href="https://www.facebook.com/heronexteriorsroofing" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0109"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0109</a>
+<a href="https://www.facebook.com/heronexteriorsroofing" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>facebook.com</a>
+            </div>
           </td>
           <td class="num" data-value="3.9">
-★ 3.9          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>3.9</span>          </td>
           <td class="num" data-value="47">47</td>
           <td>
             <ul class="why">
@@ -309,22 +419,25 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Rating 3.9 is below 4</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Heron+Exteriors+%26+Roofing&amp;query_place_id=ChIJMaWTGrm2tvRIUjr7xUSeMOQ" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Heron+Exteriors+%26+Roofing&amp;query_place_id=ChIJMaWTGrm2tvRIUjr7xUSeMOQ" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Heron Exteriors &amp; Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="55">
-            <span class="badge hot"><b>55</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 55"><b>55</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="bayshore roofing co.">
+          <td class="biz" data-value="bayshore roofing co.">
             <div class="name">Bayshore Roofing Co.</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">7904 W Waters Ave, Tampa, FL 33655</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0101">(813) 555-0101</a></div>
-<div class="missing">No website</div>          </td>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0101"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0101</a>
+<span><span class="tag bad">No website</span></span>            </div>
+          </td>
           <td class="num" data-value="4.1">
-★ 4.1          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.1</span>          </td>
           <td class="num" data-value="24">24</td>
           <td>
             <ul class="why">
@@ -334,22 +447,25 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 0% of the last 7 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bayshore+Roofing+Co.&amp;query_place_id=ChIJK9VIlirP8XXAzoVF6_h276_" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Bayshore+Roofing+Co.&amp;query_place_id=ChIJK9VIlirP8XXAzoVF6_h276_" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Bayshore Roofing Co. in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="55">
-            <span class="badge hot"><b>55</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 55"><b>55</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="mangrove roofing co.">
+          <td class="biz" data-value="mangrove roofing co.">
             <div class="name">Mangrove Roofing Co.</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">3882 Gandy Blvd, Tampa, FL 33679</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0111">(813) 555-0111</a></div>
-<div class="missing">No website</div>          </td>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0111"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0111</a>
+<span><span class="tag bad">No website</span></span>            </div>
+          </td>
           <td class="num" data-value="4.6">
-★ 4.6          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.6</span>          </td>
           <td class="num" data-value="23">23</td>
           <td>
             <ul class="why">
@@ -359,22 +475,25 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 0% of the last 9 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Mangrove+Roofing+Co.&amp;query_place_id=ChIJ-CKq6Hr4wyLmzKUV6WYcirw" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Mangrove+Roofing+Co.&amp;query_place_id=ChIJ-CKq6Hr4wyLmzKUV6WYcirw" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Mangrove Roofing Co. in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="55">
-            <span class="badge hot"><b>55</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 55"><b>55</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="gandy roofing co.">
+          <td class="biz" data-value="gandy roofing co.">
             <div class="name">Gandy Roofing Co.</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">1867 N Dale Mabry Hwy, Tampa, FL 33631</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0121">(813) 555-0121</a></div>
-<div class="missing">No website</div>          </td>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0121"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0121</a>
+<span><span class="tag bad">No website</span></span>            </div>
+          </td>
           <td class="num" data-value="4.1">
-★ 4.1          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.1</span>          </td>
           <td class="num" data-value="5">5</td>
           <td>
             <ul class="why">
@@ -384,22 +503,25 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 0% of the last 10 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gandy+Roofing+Co.&amp;query_place_id=ChIJNhxy83gaJBJt1UPy7abq3Al" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Gandy+Roofing+Co.&amp;query_place_id=ChIJNhxy83gaJBJt1UPy7abq3Al" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Gandy Roofing Co. in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="55">
-            <span class="badge hot"><b>55</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 55"><b>55</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="seminole heights roofing co.">
+          <td class="biz" data-value="seminole heights roofing co.">
             <div class="name">Seminole Heights Roofing Co.</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">3438 W Waters Ave, St. Petersburg, FL 33724</div>
           </td>
           <td>
-<div class="num"><a href="tel:(727)555-0131">(727) 555-0131</a></div>
-<div class="missing">No website</div>          </td>
+            <div class="contact">
+<a class="num" href="tel:(727)555-0131"><svg class="icon"><use href="#i-phone"/></svg>(727) 555-0131</a>
+<span><span class="tag bad">No website</span></span>            </div>
+          </td>
           <td class="num" data-value="4.4">
-★ 4.4          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.4</span>          </td>
           <td class="num" data-value="5">5</td>
           <td>
             <ul class="why">
@@ -409,23 +531,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 0% of the last 7 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Seminole+Heights+Roofing+Co.&amp;query_place_id=ChIJU0VCK2A2SKx9duZhGSnfAdp" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Seminole+Heights+Roofing+Co.&amp;query_place_id=ChIJU0VCK2A2SKx9duZhGSnfAdp" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Seminole Heights Roofing Co. in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="52">
-            <span class="badge hot"><b>52</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 52"><b>52</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="skyway exteriors &amp; roofing">
+          <td class="biz" data-value="skyway exteriors &amp; roofing">
             <div class="name">Skyway Exteriors &amp; Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">5786 N Florida Ave, Tampa, FL 33655</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0119">(813) 555-0119</a></div>
-<div><a href="https://www.facebook.com/skywayexteriorsroofing" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0119"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0119</a>
+<a href="https://www.facebook.com/skywayexteriorsroofing" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>facebook.com</a>
+            </div>
           </td>
           <td class="num" data-value="4.3">
-★ 4.3          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.3</span>          </td>
           <td class="num" data-value="87">87</td>
           <td>
             <ul class="why">
@@ -435,23 +560,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 30% of the last 10 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Skyway+Exteriors+%26+Roofing&amp;query_place_id=ChIJDAOfaPKQPDPlGY2VGwkUDnO" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Skyway+Exteriors+%26+Roofing&amp;query_place_id=ChIJDAOfaPKQPDPlGY2VGwkUDnO" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Skyway Exteriors &amp; Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="52">
-            <span class="badge hot"><b>52</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 52"><b>52</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="cypress roof repair">
+          <td class="biz" data-value="cypress roof repair">
             <div class="name">Cypress Roof Repair</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">8678 W Kennedy Blvd, Tampa, FL 33687</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0114">(813) 555-0114</a></div>
-<div><a href="https://www.facebook.com/cypressroofrepair" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0114"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0114</a>
+<a href="https://www.facebook.com/cypressroofrepair" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>facebook.com</a>
+            </div>
           </td>
           <td class="num" data-value="4.5">
-★ 4.5          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.5</span>          </td>
           <td class="num" data-value="43">43</td>
           <td>
             <ul class="why">
@@ -462,23 +590,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>No opening hours on the listing</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Cypress+Roof+Repair&amp;query_place_id=ChIJq_YryTGzzVWVNy8A70dDuQt" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Cypress+Roof+Repair&amp;query_place_id=ChIJq_YryTGzzVWVNy8A70dDuQt" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Cypress Roof Repair in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="52">
-            <span class="badge hot"><b>52</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 52"><b>52</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="hillsborough roof repair">
+          <td class="biz" data-value="hillsborough roof repair">
             <div class="name">Hillsborough Roof Repair</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">2964 34th St S, Tampa, FL 33643</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0104">(813) 555-0104</a></div>
-<div><a href="https://www.facebook.com/hillsboroughroofrepair" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0104"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0104</a>
+<a href="https://www.facebook.com/hillsboroughroofrepair" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>facebook.com</a>
+            </div>
           </td>
           <td class="num" data-value="4.8">
-★ 4.8          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.8</span>          </td>
           <td class="num" data-value="43">43</td>
           <td>
             <ul class="why">
@@ -489,23 +620,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 4.22 vs. 4.8 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Hillsborough+Roof+Repair&amp;query_place_id=ChIJfYsgU_-eyxx4heSoTNI1ZIn" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Hillsborough+Roof+Repair&amp;query_place_id=ChIJfYsgU_-eyxx4heSoTNI1ZIn" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Hillsborough Roof Repair in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="52">
-            <span class="badge hot"><b>52</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 52"><b>52</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="riverview roof repair">
+          <td class="biz" data-value="riverview roof repair">
             <div class="name">Riverview Roof Repair</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">6351 N Dale Mabry Hwy, St. Petersburg, FL 33792</div>
           </td>
           <td>
-<div class="num"><a href="tel:(727)555-0134">(727) 555-0134</a></div>
-<div><a href="https://www.facebook.com/riverviewroofrepair" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+            <div class="contact">
+<a class="num" href="tel:(727)555-0134"><svg class="icon"><use href="#i-phone"/></svg>(727) 555-0134</a>
+<a href="https://www.facebook.com/riverviewroofrepair" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>facebook.com</a>
+            </div>
           </td>
           <td class="num" data-value="4.7">
-★ 4.7          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.7</span>          </td>
           <td class="num" data-value="22">22</td>
           <td>
             <ul class="why">
@@ -516,23 +650,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 3.75 vs. 4.7 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Riverview+Roof+Repair&amp;query_place_id=ChIJTnoytbcDpdGLV_eJQWcClW5" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Riverview+Roof+Repair&amp;query_place_id=ChIJTnoytbcDpdGLV_eJQWcClW5" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Riverview Roof Repair in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="hot">
           <td data-value="50">
-            <span class="badge hot"><b>50</b><small>hot</small></span>
+            <div class="ring hot" style="--pct: 50"><b>50</b></div>
+            <span class="tier hot">hot</span>
           </td>
-          <td data-value="davis island roof pros">
+          <td class="biz" data-value="davis island roof pros">
             <div class="name">Davis Island Roof Pros</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">3773 S MacDill Ave, St. Petersburg, FL 33750</div>
           </td>
           <td>
-<div class="num"><a href="tel:(727)555-0132">(727) 555-0132</a></div>
-<div><a href="https://www.davis-island-roof-pros.example/" target="_blank" rel="noopener noreferrer">davis-island-roof-pros.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(727)555-0132"><svg class="icon"><use href="#i-phone"/></svg>(727) 555-0132</a>
+<a href="https://www.davis-island-roof-pros.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>davis-island-roof-pros.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.2">
-★ 4.2          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.2</span>          </td>
           <td class="num" data-value="152">152</td>
           <td>
             <ul class="why">
@@ -543,23 +680,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 2.78 vs. 4.2 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Davis+Island+Roof+Pros&amp;query_place_id=ChIJGsAcmVjCDCnuo6aN1deptsC" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Davis+Island+Roof+Pros&amp;query_place_id=ChIJGsAcmVjCDCnuo6aN1deptsC" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Davis Island Roof Pros in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="47">
-            <span class="badge warm"><b>47</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 47"><b>47</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="snell isle roof repair">
+          <td class="biz" data-value="snell isle roof repair">
             <div class="name">Snell Isle Roof Repair</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">4957 34th St S, Tampa, FL 33672</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0124">(813) 555-0124</a></div>
-<div><a href="https://www.facebook.com/snellisleroofrepair" target="_blank" rel="noopener noreferrer">facebook.com</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0124"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0124</a>
+<a href="https://www.facebook.com/snellisleroofrepair" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>facebook.com</a>
+            </div>
           </td>
           <td class="num" data-value="4.8">
-★ 4.8          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.8</span>          </td>
           <td class="num" data-value="42">42</td>
           <td>
             <ul class="why">
@@ -569,23 +709,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 0% of the last 10 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Snell+Isle+Roof+Repair&amp;query_place_id=ChIJOmL9HPKnIij1uHFm4Ztp7X-" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Snell+Isle+Roof+Repair&amp;query_place_id=ChIJOmL9HPKnIij1uHFm4Ztp7X-" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Snell Isle Roof Repair in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="45">
-            <span class="badge warm"><b>45</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 45"><b>45</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="old northeast roof pros">
+          <td class="biz" data-value="old northeast roof pros">
             <div class="name">Old Northeast Roof Pros</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">3168 N Florida Ave, Tampa, FL 33695</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0122">(813) 555-0122</a></div>
-<div><a href="https://www.old-northeast-roof-pros.example/" target="_blank" rel="noopener noreferrer">old-northeast-roof-pros.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0122"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0122</a>
+<a href="https://www.old-northeast-roof-pros.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>old-northeast-roof-pros.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.1">
-★ 4.1          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.1</span>          </td>
           <td class="num" data-value="206">206</td>
           <td>
             <ul class="why">
@@ -595,23 +738,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 2.62 vs. 4.1 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Old+Northeast+Roof+Pros&amp;query_place_id=ChIJJSa09koJxPg8A0JMiT1Gp0G" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Old+Northeast+Roof+Pros&amp;query_place_id=ChIJJSa09koJxPg8A0JMiT1Gp0G" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Old Northeast Roof Pros in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="45">
-            <span class="badge warm"><b>45</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 45"><b>45</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="gulf breeze roof pros">
+          <td class="biz" data-value="gulf breeze roof pros">
             <div class="name">Gulf Breeze Roof Pros</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">1153 E Hillsborough Ave, Tampa, FL 33617</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0102">(813) 555-0102</a></div>
-<div><a href="https://www.gulf-breeze-roof-pros.example/" target="_blank" rel="noopener noreferrer">gulf-breeze-roof-pros.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0102"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0102</a>
+<a href="https://www.gulf-breeze-roof-pros.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>gulf-breeze-roof-pros.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.2">
-★ 4.2          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.2</span>          </td>
           <td class="num" data-value="140">140</td>
           <td>
             <ul class="why">
@@ -621,23 +767,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 3.44 vs. 4.2 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Gulf+Breeze+Roof+Pros&amp;query_place_id=ChIJnEVVuM7_DHUIkT974xgi1x4" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Gulf+Breeze+Roof+Pros&amp;query_place_id=ChIJnEVVuM7_DHUIkT974xgi1x4" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Gulf Breeze Roof Pros in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="45">
-            <span class="badge warm"><b>45</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 45"><b>45</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="pelican roof pros">
+          <td class="biz" data-value="pelican roof pros">
             <div class="name">Pelican Roof Pros</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">7113 Central Ave, Tampa, FL 33646</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0112">(813) 555-0112</a></div>
-<div><a href="https://www.pelican-roof-pros.example/" target="_blank" rel="noopener noreferrer">pelican-roof-pros.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0112"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0112</a>
+<a href="https://www.pelican-roof-pros.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>pelican-roof-pros.example</a>
+            </div>
           </td>
           <td class="num" data-value="3.6">
-★ 3.6          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>3.6</span>          </td>
           <td class="num" data-value="119">119</td>
           <td>
             <ul class="why">
@@ -647,23 +796,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Rating 3.6 is below 4</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pelican+Roof+Pros&amp;query_place_id=ChIJbGnnltU8gYE7jwkrqkUtxiK" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Pelican+Roof+Pros&amp;query_place_id=ChIJbGnnltU8gYE7jwkrqkUtxiK" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Pelican Roof Pros in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="35">
-            <span class="badge warm"><b>35</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 35"><b>35</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="tarpon roofers">
+          <td class="biz" data-value="tarpon roofers">
             <div class="name">Tarpon Roofers</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">4641 N Florida Ave, Tampa, FL 33621</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0108">(813) 555-0108</a></div>
-<div><a href="https://www.tarpon-roofers.example/" target="_blank" rel="noopener noreferrer">tarpon-roofers.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0108"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0108</a>
+<a href="https://www.tarpon-roofers.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>tarpon-roofers.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.3">
-★ 4.3          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.3</span>          </td>
           <td class="num" data-value="44">44</td>
           <td>
             <ul class="why">
@@ -672,23 +824,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 0% of the last 6 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Tarpon+Roofers&amp;query_place_id=ChIJ3E5u0eCTfYRkIa0Gi5hPwpk" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Tarpon+Roofers&amp;query_place_id=ChIJ3E5u0eCTfYRkIa0Gi5hPwpk" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Tarpon Roofers in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="35">
-            <span class="badge warm"><b>35</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 35"><b>35</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="sawgrass roofing &amp; sheet metal">
+          <td class="biz" data-value="sawgrass roofing &amp; sheet metal">
             <div class="name">Sawgrass Roofing &amp; Sheet Metal</div>
-            <div class="sub">Roofing contractor · unclaimed listing</div>
+            <div class="sub">Roofing contractor</div>
             <div class="sub">9508 4th St N, Tampa, FL 33611</div>
-          </td>
+<div class="tags"><span class="tag bad">Unclaimed listing</span></div>          </td>
           <td>
-<div class="num"><a href="tel:(813)555-0117">(813) 555-0117</a></div>
-<div><a href="https://www.sawgrass-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer">sawgrass-roofing-sheet-metal.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0117"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0117</a>
+<a href="https://www.sawgrass-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>sawgrass-roofing-sheet-metal.example</a>
+            </div>
           </td>
           <td class="num" data-value="-1">
-<span class="sub">n/a</span>          </td>
+<span class="muted">No rating</span>          </td>
           <td class="num" data-value="0">0</td>
           <td>
             <ul class="why">
@@ -697,23 +852,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Google Business Profile is unclaimed</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sawgrass+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJR8mENvE-KOEHGKGHTcvYa4X" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Sawgrass+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJR8mENvE-KOEHGKGHTcvYa4X" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Sawgrass Roofing &amp; Sheet Metal in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="30">
-            <span class="badge warm"><b>30</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 30"><b>30</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="palm river roofing solutions">
+          <td class="biz" data-value="palm river roofing solutions">
             <div class="name">Palm River Roofing Solutions</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">1535 N Florida Ave, Tampa, FL 33654</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0105">(813) 555-0105</a></div>
-<div><a href="https://www.palm-river-roofing-solutions.example/" target="_blank" rel="noopener noreferrer">palm-river-roofing-solutions.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0105"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0105</a>
+<a href="https://www.palm-river-roofing-solutions.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>palm-river-roofing-solutions.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.6">
-★ 4.6          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.6</span>          </td>
           <td class="num" data-value="297">297</td>
           <td>
             <ul class="why">
@@ -723,23 +881,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 2.78 vs. 4.6 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Palm+River+Roofing+Solutions&amp;query_place_id=ChIJj030p7vnAvOstz1ifsUzgOp" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Palm+River+Roofing+Solutions&amp;query_place_id=ChIJj030p7vnAvOstz1ifsUzgOp" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Palm River Roofing Solutions in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="30">
-            <span class="badge warm"><b>30</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 30"><b>30</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="harborview roofers">
+          <td class="biz" data-value="harborview roofers">
             <div class="name">Harborview Roofers</div>
-            <div class="sub">Roofing contractor · unclaimed listing</div>
+            <div class="sub">Roofing contractor</div>
             <div class="sub">7556 N Florida Ave, Tampa, FL 33652</div>
-          </td>
+<div class="tags"><span class="tag bad">Unclaimed listing</span></div>          </td>
           <td>
-<div class="num"><a href="tel:(813)555-0128">(813) 555-0128</a></div>
-<div><a href="https://www.harborview-roofers.example/" target="_blank" rel="noopener noreferrer">harborview-roofers.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0128"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0128</a>
+<a href="https://www.harborview-roofers.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>harborview-roofers.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.5">
-★ 4.5          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.5</span>          </td>
           <td class="num" data-value="126">126</td>
           <td>
             <ul class="why">
@@ -748,23 +909,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 0% of the last 11 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Harborview+Roofers&amp;query_place_id=ChIJQI1Ax14GzTGwxC67W-TBJND" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Harborview+Roofers&amp;query_place_id=ChIJQI1Ax14GzTGwxC67W-TBJND" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Harborview Roofers in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="25">
-            <span class="badge warm"><b>25</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 25"><b>25</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="seagrape roofing solutions">
+          <td class="biz" data-value="seagrape roofing solutions">
             <div class="name">Seagrape Roofing Solutions</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">7599 N Dale Mabry Hwy, Tampa, FL 33647</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0115">(813) 555-0115</a></div>
-<div><a href="https://www.seagrape-roofing-solutions.example/" target="_blank" rel="noopener noreferrer">seagrape-roofing-solutions.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0115"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0115</a>
+<a href="https://www.seagrape-roofing-solutions.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>seagrape-roofing-solutions.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.4">
-★ 4.4          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.4</span>          </td>
           <td class="num" data-value="320">320</td>
           <td>
             <ul class="why">
@@ -773,23 +937,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 3.25 vs. 4.4 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Seagrape+Roofing+Solutions&amp;query_place_id=ChIJ36QSRiL88rGYoBrOoyKrJLm" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Seagrape+Roofing+Solutions&amp;query_place_id=ChIJ36QSRiL88rGYoBrOoyKrJLm" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Seagrape Roofing Solutions in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="warm">
           <td data-value="25">
-            <span class="badge warm"><b>25</b><small>warm</small></span>
+            <div class="ring warm" style="--pct: 25"><b>25</b></div>
+            <span class="tier warm">warm</span>
           </td>
-          <td data-value="bay pines roofing solutions">
+          <td class="biz" data-value="bay pines roofing solutions">
             <div class="name">Bay Pines Roofing Solutions</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">3759 4th St N, St. Petersburg, FL 33750</div>
           </td>
           <td>
-<div class="num"><a href="tel:(727)555-0135">(727) 555-0135</a></div>
-<div><a href="https://www.bay-pines-roofing-solutions.example/" target="_blank" rel="noopener noreferrer">bay-pines-roofing-solutions.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(727)555-0135"><svg class="icon"><use href="#i-phone"/></svg>(727) 555-0135</a>
+<a href="https://www.bay-pines-roofing-solutions.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>bay-pines-roofing-solutions.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.7">
-★ 4.7          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.7</span>          </td>
           <td class="num" data-value="276">276</td>
           <td>
             <ul class="why">
@@ -798,23 +965,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 2.44 vs. 4.7 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Bay+Pines+Roofing+Solutions&amp;query_place_id=ChIJ0o7Qhlsfe9CrcGLkqoTsJfr" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Bay+Pines+Roofing+Solutions&amp;query_place_id=ChIJ0o7Qhlsfe9CrcGLkqoTsJfr" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Bay Pines Roofing Solutions in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="20">
-            <span class="badge cold"><b>20</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 20"><b>20</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="coquina roofers">
+          <td class="biz" data-value="coquina roofers">
             <div class="name">Coquina Roofers</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">2707 4th St N, Tampa, FL 33634</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0118">(813) 555-0118</a></div>
-<div><a href="https://www.coquina-roofers.example/" target="_blank" rel="noopener noreferrer">coquina-roofers.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0118"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0118</a>
+<a href="https://www.coquina-roofers.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>coquina-roofers.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.7">
-★ 4.7          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.7</span>          </td>
           <td class="num" data-value="137">137</td>
           <td>
             <ul class="why">
@@ -822,23 +992,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+10</span><span>Owner replied to 0% of the last 9 recent reviews</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Coquina+Roofers&amp;query_place_id=ChIJkuqnbLXi-cZrU8Z9jZr9dHt" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Coquina+Roofers&amp;query_place_id=ChIJkuqnbLXi-cZrU8Z9jZr9dHt" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Coquina Roofers in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="15">
-            <span class="badge cold"><b>15</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 15"><b>15</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="sandhill roofing">
+          <td class="biz" data-value="sandhill roofing">
             <div class="name">Sandhill Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">6226 Gandy Blvd, Tampa, FL 33650</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0110">(813) 555-0110</a></div>
-<div><a href="https://www.sandhill-roofing.example/" target="_blank" rel="noopener noreferrer">sandhill-roofing.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0110"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0110</a>
+<a href="https://www.sandhill-roofing.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>sandhill-roofing.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.8">
-★ 4.8          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.8</span>          </td>
           <td class="num" data-value="774">774</td>
           <td>
             <ul class="why">
@@ -846,23 +1019,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 3.89 vs. 4.8 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Sandhill+Roofing&amp;query_place_id=ChIJoGMP_DdREbmycfzli2IsZ7l" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Sandhill+Roofing&amp;query_place_id=ChIJoGMP_DdREbmycfzli2IsZ7l" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Sandhill Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="15">
-            <span class="badge cold"><b>15</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 15"><b>15</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="kenwood roofing group">
+          <td class="biz" data-value="kenwood roofing group">
             <div class="name">Kenwood Roofing Group</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">377 Gandy Blvd, Tampa, FL 33689</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0123">(813) 555-0123</a></div>
-<div><a href="https://www.kenwood-roofing-group.example/" target="_blank" rel="noopener noreferrer">kenwood-roofing-group.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0123"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0123</a>
+<a href="https://www.kenwood-roofing-group.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>kenwood-roofing-group.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.6">
-★ 4.6          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.6</span>          </td>
           <td class="num" data-value="390">390</td>
           <td>
             <ul class="why">
@@ -870,23 +1046,26 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>No opening hours on the listing</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Kenwood+Roofing+Group&amp;query_place_id=ChIJrRIiSRPp5nOv-5Q1cCOROKy" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Kenwood+Roofing+Group&amp;query_place_id=ChIJrRIiSRPp5nOv-5Q1cCOROKy" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Kenwood Roofing Group in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="15">
-            <span class="badge cold"><b>15</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 15"><b>15</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="tyrone roofing solutions">
+          <td class="biz" data-value="tyrone roofing solutions">
             <div class="name">Tyrone Roofing Solutions</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">6886 S MacDill Ave, Tampa, FL 33629</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0125">(813) 555-0125</a></div>
-<div><a href="https://www.tyrone-roofing-solutions.example/" target="_blank" rel="noopener noreferrer">tyrone-roofing-solutions.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0125"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0125</a>
+<a href="https://www.tyrone-roofing-solutions.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>tyrone-roofing-solutions.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.6">
-★ 4.6          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.6</span>          </td>
           <td class="num" data-value="126">126</td>
           <td>
             <ul class="why">
@@ -894,204 +1073,231 @@ Tampa, Florida, United States (city); St. Petersburg, Florida, United States (ci
               <li><span class="pts">+5</span><span>Recent reviews average 2.33 vs. 4.6 overall (rating is dropping)</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Tyrone+Roofing+Solutions&amp;query_place_id=ChIJ6F3bZlx5J08P03p7QZIaUC5" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Tyrone+Roofing+Solutions&amp;query_place_id=ChIJ6F3bZlx5J08P03p7QZIaUC5" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Tyrone Roofing Solutions in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="10">
-            <span class="badge cold"><b>10</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 10"><b>10</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="pinellas point roofing">
+          <td class="biz" data-value="pinellas point roofing">
             <div class="name">Pinellas Point Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">5135 W Waters Ave, Tampa, FL 33660</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0120">(813) 555-0120</a></div>
-<div><a href="https://www.pinellas-point-roofing.example/" target="_blank" rel="noopener noreferrer">pinellas-point-roofing.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0120"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0120</a>
+<a href="https://www.pinellas-point-roofing.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>pinellas-point-roofing.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.8">
-★ 4.8          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.8</span>          </td>
           <td class="num" data-value="605">605</td>
           <td>
             <ul class="why">
               <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pinellas+Point+Roofing&amp;query_place_id=ChIJbtP22bFvvSCmGIbCFrC6ut-" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Pinellas+Point+Roofing&amp;query_place_id=ChIJbtP22bFvvSCmGIbCFrC6ut-" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Pinellas Point Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="10">
-            <span class="badge cold"><b>10</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 10"><b>10</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="pass-a-grille roofing &amp; sheet metal">
+          <td class="biz" data-value="pass-a-grille roofing &amp; sheet metal">
             <div class="name">Pass-a-Grille Roofing &amp; Sheet Metal</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">6144 4th St N, St. Petersburg, FL 33786</div>
           </td>
           <td>
-<div class="num"><a href="tel:(727)555-0137">(727) 555-0137</a></div>
-<div><a href="https://www.pass-a-grille-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer">pass-a-grille-roofing-sheet-metal.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(727)555-0137"><svg class="icon"><use href="#i-phone"/></svg>(727) 555-0137</a>
+<a href="https://www.pass-a-grille-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>pass-a-grille-roofing-sheet-metal.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.8">
-★ 4.8          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.8</span>          </td>
           <td class="num" data-value="513">513</td>
           <td>
             <ul class="why">
               <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Pass-a-Grille+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJGCv3UrdfJoIJWx6yKwvh-XE" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Pass-a-Grille+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJGCv3UrdfJoIJWx6yKwvh-XE" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Pass-a-Grille Roofing &amp; Sheet Metal in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="10">
-            <span class="badge cold"><b>10</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 10"><b>10</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="manatee roofing &amp; sheet metal">
+          <td class="biz" data-value="manatee roofing &amp; sheet metal">
             <div class="name">Manatee Roofing &amp; Sheet Metal</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">3497 Gandy Blvd, Tampa, FL 33638</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0107">(813) 555-0107</a></div>
-<div><a href="https://www.manatee-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer">manatee-roofing-sheet-metal.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0107"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0107</a>
+<a href="https://www.manatee-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>manatee-roofing-sheet-metal.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.9">
-★ 4.9          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.9</span>          </td>
           <td class="num" data-value="228">228</td>
           <td>
             <ul class="why">
               <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Manatee+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJSUMYdiNpCzJ4-9zoQh13eA7" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Manatee+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJSUMYdiNpCzJ4-9zoQh13eA7" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Manatee Roofing &amp; Sheet Metal in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="10">
-            <span class="badge cold"><b>10</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 10"><b>10</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="osprey roofing group">
+          <td class="biz" data-value="osprey roofing group">
             <div class="name">Osprey Roofing Group</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">7713 Central Ave, Tampa, FL 33622</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0113">(813) 555-0113</a></div>
-<div><a href="https://www.osprey-roofing-group.example/" target="_blank" rel="noopener noreferrer">osprey-roofing-group.example</a></div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0113"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0113</a>
+<a href="https://www.osprey-roofing-group.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>osprey-roofing-group.example</a>
+            </div>
           </td>
           <td class="num" data-value="4.8">
-★ 4.8          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.8</span>          </td>
           <td class="num" data-value="223">223</td>
           <td>
             <ul class="why">
               <li><span class="pts">+10</span><span>No online booking link on the listing</span></li>
             </ul>
           </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Osprey+Roofing+Group&amp;query_place_id=ChIJMRU1IDzNQTJvVLG6-9TYXZK" target="_blank" rel="noopener noreferrer">Maps</a></td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Osprey+Roofing+Group&amp;query_place_id=ChIJMRU1IDzNQTJvVLG6-9TYXZK" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Osprey Roofing Group in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="0">
-            <span class="badge cold"><b>0</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 0"><b>0</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="westshore roofing">
+          <td class="biz" data-value="westshore roofing">
             <div class="name">Westshore Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">6458 Central Ave, St. Petersburg, FL 33754</div>
           </td>
           <td>
-<div class="num"><a href="tel:(727)555-0130">(727) 555-0130</a></div>
-<div><a href="https://www.westshore-roofing.example/" target="_blank" rel="noopener noreferrer">westshore-roofing.example</a></div>
-<div class="sub">Online booking: online appointments, Online appointments</div>
+            <div class="contact">
+<a class="num" href="tel:(727)555-0130"><svg class="icon"><use href="#i-phone"/></svg>(727) 555-0130</a>
+<a href="https://www.westshore-roofing.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>westshore-roofing.example</a>
+<span><span class="tag good"><svg class="icon"><use href="#i-calendar"/></svg>online appointments, Online appointments</span></span>
+            </div>
           </td>
           <td class="num" data-value="4.7">
-★ 4.7          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.7</span>          </td>
           <td class="num" data-value="556">556</td>
           <td>
-<span class="sub">No automation gaps detected</span>          </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Westshore+Roofing&amp;query_place_id=ChIJUqphFESbVDd4rH3LsKOJr4d" target="_blank" rel="noopener noreferrer">Maps</a></td>
+<span class="clean"><svg class="icon"><use href="#i-check"/></svg>No automation gaps detected</span>          </td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Westshore+Roofing&amp;query_place_id=ChIJUqphFESbVDd4rH3LsKOJr4d" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Westshore Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="0">
-            <span class="badge cold"><b>0</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 0"><b>0</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="coral ridge roofing &amp; sheet metal">
+          <td class="biz" data-value="coral ridge roofing &amp; sheet metal">
             <div class="name">Coral Ridge Roofing &amp; Sheet Metal</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">7540 4th St N, Tampa, FL 33633</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0127">(813) 555-0127</a></div>
-<div><a href="https://www.coral-ridge-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer">coral-ridge-roofing-sheet-metal.example</a></div>
-<div class="sub">Online booking: online appointments, Online appointments</div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0127"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0127</a>
+<a href="https://www.coral-ridge-roofing-sheet-metal.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>coral-ridge-roofing-sheet-metal.example</a>
+<span><span class="tag good"><svg class="icon"><use href="#i-calendar"/></svg>online appointments, Online appointments</span></span>
+            </div>
           </td>
           <td class="num" data-value="4.9">
-★ 4.9          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.9</span>          </td>
           <td class="num" data-value="489">489</td>
           <td>
-<span class="sub">No automation gaps detected</span>          </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Coral+Ridge+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJFKqYsAUM8koYNOZwjxgL4mU" target="_blank" rel="noopener noreferrer">Maps</a></td>
+<span class="clean"><svg class="icon"><use href="#i-check"/></svg>No automation gaps detected</span>          </td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Coral+Ridge+Roofing+%26+Sheet+Metal&amp;query_place_id=ChIJFKqYsAUM8koYNOZwjxgL4mU" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Coral Ridge Roofing &amp; Sheet Metal in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="0">
-            <span class="badge cold"><b>0</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 0"><b>0</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="suncoast roofing">
+          <td class="biz" data-value="suncoast roofing">
             <div class="name">Suncoast Roofing</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">3622 W Waters Ave, Tampa, FL 33614</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0100">(813) 555-0100</a></div>
-<div><a href="https://www.suncoast-roofing.example/" target="_blank" rel="noopener noreferrer">suncoast-roofing.example</a></div>
-<div class="sub">Online booking: online appointments, Online appointments</div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0100"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0100</a>
+<a href="https://www.suncoast-roofing.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>suncoast-roofing.example</a>
+<span><span class="tag good"><svg class="icon"><use href="#i-calendar"/></svg>online appointments, Online appointments</span></span>
+            </div>
           </td>
           <td class="num" data-value="4.7">
-★ 4.7          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.7</span>          </td>
           <td class="num" data-value="362">362</td>
           <td>
-<span class="sub">No automation gaps detected</span>          </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Suncoast+Roofing&amp;query_place_id=ChIJnpDUe0mrf60GH54Uq_X-6Nw" target="_blank" rel="noopener noreferrer">Maps</a></td>
+<span class="clean"><svg class="icon"><use href="#i-check"/></svg>No automation gaps detected</span>          </td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Suncoast+Roofing&amp;query_place_id=ChIJnpDUe0mrf60GH54Uq_X-6Nw" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Suncoast Roofing in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="0">
-            <span class="badge cold"><b>0</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 0"><b>0</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="channelside roofing group">
+          <td class="biz" data-value="channelside roofing group">
             <div class="name">Channelside Roofing Group</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">3055 W Kennedy Blvd, St. Petersburg, FL 33789</div>
           </td>
           <td>
-<div class="num"><a href="tel:(727)555-0133">(727) 555-0133</a></div>
-<div><a href="https://www.channelside-roofing-group.example/" target="_blank" rel="noopener noreferrer">channelside-roofing-group.example</a></div>
-<div class="sub">Online booking: online appointments, Online appointments</div>
+            <div class="contact">
+<a class="num" href="tel:(727)555-0133"><svg class="icon"><use href="#i-phone"/></svg>(727) 555-0133</a>
+<a href="https://www.channelside-roofing-group.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>channelside-roofing-group.example</a>
+<span><span class="tag good"><svg class="icon"><use href="#i-calendar"/></svg>online appointments, Online appointments</span></span>
+            </div>
           </td>
           <td class="num" data-value="4.6">
-★ 4.6          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.6</span>          </td>
           <td class="num" data-value="183">183</td>
           <td>
-<span class="sub">No automation gaps detected</span>          </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Channelside+Roofing+Group&amp;query_place_id=ChIJwmMlLMmuVhf7Cg845XDJkCF" target="_blank" rel="noopener noreferrer">Maps</a></td>
+<span class="clean"><svg class="icon"><use href="#i-check"/></svg>No automation gaps detected</span>          </td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Channelside+Roofing+Group&amp;query_place_id=ChIJwmMlLMmuVhf7Cg845XDJkCF" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Channelside Roofing Group in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
         <tr data-tier="cold">
           <td data-value="0">
-            <span class="badge cold"><b>0</b><small>cold</small></span>
+            <div class="ring cold" style="--pct: 0"><b>0</b></div>
+            <span class="tier cold">cold</span>
           </td>
-          <td data-value="ybor roofing group">
+          <td class="biz" data-value="ybor roofing group">
             <div class="name">Ybor Roofing Group</div>
             <div class="sub">Roofing contractor</div>
             <div class="sub">3889 Central Ave, Tampa, FL 33698</div>
           </td>
           <td>
-<div class="num"><a href="tel:(813)555-0103">(813) 555-0103</a></div>
-<div><a href="https://www.ybor-roofing-group.example/" target="_blank" rel="noopener noreferrer">ybor-roofing-group.example</a></div>
-<div class="sub">Online booking: online appointments, Online appointments</div>
+            <div class="contact">
+<a class="num" href="tel:(813)555-0103"><svg class="icon"><use href="#i-phone"/></svg>(813) 555-0103</a>
+<a href="https://www.ybor-roofing-group.example/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-globe"/></svg>ybor-roofing-group.example</a>
+<span><span class="tag good"><svg class="icon"><use href="#i-calendar"/></svg>online appointments, Online appointments</span></span>
+            </div>
           </td>
           <td class="num" data-value="4.7">
-★ 4.7          </td>
+<span class="rating"><svg class="icon"><use href="#i-star"/></svg>4.7</span>          </td>
           <td class="num" data-value="119">119</td>
           <td>
-<span class="sub">No automation gaps detected</span>          </td>
-          <td><a href="https://www.google.com/maps/search/?api=1&amp;query=Ybor+Roofing+Group&amp;query_place_id=ChIJKQ5Smt6a5TE1nsXGdHQruPg" target="_blank" rel="noopener noreferrer">Maps</a></td>
+<span class="clean"><svg class="icon"><use href="#i-check"/></svg>No automation gaps detected</span>          </td>
+          <td><a class="maps" href="https://www.google.com/maps/search/?api=1&amp;query=Ybor+Roofing+Group&amp;query_place_id=ChIJKQ5Smt6a5TE1nsXGdHQruPg" target="_blank" rel="noopener noreferrer" title="Open in Google Maps" aria-label="Open Ybor Roofing Group in Google Maps"><svg class="icon"><use href="#i-pin"/></svg></a></td>
         </tr>
       </tbody>
     </table>
