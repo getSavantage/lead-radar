@@ -1,0 +1,99 @@
+{
+  "search_metadata": {
+    "id": "fixture-docs-example",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps",
+    "type": "search",
+    "q": "hvac contractor",
+    "hl": "en"
+  },
+  "search_information": {
+    "local_results_state": "Results for exact spelling",
+    "query_displayed": "hvac contractor"
+  },
+  "local_results": [
+    {
+      "position": 1,
+      "title": "Example Industrial Refrigeration",
+      "place_id": "ChIJkR0uHy7NRIYRal2P7SdVYPY",
+      "data_id": "0x8644cd2e1f2e1d91:0xf6605527ed8f5d6a",
+      "data_cid": "17753283361072176490",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x8644cd2e1f2e1d91%3A0xf6605527ed8f5d6a&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x8644cd2e1f2e1d91%3A0xf6605527ed8f5d6a&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 30.4447577,
+        "longitude": -97.77864339999999
+      },
+      "place_id_search": "https://serpapi.com/search.json?engine=google_maps&google_domain=google.com&hl=en&place_id=ChIJkR0uHy7NRIYRal2P7SdVYPY",
+      "provider_id": "/g/4y2sdfps",
+      "rating": 4.0,
+      "reviews": 4,
+      "type": "HVAC contractor",
+      "types": ["HVAC contractor", "Air conditioning contractor"],
+      "type_id": "hvac_contractor",
+      "type_ids": ["hvac_contractor", "air_conditioning_contractor"],
+      "address": "13200 Example Springs Rd # D30, Austin, TX 78729, United States",
+      "open_state": "Closed ⋅ Opens 8:00AM",
+      "hours": "Opens at 8:00 AM",
+      "operating_hours": {
+        "wednesday": "8AM–5PM",
+        "thursday": "8AM–5PM",
+        "friday": "8AM–5PM",
+        "saturday": "Closed",
+        "sunday": "Closed",
+        "monday": "8AM–5PM",
+        "tuesday": "8AM–5PM"
+      },
+      "phone": "+1 512-555-0134",
+      "website": "http://www.example-industrial.example/",
+      "extensions": [
+        {
+          "service_options": ["Onsite services", "Online appointments"]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_appointments": true
+      },
+      "thumbnail": "https://lh5.googleusercontent.com/p/example=w163-h92-k-no"
+    },
+    {
+      "position": 2,
+      "title": "Example Pizza With Reservations",
+      "place_id": "ChIJfTNUMLtZwokRD2OS-fD0Rzk",
+      "data_id": "0x89c259bb3054337d:0x3947f4f0f992630f",
+      "data_cid": 4127536899324797711,
+      "gps_coordinates": {
+        "latitude": 40.743674399999996,
+        "longitude": -73.995291
+      },
+      "rating": 3.7,
+      "reviews": 237,
+      "type": "Pizza restaurant",
+      "address": "170 W Example St, New York, NY 10011",
+      "phone": "(212) 555-0157",
+      "website": "//www.example-pizza.example/",
+      "service_options": {
+        "dine_in": true,
+        "delivery": false
+      },
+      "reserve_a_table": "https://www.google.com/maps/reserve/v/dine/c/example?source=pa&hl=en-US",
+      "order_online": "https://food.google.com/chooseprovider?restaurantId=/g/example"
+    },
+    {
+      "position": 3,
+      "title": "=HYPERLINK(\"http://evil.example\",\"Unclaimed <b>Stand</b>\")",
+      "place_id": "ChIJzVcorM1ZwokRZZIrWe_tQ-8",
+      "data_id": "0x89c259cdac2857cd:0xef43edef592b9265",
+      "type": "Roofing contractor",
+      "address": "1 Example Plaza, New York, NY 10001",
+      "website": "javascript:alert(1)",
+      "unclaimed_listing": true
+    }
+  ],
+  "serpapi_pagination": {
+    "next": "https://serpapi.com/search.json?engine=google_maps&hl=en&ll=%4040.7455096%2C-74.0083012%2C14z&q=hvac+contractor&start=20&type=search"
+  }
+}

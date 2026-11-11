@@ -1,0 +1,143 @@
+{
+  "search_metadata": {
+    "id": "fixture-reviews-example",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps_reviews",
+    "data_id": "0x8644cd2e1f2e1d91:0xf6605527ed8f5d6a",
+    "hl": "en",
+    "sort_by": "newestFirst"
+  },
+  "place_info": {
+    "title": "Example Industrial Refrigeration",
+    "address": "13200 Example Springs Rd # D30, Austin, TX 78729",
+    "rating": 4.0,
+    "reviews": 6,
+    "type": "HVAC contractor"
+  },
+  "reviews": [
+    {
+      "position": 1,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sExample1?hl=en",
+      "rating": 1.0,
+      "date": "a week ago",
+      "iso_date": "2026-10-24T15:02:11Z",
+      "iso_date_of_last_edit": "2026-10-24T15:02:11Z",
+      "source": "Google",
+      "review_id": "Example1",
+      "user": {
+        "name": "Fixture Reviewer One",
+        "link": "https://www.google.com/maps/contrib/100000000000000000001?hl=en",
+        "contributor_id": "100000000000000000001",
+        "local_guide": true,
+        "reviews": 12,
+        "photos": 3
+      },
+      "snippet": "Called four times about a broken AC. Straight to voicemail…",
+      "extracted_snippet": {
+        "original": "Called four times about a broken AC. Straight to voicemail every time and they never called me back."
+      },
+      "likes": 2
+    },
+    {
+      "position": 2,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sExample2?hl=en",
+      "rating": 5.0,
+      "date": "3 weeks ago",
+      "iso_date": "2026-10-10T09:30:00Z",
+      "iso_date_of_last_edit": "2026-10-10T09:30:00Z",
+      "source": "Google",
+      "review_id": "Example2",
+      "user": {
+        "name": "Fixture Reviewer Two",
+        "link": "https://www.google.com/maps/contrib/100000000000000000002?hl=en",
+        "contributor_id": "100000000000000000002",
+        "reviews": 4,
+        "photos": 0
+      },
+      "snippet": "They picked up on the first ring, unlike two other companies where I got no answer. Fixed the same day.",
+      "extracted_snippet": {
+        "original": "They picked up on the first ring, unlike two other companies where I got no answer. Fixed the same day."
+      },
+      "likes": 0,
+      "response": {
+        "date": "3 weeks ago",
+        "snippet": "Thank you! Glad we could help.",
+        "extracted_snippet": {
+          "original": "Thank you! Glad we could help."
+        }
+      }
+    },
+    {
+      "position": 3,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sExample3?hl=en",
+      "rating": 2.0,
+      "date": "2 months ago",
+      "iso_date": "2026-08-28T18:45:00Z",
+      "iso_date_of_last_edit": "2026-08-28T18:45:00Z",
+      "source": "Google",
+      "review_id": "Example3",
+      "user": {
+        "name": "Fixture Reviewer Three",
+        "link": "https://www.google.com/maps/contrib/100000000000000000003?hl=en",
+        "contributor_id": "100000000000000000003",
+        "reviews": 1,
+        "photos": 0
+      },
+      "snippet": "Technician was fine but I couldn’t reach the office to reschedule.",
+      "extracted_snippet": {
+        "original": "Technician was fine but I couldn’t reach the office to reschedule."
+      },
+      "likes": 0
+    },
+    {
+      "position": 4,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sExample4?hl=en",
+      "rating": 1.0,
+      "date": "2 years ago",
+      "iso_date": "2024-09-01T12:00:00Z",
+      "iso_date_of_last_edit": "2024-09-01T12:00:00Z",
+      "source": "Google",
+      "review_id": "Example4",
+      "user": {
+        "name": "Fixture Reviewer Four",
+        "link": "https://www.google.com/maps/contrib/100000000000000000004?hl=en",
+        "contributor_id": "100000000000000000004",
+        "reviews": 9,
+        "photos": 1
+      },
+      "snippet": "No call back after three messages.",
+      "extracted_snippet": {
+        "original": "No call back after three messages."
+      },
+      "likes": 1
+    },
+    {
+      "position": 5,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sExample5?hl=en",
+      "rating": 2.0,
+      "date": "a month ago",
+      "iso_date": "2026-09-27T08:00:00Z",
+      "iso_date_of_last_edit": "2026-09-27T08:00:00Z",
+      "source": "Google",
+      "review_id": "Example5",
+      "user": {
+        "name": "Fixture Reviewer Five",
+        "link": "https://www.google.com/maps/contrib/100000000000000000005?hl=en",
+        "contributor_id": "100000000000000000005",
+        "reviews": 2,
+        "photos": 0
+      },
+      "snippet": "Overpriced for a simple capacitor swap.",
+      "extracted_snippet": {
+        "original": "Overpriced for a simple capacitor swap."
+      },
+      "likes": 0
+    }
+  ],
+  "serpapi_pagination": {
+    "next": "https://serpapi.com/search.json?data_id=0x8644cd2e1f2e1d91%3A0xf6605527ed8f5d6a&engine=google_maps_reviews&hl=en&next_page_token=ExampleToken",
+    "next_page_token": "ExampleToken"
+  }
+}
