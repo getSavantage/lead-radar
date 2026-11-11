@@ -106,8 +106,11 @@ _env = Environment(
 )
 
 
-def render_html(result: RunResult) -> str:
-    """Render the report as one HTML file with inline CSS and JS and no external requests."""
+def render_html(result: RunResult, *, embedded: bool = False) -> str:
+    """Render the report as one HTML file with inline CSS and JS and no external requests.
+
+    ``embedded`` drops the page title and footer, for showing the report inside the web app.
+    """
     counts = result.tier_counts()
     return _env.get_template("report.html.j2").render(
         result=result,
@@ -118,6 +121,7 @@ def render_html(result: RunResult) -> str:
         cold=counts[Tier.COLD],
         with_reviews=result.request.with_reviews,
         version=__version__,
+        embedded=embedded,
     )
 
 

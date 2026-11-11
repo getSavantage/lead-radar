@@ -11,6 +11,7 @@ from lead_radar.cache import ResponseCache
 from lead_radar.client import SerpApiGateway
 from lead_radar.demo import FixtureTransport
 from lead_radar.errors import InvalidApiKeyError, OutOfCreditsError
+from lead_radar.store import RunStore
 from tests.conftest import ScriptedTransport, maps_page
 
 runner = CliRunner()
@@ -78,8 +79,9 @@ def test_search_yes_runs_and_writes_reports(monkeypatch: pytest.MonkeyPatch) -> 
     assert result.exit_code == 0, result.output
     assert "38 businesses" in result.output
     assert "SerpApi searches used: 3" in result.output
-    assert len(list(Path("out").glob("leads-roofing-contractor-*.csv"))) == 1
-    assert len(list(Path("out").glob("leads-roofing-contractor-*.html"))) == 1
+    assert len(list(Path("out/runs").glob("*/leads-roofing-contractor-*.csv"))) == 1
+    assert len(list(Path("out/runs").glob("*/leads-roofing-contractor-*.html"))) == 1
+    assert len(RunStore(Path("out/runs")).list()) == 1, "CLI runs show up in the web app"
     assert SECRET not in result.output
 
 
@@ -137,7 +139,7 @@ def test_out_of_credits_mid_run_still_writes_partial_report(
 
     assert result.exit_code == 0, result.output
     assert "results are partial" in result.output and "run out of searches" in result.output
-    assert len(list(Path("out").glob("*.html"))) == 1
+    assert len(list(Path("out/runs").glob("*/*.html"))) == 1
 
 
 def test_ctrl_c_saves_partial_results_and_exits_130(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -150,7 +152,7 @@ def test_ctrl_c_saves_partial_results_and_exits_130(monkeypatch: pytest.MonkeyPa
 
     assert result.exit_code == 130
     assert "Ctrl+C" in result.output and "20 businesses" in result.output
-    assert len(list(Path("out").glob("*.csv"))) == 1
+    assert len(list(Path("out/runs").glob("*/*.csv"))) == 1
 
 
 def test_empty_results_give_a_helpful_message(monkeypatch: pytest.MonkeyPatch) -> None:

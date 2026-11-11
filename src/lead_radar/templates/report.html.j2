@@ -96,17 +96,21 @@
   .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .empty { padding: 32px; text-align: center; color: var(--muted); }
   footer { margin-top: 24px; color: var(--muted); font-size: 13px; }
+  .embedded .wrap { padding-top: 4px; }
+  .embedded .stats { margin-top: 0; }
   @media print { .toolbar { display: none; } .table-scroll { overflow: visible; border: 0; } }
 </style>
 </head>
-<body>
+<body{% if embedded %} class="embedded"{% endif %}>
 <div class="wrap">
+  {% if not embedded %}
   <header>
     <div class="eyebrow">Lead Radar</div>
     <h1>{{ request.query }} in {{ request.locations | join(" · ") }}</h1>
     <p>Generated {{ result.generated_at.strftime("%Y-%m-%d %H:%M %Z") }}.
       Ranked by how likely each business is to need help with missed calls, online booking and review follow-up.</p>
   </header>
+  {% endif %}
 
   <section class="stats" aria-label="Summary">
     <div class="stat"><b>{{ leads | length }}</b><span>businesses</span></div>
@@ -128,7 +132,8 @@
   {% endif %}
   {% if not with_reviews %}
   <p class="sub">Review signals (missed-call complaints, owner replies, rating trend) were not collected for this run.
-    Re-run with <code>--reviews</code> to include them.</p>
+    {% if embedded %}Run the search again with “Analyse latest reviews” turned on to include them.
+    {% else %}Re-run with <code>--reviews</code> to include them.{% endif %}</p>
   {% endif %}
 
   {% if leads %}
@@ -198,10 +203,12 @@
   <div class="table-scroll"><div class="empty">No businesses were found for this search.</div></div>
   {% endif %}
 
+  {% if not embedded %}
   <footer>
     Lead Radar {{ version }} · Data from the SerpApi Google Maps API{% if with_reviews %} and Google Maps Reviews API{% endif %}.
     Scores are heuristics for prioritising outreach, not facts about a business.
   </footer>
+  {% endif %}
 </div>
 <script>
 (function () {

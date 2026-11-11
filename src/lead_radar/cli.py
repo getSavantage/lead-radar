@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-import subprocess
-import sys
+import threading
 import webbrowser
+from collections.abc import Callable
 from datetime import timedelta
 from pathlib import Path
 from typing import Annotated
@@ -24,6 +24,7 @@ from lead_radar.demo import DEMO_NOW, DEMO_REQUEST, FixtureTransport
 from lead_radar.errors import LeadRadarError, SerpApiRequestError
 from lead_radar.export import write_reports
 from lead_radar.models import AccountInfo, CreditEstimate, RunResult, SearchRequest, Tier
+from lead_radar.store import DEFAULT_STORE_DIR, RunStore
 
 app = typer.Typer(
     help="Find local home-service businesses with SerpApi and score who needs automation help.",
@@ -138,7 +139,11 @@ def _print_leads(result: RunResult, limit: int = 15) -> None:
     console.print(table)
 
 
-def _finish(result: RunResult, out: Path, open_report: bool, basename: str | None = None) -> None:
+SaveReports = Callable[[RunResult], tuple[Path, Path]]
+"""Writes the reports somewhere and returns the (csv, html) paths."""
+
+
+def _finish(result: RunResult, save: SaveReports, open_report: bool) -> None:
     """Shared tail of ``search`` and ``demo``: summary, files, exit code."""
     if result.stop_reason:
         console.print(f"[yellow]{result.stop_reason}[/]")
@@ -162,7 +167,7 @@ def _finish(result: RunResult, out: Path, open_report: bool, basename: str | Non
         f"SerpApi searches used: {result.stats.api_calls} "
         f"({result.stats.cache_hits} more served from cache)."
     )
-    csv_path, html_path = write_reports(result, out, basename)
+    csv_path, html_path = save(result)
     console.print(f"CSV:    {csv_path}", highlight=False)
     console.print(f"Report: {html_path}", highlight=False)
     if open_report:
@@ -203,7 +208,10 @@ def search(
     config: Annotated[
         Path | None, typer.Option("--config", "-c", help="Scoring config YAML (see init-config).")
     ] = None,
-    out: Annotated[Path, typer.Option("--out", "-o", help="Output directory.")] = Path("out"),
+    out: Annotated[
+        Path,
+        typer.Option("--out", "-o", help="Where runs are saved (shared with `lead-radar web`)."),
+    ] = DEFAULT_STORE_DIR,
     yes: Annotated[bool, typer.Option("--yes", "-y", help="Skip the credit confirmation.")] = False,
     no_cache: Annotated[
         bool, typer.Option("--no-cache", help="Ignore the local cache and fetch everything again.")
@@ -261,7 +269,14 @@ def search(
         raise typer.Exit(0)
 
     result = _run_with_status(request, gateway, scoring)
-    _finish(result, out, open_report)
+
+    def save(result: RunResult) -> tuple[Path, Path]:
+        summary = RunStore(out).save(result)
+        directory = out / summary.id
+        return directory / f"{summary.basename}.csv", directory / f"{summary.basename}.html"
+
+    _finish(result, save, open_report)
+    console.print("[dim]Browse all your reports with: lead-radar web[/]")
 
 
 def _run_with_status(
@@ -303,7 +318,7 @@ def demo(
     )
     gateway = SerpApiGateway(FixtureTransport())
     result = pipeline.run(DEMO_REQUEST, gateway, ScoringConfig(), now=DEMO_NOW)
-    _finish(result, out, open_report, basename="demo-report")
+    _finish(result, lambda r: write_reports(r, out, "demo-report"), open_report)
 
 
 @app.command("init-config")
@@ -319,16 +334,40 @@ def init_config(
 
 
 @app.command()
-def ui() -> None:
-    """Launch the Streamlit web UI."""
+def web(
+    host: Annotated[str, typer.Option(help="Interface to listen on.")] = "127.0.0.1",
+    port: Annotated[int, typer.Option(help="Port to listen on.")] = 8000,
+    out: Annotated[
+        Path, typer.Option("--out", "-o", help="Where runs are saved (shared with `search`).")
+    ] = DEFAULT_STORE_DIR,
+    config: Annotated[
+        Path | None, typer.Option("--config", "-c", help="Scoring config YAML (see init-config).")
+    ] = None,
+    cache_dir: CacheDirOption = DEFAULT_CACHE_DIR,
+    no_browser: Annotated[
+        bool, typer.Option("--no-browser", help="Do not open a browser tab.")
+    ] = False,
+) -> None:
+    """Start the web app: run searches, browse past reports and download them."""
+    import uvicorn
+
+    from lead_radar.web.app import create_app
+
     try:
-        import streamlit  # noqa: F401
-    except ImportError:
-        raise _fail(
-            'The web UI needs Streamlit. Install it with: pip install "lead-radar[ui]"'
-        ) from None
-    script = Path(__file__).with_name("ui.py")
-    raise typer.Exit(subprocess.call([sys.executable, "-m", "streamlit", "run", str(script)]))  # noqa: S603
+        scoring = load_config(config)
+    except LeadRadarError as exc:
+        raise _fail(str(exc)) from None
+    application = create_app(store=RunStore(out), cache_dir=cache_dir, config=scoring)
+    url = f"http://{'localhost' if host in {'127.0.0.1', '0.0.0.0'} else host}:{port}"  # noqa: S104
+    if host not in {"127.0.0.1", "localhost"}:
+        console.print(
+            "[yellow]Listening beyond this computer: anyone who can reach it can spend your "
+            "SerpApi searches.[/]"
+        )
+    console.print(f"Lead Radar is running at [bold]{url}[/]  (Ctrl+C to stop)")
+    if not no_browser:
+        threading.Timer(1.0, webbrowser.open, args=(url,)).start()
+    uvicorn.run(application, host=host, port=port, log_level="warning")
 
 
 @cache_app.command("info")
