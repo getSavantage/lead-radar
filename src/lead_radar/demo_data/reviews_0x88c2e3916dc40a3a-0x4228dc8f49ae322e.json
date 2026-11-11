@@ -1,0 +1,373 @@
+{
+  "search_metadata": {
+    "id": "demo-lealman-family-roofing",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps_reviews",
+    "data_id": "0x88c2e3916dc40a3a:0x4228dc8f49ae322e",
+    "hl": "en",
+    "sort_by": "newestFirst"
+  },
+  "place_info": {
+    "title": "Lealman Family Roofing",
+    "address": "9244 Central Ave, Tampa, FL 33656",
+    "rating": 4.0,
+    "reviews": 45,
+    "type": "Roofing contractor"
+  },
+  "reviews": [
+    {
+      "position": 1,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh7qboSkpySTswbv7pnfAwKaE69IS497jL5A?hl=en",
+      "rating": 5.0,
+      "date": "a week ago",
+      "iso_date": "2026-10-23T12:00:00Z",
+      "iso_date_of_last_edit": "2026-10-23T12:00:00Z",
+      "source": "Google",
+      "review_id": "Ch7qboSkpySTswbv7pnfAwKaE69IS497jL5A",
+      "user": {
+        "name": "Demo Reviewer 949",
+        "link": "https://www.google.com/maps/contrib/604800009102844506926?hl=en",
+        "contributor_id": "604800009102844506926",
+        "local_guide": false,
+        "reviews": 37,
+        "photos": 25
+      },
+      "snippet": "Crew showed up on time and replaced our shingle roof in two days. Clean job site.",
+      "extracted_snippet": {
+        "original": "Crew showed up on time and replaced our shingle roof in two days. Clean job site."
+      },
+      "likes": 3
+    },
+    {
+      "position": 2,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChMz3Cs5PERkMmkgDpOEEqNtNp3TfKCuy6Aw?hl=en",
+      "rating": 1.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-15T22:00:00Z",
+      "iso_date_of_last_edit": "2026-09-15T22:00:00Z",
+      "source": "Google",
+      "review_id": "ChMz3Cs5PERkMmkgDpOEEqNtNp3TfKCuy6Aw",
+      "user": {
+        "name": "Demo Reviewer 469",
+        "link": "https://www.google.com/maps/contrib/819205646976526690222?hl=en",
+        "contributor_id": "819205646976526690222",
+        "local_guide": false,
+        "reviews": 21,
+        "photos": 0
+      },
+      "snippet": "Called three times for an estimate and it went straight to voicemail every time.",
+      "extracted_snippet": {
+        "original": "Called three times for an estimate and it went straight to voicemail every time."
+      },
+      "likes": 1
+    },
+    {
+      "position": 3,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChBsGk245N6Npv74F89EGTYJ4UouXOVszy9B?hl=en",
+      "rating": 1.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-12T10:00:00Z",
+      "iso_date_of_last_edit": "2026-09-12T10:00:00Z",
+      "source": "Google",
+      "review_id": "ChBsGk245N6Npv74F89EGTYJ4UouXOVszy9B",
+      "user": {
+        "name": "Demo Reviewer 681",
+        "link": "https://www.google.com/maps/contrib/916069233816142292384?hl=en",
+        "contributor_id": "916069233816142292384",
+        "local_guide": false,
+        "reviews": 76,
+        "photos": 4
+      },
+      "snippet": "They quoted the job then didn't return my calls for two weeks.",
+      "extracted_snippet": {
+        "original": "They quoted the job then didn't return my calls for two weeks."
+      },
+      "likes": 0
+    },
+    {
+      "position": 4,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChRJU7BfwMMLv0H230r7EoxSCdh7TNaHMhxo?hl=en",
+      "rating": 5.0,
+      "date": "2 months ago",
+      "iso_date": "2026-08-28T16:00:00Z",
+      "iso_date_of_last_edit": "2026-08-28T16:00:00Z",
+      "source": "Google",
+      "review_id": "ChRJU7BfwMMLv0H230r7EoxSCdh7TNaHMhxo",
+      "user": {
+        "name": "Demo Reviewer 981",
+        "link": "https://www.google.com/maps/contrib/753121853628288994778?hl=en",
+        "contributor_id": "753121853628288994778",
+        "local_guide": true,
+        "reviews": 49,
+        "photos": 0
+      },
+      "snippet": "They found the leak around the vent pipe that two other roofers missed.",
+      "extracted_snippet": {
+        "original": "They found the leak around the vent pipe that two other roofers missed."
+      },
+      "likes": 2
+    },
+    {
+      "position": 5,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChcsj5BLJ3GiWHJYy46ZKhd5OReEEPNraMId?hl=en",
+      "rating": 3.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-28T01:00:00Z",
+      "iso_date_of_last_edit": "2026-07-28T01:00:00Z",
+      "source": "Google",
+      "review_id": "Chcsj5BLJ3GiWHJYy46ZKhd5OReEEPNraMId",
+      "user": {
+        "name": "Demo Reviewer 173",
+        "link": "https://www.google.com/maps/contrib/278689732366023957325?hl=en",
+        "contributor_id": "278689732366023957325",
+        "local_guide": true,
+        "reviews": 8,
+        "photos": 8
+      },
+      "snippet": "Roof looks good. Cleanup could have been better, found nails in the driveway.",
+      "extracted_snippet": {
+        "original": "Roof looks good. Cleanup could have been better, found nails in the driveway."
+      },
+      "likes": 2
+    },
+    {
+      "position": 6,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChUaaHWvWQOf6iT1E8h5R3YNan0WxOkHOqMp?hl=en",
+      "rating": 3.0,
+      "date": "4 months ago",
+      "iso_date": "2026-06-29T06:00:00Z",
+      "iso_date_of_last_edit": "2026-06-29T06:00:00Z",
+      "source": "Google",
+      "review_id": "ChUaaHWvWQOf6iT1E8h5R3YNan0WxOkHOqMp",
+      "user": {
+        "name": "Demo Reviewer 247",
+        "link": "https://www.google.com/maps/contrib/870836008737360162202?hl=en",
+        "contributor_id": "870836008737360162202",
+        "local_guide": true,
+        "reviews": 59,
+        "photos": 1
+      },
+      "snippet": "Decent repair, a bit pricey for what it was.",
+      "extracted_snippet": {
+        "original": "Decent repair, a bit pricey for what it was."
+      },
+      "likes": 3
+    },
+    {
+      "position": 7,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh8zfRjB9doQGA5MTBPLYw0FV5GRloqNlZ9Y?hl=en",
+      "rating": 5.0,
+      "date": "4 months ago",
+      "iso_date": "2026-06-06T13:00:00Z",
+      "iso_date_of_last_edit": "2026-06-06T13:00:00Z",
+      "source": "Google",
+      "review_id": "Ch8zfRjB9doQGA5MTBPLYw0FV5GRloqNlZ9Y",
+      "user": {
+        "name": "Demo Reviewer 844",
+        "link": "https://www.google.com/maps/contrib/846121958694113021239?hl=en",
+        "contributor_id": "846121958694113021239",
+        "local_guide": false,
+        "reviews": 41,
+        "photos": 38
+      },
+      "snippet": "Fair quote, no pressure, and the new roof passed inspection first try.",
+      "extracted_snippet": {
+        "original": "Fair quote, no pressure, and the new roof passed inspection first try."
+      },
+      "likes": 0
+    },
+    {
+      "position": 8,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChEkr0dmNK9sRQ6nqkIaUrLzVkGY62HmUy7V?hl=en",
+      "rating": 5.0,
+      "date": "5 months ago",
+      "iso_date": "2026-05-30T20:00:00Z",
+      "iso_date_of_last_edit": "2026-05-30T20:00:00Z",
+      "source": "Google",
+      "review_id": "ChEkr0dmNK9sRQ6nqkIaUrLzVkGY62HmUy7V",
+      "user": {
+        "name": "Demo Reviewer 806",
+        "link": "https://www.google.com/maps/contrib/584179046398076441094?hl=en",
+        "contributor_id": "584179046398076441094",
+        "local_guide": false,
+        "reviews": 3,
+        "photos": 3
+      },
+      "snippet": "They found the leak around the vent pipe that two other roofers missed.",
+      "extracted_snippet": {
+        "original": "They found the leak around the vent pipe that two other roofers missed."
+      },
+      "likes": 1,
+      "response": {
+        "date": "5 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 9,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChQyt9Wm7S7SYZF19xafpbYeB5x1PHA9ierd?hl=en",
+      "rating": 5.0,
+      "date": "5 months ago",
+      "iso_date": "2026-05-19T11:00:00Z",
+      "iso_date_of_last_edit": "2026-05-19T11:00:00Z",
+      "source": "Google",
+      "review_id": "ChQyt9Wm7S7SYZF19xafpbYeB5x1PHA9ierd",
+      "user": {
+        "name": "Demo Reviewer 935",
+        "link": "https://www.google.com/maps/contrib/574267636277016643274?hl=en",
+        "contributor_id": "574267636277016643274",
+        "local_guide": true,
+        "reviews": 51,
+        "photos": 31
+      },
+      "snippet": "Professional from start to finish. The office staff were lovely to deal with.",
+      "extracted_snippet": {
+        "original": "Professional from start to finish. The office staff were lovely to deal with."
+      },
+      "likes": 3
+    },
+    {
+      "position": 10,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh5NUJ65v5kRvkYa5KlofT0r4xEhUgxZICJu?hl=en",
+      "rating": 5.0,
+      "date": "6 months ago",
+      "iso_date": "2026-04-20T23:00:00Z",
+      "iso_date_of_last_edit": "2026-04-20T23:00:00Z",
+      "source": "Google",
+      "review_id": "Ch5NUJ65v5kRvkYa5KlofT0r4xEhUgxZICJu",
+      "user": {
+        "name": "Demo Reviewer 889",
+        "link": "https://www.google.com/maps/contrib/555201456612154740126?hl=en",
+        "contributor_id": "555201456612154740126",
+        "local_guide": false,
+        "reviews": 14,
+        "photos": 9
+      },
+      "snippet": "Crew showed up on time and replaced our shingle roof in two days. Clean job site.",
+      "extracted_snippet": {
+        "original": "Crew showed up on time and replaced our shingle roof in two days. Clean job site."
+      },
+      "likes": 2
+    },
+    {
+      "position": 11,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChPFtQmHCGzjbos772suQVXjvpH2oQPMcRXi?hl=en",
+      "rating": 3.0,
+      "date": "7 months ago",
+      "iso_date": "2026-04-02T20:00:00Z",
+      "iso_date_of_last_edit": "2026-04-02T20:00:00Z",
+      "source": "Google",
+      "review_id": "ChPFtQmHCGzjbos772suQVXjvpH2oQPMcRXi",
+      "user": {
+        "name": "Demo Reviewer 277",
+        "link": "https://www.google.com/maps/contrib/217697045506205308338?hl=en",
+        "contributor_id": "217697045506205308338",
+        "local_guide": false,
+        "reviews": 5,
+        "photos": 34
+      },
+      "snippet": "Work was fine but it took a week longer than quoted.",
+      "extracted_snippet": {
+        "original": "Work was fine but it took a week longer than quoted."
+      },
+      "likes": 1
+    },
+    {
+      "position": 12,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChwykBzcmIKe90mV6FYbhzsjopKmDUVJ8LDi?hl=en",
+      "rating": 5.0,
+      "date": "7 months ago",
+      "iso_date": "2026-03-29T04:00:00Z",
+      "iso_date_of_last_edit": "2026-03-29T04:00:00Z",
+      "source": "Google",
+      "review_id": "ChwykBzcmIKe90mV6FYbhzsjopKmDUVJ8LDi",
+      "user": {
+        "name": "Demo Reviewer 817",
+        "link": "https://www.google.com/maps/contrib/899923839309767543542?hl=en",
+        "contributor_id": "899923839309767543542",
+        "local_guide": false,
+        "reviews": 56,
+        "photos": 39
+      },
+      "snippet": "Crew showed up on time and replaced our shingle roof in two days. Clean job site.",
+      "extracted_snippet": {
+        "original": "Crew showed up on time and replaced our shingle roof in two days. Clean job site."
+      },
+      "likes": 3
+    },
+    {
+      "position": 13,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChIOacqejopEnlZZOhmNCgDb0vhovSMLWyG8?hl=en",
+      "rating": 5.0,
+      "date": "7 months ago",
+      "iso_date": "2026-03-22T14:00:00Z",
+      "iso_date_of_last_edit": "2026-03-22T14:00:00Z",
+      "source": "Google",
+      "review_id": "ChIOacqejopEnlZZOhmNCgDb0vhovSMLWyG8",
+      "user": {
+        "name": "Demo Reviewer 122",
+        "link": "https://www.google.com/maps/contrib/854293080171530050286?hl=en",
+        "contributor_id": "854293080171530050286",
+        "local_guide": false,
+        "reviews": 16,
+        "photos": 12
+      },
+      "snippet": "They found the leak around the vent pipe that two other roofers missed.",
+      "extracted_snippet": {
+        "original": "They found the leak around the vent pipe that two other roofers missed."
+      },
+      "likes": 1
+    },
+    {
+      "position": 14,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChIDaQnk0qcjGYosqmPbLeB38OTBSQEohiOx?hl=en",
+      "rating": 5.0,
+      "date": "8 months ago",
+      "iso_date": "2026-02-13T16:00:00Z",
+      "iso_date_of_last_edit": "2026-02-13T16:00:00Z",
+      "source": "Google",
+      "review_id": "ChIDaQnk0qcjGYosqmPbLeB38OTBSQEohiOx",
+      "user": {
+        "name": "Demo Reviewer 622",
+        "link": "https://www.google.com/maps/contrib/222693623566282433247?hl=en",
+        "contributor_id": "222693623566282433247",
+        "local_guide": true,
+        "reviews": 58,
+        "photos": 12
+      },
+      "snippet": "Professional from start to finish. The office staff were lovely to deal with.",
+      "extracted_snippet": {
+        "original": "Professional from start to finish. The office staff were lovely to deal with."
+      },
+      "likes": 0
+    },
+    {
+      "position": 15,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh3ROoDjuqqPK922CBYc9M2vEhNXADfJaFY6?hl=en",
+      "rating": 4.0,
+      "date": "10 months ago",
+      "iso_date": "2026-01-03T19:00:00Z",
+      "iso_date_of_last_edit": "2026-01-03T19:00:00Z",
+      "source": "Google",
+      "review_id": "Ch3ROoDjuqqPK922CBYc9M2vEhNXADfJaFY6",
+      "user": {
+        "name": "Demo Reviewer 333",
+        "link": "https://www.google.com/maps/contrib/443314626642234814936?hl=en",
+        "contributor_id": "443314626642234814936",
+        "local_guide": false,
+        "reviews": 47,
+        "photos": 31
+      },
+      "snippet": "Crew showed up on time and replaced our shingle roof in two days. Clean job site.",
+      "extracted_snippet": {
+        "original": "Crew showed up on time and replaced our shingle roof in two days. Clean job site."
+      },
+      "likes": 1
+    }
+  ]
+}

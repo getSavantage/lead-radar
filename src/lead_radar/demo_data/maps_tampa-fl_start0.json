@@ -1,0 +1,1001 @@
+{
+  "search_metadata": {
+    "id": "demo-tampa-fl-0",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps",
+    "type": "search",
+    "q": "roofing contractor",
+    "hl": "en"
+  },
+  "search_information": {
+    "local_results_state": "Results for exact spelling",
+    "query_displayed": "roofing contractor"
+  },
+  "local_results": [
+    {
+      "position": 1,
+      "title": "Suncoast Roofing",
+      "place_id": "ChIJnpDUe0mrf60GH54Uq_X-6Nw",
+      "data_id": "0x88c223c11178a44e:0xf240b0fc3f053a75",
+      "data_cid": "8314057123658739062",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c223c11178a44e%3A0xf240b0fc3f053a75&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c223c11178a44e%3A0xf240b0fc3f053a75&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 28.0133931,
+        "longitude": -82.4266964
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c223c11178a44e%3A0xf240b0fc3f053a75%218m2%213d28.0133931%214d-82.4266964&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/vv079y9ud",
+      "rating": 4.7,
+      "reviews": 362,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor",
+        "Gutter service"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor",
+        "gutter_service"
+      ],
+      "address": "3622 W Waters Ave, Tampa, FL 33614",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0100",
+      "website": "https://www.suncoast-roofing.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services",
+            "Online estimates",
+            "Online appointments"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_estimates": true,
+        "online_appointments": true
+      }
+    },
+    {
+      "position": 2,
+      "title": "Bayshore Roofing Co.",
+      "place_id": "ChIJK9VIlirP8XXAzoVF6_h276_",
+      "data_id": "0x88c259cda13589a0:0x9bbfd51cb6d4e315",
+      "data_cid": "1356235924727997497",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c259cda13589a0%3A0x9bbfd51cb6d4e315&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c259cda13589a0%3A0x9bbfd51cb6d4e315&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.9533243,
+        "longitude": -82.5215764
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c259cda13589a0%3A0x9bbfd51cb6d4e315%218m2%213d27.9533243%214d-82.5215764&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/1oc2p20xt",
+      "rating": 4.1,
+      "reviews": 24,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "7904 W Waters Ave, Tampa, FL 33655",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0101",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 3,
+      "title": "Gulf Breeze Roof Pros",
+      "place_id": "ChIJnEVVuM7_DHUIkT974xgi1x4",
+      "data_id": "0x88c2833c7279f056:0x141fcb51f8cd081a",
+      "data_cid": "9457393150215997543",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2833c7279f056%3A0x141fcb51f8cd081a&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2833c7279f056%3A0x141fcb51f8cd081a&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.935565,
+        "longitude": -82.379151
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2833c7279f056%3A0x141fcb51f8cd081a%218m2%213d27.935565%214d-82.379151&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/wq81dlkvq",
+      "rating": 4.2,
+      "reviews": 140,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "1153 E Hillsborough Ave, Tampa, FL 33617",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0102",
+      "website": "https://www.gulf-breeze-roof-pros.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 4,
+      "title": "Ybor Roofing Group",
+      "place_id": "ChIJKQ5Smt6a5TE1nsXGdHQruPg",
+      "data_id": "0x88c215a51caba92a:0x174961a5ac9dd1bc",
+      "data_cid": "6072331596059425248",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c215a51caba92a%3A0x174961a5ac9dd1bc&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c215a51caba92a%3A0x174961a5ac9dd1bc&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.9894505,
+        "longitude": -82.4739739
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c215a51caba92a%3A0x174961a5ac9dd1bc%218m2%213d27.9894505%214d-82.4739739&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/7ykzsy8o3",
+      "rating": 4.7,
+      "reviews": 119,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "3889 Central Ave, Tampa, FL 33698",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0103",
+      "website": "https://www.ybor-roofing-group.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services",
+            "Online estimates",
+            "Online appointments"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_estimates": true,
+        "online_appointments": true
+      }
+    },
+    {
+      "position": 5,
+      "title": "Hillsborough Roof Repair",
+      "place_id": "ChIJfYsgU_-eyxx4heSoTNI1ZIn",
+      "data_id": "0x88c238f500b2a5d8:0xf8fddfc60aee54de",
+      "data_cid": "5292383334511695388",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c238f500b2a5d8%3A0xf8fddfc60aee54de&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c238f500b2a5d8%3A0xf8fddfc60aee54de&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.8847055,
+        "longitude": -82.4568594
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c238f500b2a5d8%3A0xf8fddfc60aee54de%218m2%213d27.8847055%214d-82.4568594&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/7t3495zyy",
+      "rating": 4.8,
+      "reviews": 43,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor",
+        "Gutter service"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor",
+        "gutter_service"
+      ],
+      "address": "2964 34th St S, Tampa, FL 33643",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0104",
+      "website": "https://www.facebook.com/hillsboroughroofrepair",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 6,
+      "title": "Palm River Roofing Solutions",
+      "place_id": "ChIJj030p7vnAvOstz1ifsUzgOp",
+      "data_id": "0x88c25c3e66a5d021:0xe3660cf2e0652cc9",
+      "data_cid": "8056836568670797860",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c25c3e66a5d021%3A0xe3660cf2e0652cc9&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c25c3e66a5d021%3A0xe3660cf2e0652cc9&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.985399,
+        "longitude": -82.4609355
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c25c3e66a5d021%3A0xe3660cf2e0652cc9%218m2%213d27.985399%214d-82.4609355&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/k9h8o8hxp",
+      "rating": 4.6,
+      "reviews": 297,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "1535 N Florida Ave, Tampa, FL 33654",
+      "phone": "(813) 555-0105",
+      "website": "https://www.palm-river-roofing-solutions.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 7,
+      "title": "Egret Family Roofing",
+      "place_id": "ChIJF3dx-ZjfBoQCCdWgN4S1q5F",
+      "data_id": "0x88c2270428053b65:0x4f993e5a5d20b944",
+      "data_cid": "6767728655714045616",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2270428053b65%3A0x4f993e5a5d20b944&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2270428053b65%3A0x4f993e5a5d20b944&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.9647212,
+        "longitude": -82.4371892
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2270428053b65%3A0x4f993e5a5d20b944%218m2%213d27.9647212%214d-82.4371892&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/cdiqcbiic",
+      "rating": 4.0,
+      "reviews": 18,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "8991 4th St N, Tampa, FL 33671",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0106",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      },
+      "unclaimed_listing": true
+    },
+    {
+      "position": 8,
+      "title": "Manatee Roofing & Sheet Metal",
+      "place_id": "ChIJSUMYdiNpCzJ4-9zoQh13eA7",
+      "data_id": "0x88c278a2b9cd9947:0x6095685e3c5c3449",
+      "data_cid": "2363315844640027805",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c278a2b9cd9947%3A0x6095685e3c5c3449&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c278a2b9cd9947%3A0x6095685e3c5c3449&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 28.0207547,
+        "longitude": -82.4396033
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c278a2b9cd9947%3A0x6095685e3c5c3449%218m2%213d28.0207547%214d-82.4396033&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/z8q3p0thg",
+      "rating": 4.9,
+      "reviews": 228,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "3497 Gandy Blvd, Tampa, FL 33638",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0107",
+      "website": "https://www.manatee-roofing-sheet-metal.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services",
+            "Online estimates"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_estimates": true
+      }
+    },
+    {
+      "position": 9,
+      "title": "Tarpon Roofers",
+      "place_id": "ChIJ3E5u0eCTfYRkIa0Gi5hPwpk",
+      "data_id": "0x88c246f260a172f4:0xd47a8a9d5aceb229",
+      "data_cid": "9514757595133608321",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c246f260a172f4%3A0xd47a8a9d5aceb229&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c246f260a172f4%3A0xd47a8a9d5aceb229&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.8908877,
+        "longitude": -82.5164137
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c246f260a172f4%3A0xd47a8a9d5aceb229%218m2%213d27.8908877%214d-82.5164137&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/lstya1p3g",
+      "rating": 4.3,
+      "reviews": 44,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor",
+        "Gutter service"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor",
+        "gutter_service"
+      ],
+      "address": "4641 N Florida Ave, Tampa, FL 33621",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0108",
+      "website": "https://www.tarpon-roofers.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 10,
+      "title": "Heron Exteriors & Roofing",
+      "place_id": "ChIJMaWTGrm2tvRIUjr7xUSeMOQ",
+      "data_id": "0x88c281d9d541b490:0x11b707223273c687",
+      "data_cid": "3474030356742668434",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c281d9d541b490%3A0x11b707223273c687&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c281d9d541b490%3A0x11b707223273c687&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 28.014682,
+        "longitude": -82.416463
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c281d9d541b490%3A0x11b707223273c687%218m2%213d28.014682%214d-82.416463&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/e2tnn2r21",
+      "rating": 3.9,
+      "reviews": 47,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "2156 E Hillsborough Ave, Tampa, FL 33658",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0109",
+      "website": "https://www.facebook.com/heronexteriorsroofing",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 11,
+      "title": "Sandhill Roofing",
+      "place_id": "ChIJoGMP_DdREbmycfzli2IsZ7l",
+      "data_id": "0x88c230f09cc69ad9:0xa7958f112d893099",
+      "data_cid": "9691028399170164362",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c230f09cc69ad9%3A0xa7958f112d893099&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c230f09cc69ad9%3A0xa7958f112d893099&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 28.0142136,
+        "longitude": -82.4945164
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c230f09cc69ad9%3A0xa7958f112d893099%218m2%213d28.0142136%214d-82.4945164&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/_tecp3k3u",
+      "rating": 4.8,
+      "reviews": 774,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "6226 Gandy Blvd, Tampa, FL 33650",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0110",
+      "website": "https://www.sandhill-roofing.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services",
+            "Online estimates"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_estimates": true
+      }
+    },
+    {
+      "position": 12,
+      "title": "Mangrove Roofing Co.",
+      "place_id": "ChIJ-CKq6Hr4wyLmzKUV6WYcirw",
+      "data_id": "0x88c2edf09774ef5a:0x8d47c97ebb3dec80",
+      "data_cid": "4157811497455655614",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2edf09774ef5a%3A0x8d47c97ebb3dec80&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2edf09774ef5a%3A0x8d47c97ebb3dec80&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.9986027,
+        "longitude": -82.4719695
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2edf09774ef5a%3A0x8d47c97ebb3dec80%218m2%213d27.9986027%214d-82.4719695&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/7b5c5h8ns",
+      "rating": 4.6,
+      "reviews": 23,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "3882 Gandy Blvd, Tampa, FL 33679",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0111",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 13,
+      "title": "Pelican Roof Pros",
+      "place_id": "ChIJbGnnltU8gYE7jwkrqkUtxiK",
+      "data_id": "0x88c27356fcf56164:0xc4246e957b8cf842",
+      "data_cid": "1106979379611978652",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c27356fcf56164%3A0xc4246e957b8cf842&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c27356fcf56164%3A0xc4246e957b8cf842&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.872972,
+        "longitude": -82.4619711
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c27356fcf56164%3A0xc4246e957b8cf842%218m2%213d27.872972%214d-82.4619711&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/8oswsyixh",
+      "rating": 3.6,
+      "reviews": 119,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor",
+        "Gutter service"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor",
+        "gutter_service"
+      ],
+      "address": "7113 Central Ave, Tampa, FL 33646",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0112",
+      "website": "https://www.pelican-roof-pros.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 14,
+      "title": "Osprey Roofing Group",
+      "place_id": "ChIJMRU1IDzNQTJvVLG6-9TYXZK",
+      "data_id": "0x88c20315b8b7c64c:0x9c9955cdd9b6bd28",
+      "data_cid": "9105326136131477982",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c20315b8b7c64c%3A0x9c9955cdd9b6bd28&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c20315b8b7c64c%3A0x9c9955cdd9b6bd28&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.9509609,
+        "longitude": -82.3773676
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c20315b8b7c64c%3A0x9c9955cdd9b6bd28%218m2%213d27.9509609%214d-82.3773676&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/ga_f73kod",
+      "rating": 4.8,
+      "reviews": 223,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "7713 Central Ave, Tampa, FL 33622",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0113",
+      "website": "https://www.osprey-roofing-group.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services",
+            "Online estimates"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_estimates": true
+      }
+    },
+    {
+      "position": 15,
+      "title": "Cypress Roof Repair",
+      "place_id": "ChIJq_YryTGzzVWVNy8A70dDuQt",
+      "data_id": "0x88c2049b069856ef:0x612e17445604c7c5",
+      "data_cid": "7933338975213395252",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2049b069856ef%3A0x612e17445604c7c5&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2049b069856ef%3A0x612e17445604c7c5&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 28.0154199,
+        "longitude": -82.448437
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2049b069856ef%3A0x612e17445604c7c5%218m2%213d28.0154199%214d-82.448437&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/vey82dlv3",
+      "rating": 4.5,
+      "reviews": 43,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "8678 W Kennedy Blvd, Tampa, FL 33687",
+      "phone": "(813) 555-0114",
+      "website": "https://www.facebook.com/cypressroofrepair",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 16,
+      "title": "Seagrape Roofing Solutions",
+      "place_id": "ChIJ36QSRiL88rGYoBrOoyKrJLm",
+      "data_id": "0x88c20f0fc051d621:0x843817e349c6f0c2",
+      "data_cid": "4873953785126942637",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c20f0fc051d621%3A0x843817e349c6f0c2&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c20f0fc051d621%3A0x843817e349c6f0c2&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.9433353,
+        "longitude": -82.4966814
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c20f0fc051d621%3A0x843817e349c6f0c2%218m2%213d27.9433353%214d-82.4966814&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/qnac42t8y",
+      "rating": 4.4,
+      "reviews": 320,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "7599 N Dale Mabry Hwy, Tampa, FL 33647",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0115",
+      "website": "https://www.seagrape-roofing-solutions.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 17,
+      "title": "Driftwood Family Roofing",
+      "place_id": "ChIJ8-AMjKdJfhqhM4X-fpv_sEs",
+      "data_id": "0x88c23ca93ef0b678:0xb88e8568bf526a38",
+      "data_cid": "9752121910910321487",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c23ca93ef0b678%3A0xb88e8568bf526a38&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c23ca93ef0b678%3A0xb88e8568bf526a38&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.937429,
+        "longitude": -82.3767204
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c23ca93ef0b678%3A0xb88e8568bf526a38%218m2%213d27.937429%214d-82.3767204&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/ze30qyxqq",
+      "rating": 3.8,
+      "reviews": 44,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor",
+        "Gutter service"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor",
+        "gutter_service"
+      ],
+      "address": "6636 4th St N, Tampa, FL 33641",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0116",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 18,
+      "title": "Sawgrass Roofing & Sheet Metal",
+      "place_id": "ChIJR8mENvE-KOEHGKGHTcvYa4X",
+      "data_id": "0x88c23551e44713e7:0x559318b400af5e48",
+      "data_cid": "7601798774920242504",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c23551e44713e7%3A0x559318b400af5e48&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c23551e44713e7%3A0x559318b400af5e48&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.8779498,
+        "longitude": -82.4104372
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c23551e44713e7%3A0x559318b400af5e48%218m2%213d27.8779498%214d-82.4104372&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/tpbnq7f65",
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "9508 4th St N, Tampa, FL 33611",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0117",
+      "website": "https://www.sawgrass-roofing-sheet-metal.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services",
+            "Online estimates"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_estimates": true
+      },
+      "unclaimed_listing": true
+    },
+    {
+      "position": 19,
+      "title": "Coquina Roofers",
+      "place_id": "ChIJkuqnbLXi-cZrU8Z9jZr9dHt",
+      "data_id": "0x88c23674a00f77c8:0x74ec4b42cdd4775c",
+      "data_cid": "3817569248832646093",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c23674a00f77c8%3A0x74ec4b42cdd4775c&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c23674a00f77c8%3A0x74ec4b42cdd4775c&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.8888016,
+        "longitude": -82.500739
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c23674a00f77c8%3A0x74ec4b42cdd4775c%218m2%213d27.8888016%214d-82.500739&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/04085mj8f",
+      "rating": 4.7,
+      "reviews": 137,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "2707 4th St N, Tampa, FL 33634",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0118",
+      "website": "https://www.coquina-roofers.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 20,
+      "title": "Skyway Exteriors & Roofing",
+      "place_id": "ChIJDAOfaPKQPDPlGY2VGwkUDnO",
+      "data_id": "0x88c29bf55af5ef17:0xe81c8433a2ed278e",
+      "data_cid": "5623933828757394822",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c29bf55af5ef17%3A0xe81c8433a2ed278e&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c29bf55af5ef17%3A0xe81c8433a2ed278e&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 28.0191032,
+        "longitude": -82.4230738
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c29bf55af5ef17%3A0xe81c8433a2ed278e%218m2%213d28.0191032%214d-82.4230738&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/viegu74wc",
+      "rating": 4.3,
+      "reviews": 87,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "5786 N Florida Ave, Tampa, FL 33655",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0119",
+      "website": "https://www.facebook.com/skywayexteriorsroofing",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    }
+  ],
+  "serpapi_pagination": {
+    "next": "https://serpapi.com/search.json?engine=google_maps&hl=en&location=Tampa%2C%20FL&q=roofing%20contractor&start=20&type=search&z=12"
+  }
+}

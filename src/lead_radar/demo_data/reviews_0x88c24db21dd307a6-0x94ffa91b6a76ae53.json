@@ -1,0 +1,235 @@
+{
+  "search_metadata": {
+    "id": "demo-old-northeast-roof-pros",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps_reviews",
+    "data_id": "0x88c24db21dd307a6:0x94ffa91b6a76ae53",
+    "hl": "en",
+    "sort_by": "newestFirst"
+  },
+  "place_info": {
+    "title": "Old Northeast Roof Pros",
+    "address": "3168 N Florida Ave, Tampa, FL 33695",
+    "rating": 4.1,
+    "reviews": 206,
+    "type": "Roofing contractor"
+  },
+  "reviews": [
+    {
+      "position": 1,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh3g04NkW4Er7iiYobR2hZ11LzOS94HnCuJA?hl=en",
+      "rating": 4.0,
+      "date": "a week ago",
+      "iso_date": "2026-10-30T12:00:00Z",
+      "iso_date_of_last_edit": "2026-10-30T12:00:00Z",
+      "source": "Google",
+      "review_id": "Ch3g04NkW4Er7iiYobR2hZ11LzOS94HnCuJA",
+      "user": {
+        "name": "Demo Reviewer 257",
+        "link": "https://www.google.com/maps/contrib/128020066997248629676?hl=en",
+        "contributor_id": "128020066997248629676",
+        "local_guide": false,
+        "reviews": 58,
+        "photos": 5
+      },
+      "snippet": "Quick repair of a few lifted tiles. Reasonable price and friendly crew.",
+      "extracted_snippet": {
+        "original": "Quick repair of a few lifted tiles. Reasonable price and friendly crew."
+      },
+      "likes": 1
+    },
+    {
+      "position": 2,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChUvvIYyRM6YJtrnG2KNanHmreLLIK3cu6QL?hl=en",
+      "rating": 1.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-26T10:00:00Z",
+      "iso_date_of_last_edit": "2026-09-26T10:00:00Z",
+      "source": "Google",
+      "review_id": "ChUvvIYyRM6YJtrnG2KNanHmreLLIK3cu6QL",
+      "user": {
+        "name": "Demo Reviewer 413",
+        "link": "https://www.google.com/maps/contrib/928056237555940818033?hl=en",
+        "contributor_id": "928056237555940818033",
+        "local_guide": false,
+        "reviews": 34,
+        "photos": 17
+      },
+      "snippet": "Good work last year, but this time I couldn't reach anyone to schedule a repair.",
+      "extracted_snippet": {
+        "original": "Good work last year, but this time I couldn't reach anyone to schedule a repair."
+      },
+      "likes": 0
+    },
+    {
+      "position": 3,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChv3SzQVmIPoKYIzXh4mS23BLH2VUWW1dbgp?hl=en",
+      "rating": 2.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-09T09:00:00Z",
+      "iso_date_of_last_edit": "2026-09-09T09:00:00Z",
+      "source": "Google",
+      "review_id": "Chv3SzQVmIPoKYIzXh4mS23BLH2VUWW1dbgp",
+      "user": {
+        "name": "Demo Reviewer 745",
+        "link": "https://www.google.com/maps/contrib/583126006051364027251?hl=en",
+        "contributor_id": "583126006051364027251",
+        "local_guide": false,
+        "reviews": 31,
+        "photos": 10
+      },
+      "snippet": "Left two messages about a leak and they never called back. Went with someone else.",
+      "extracted_snippet": {
+        "original": "Left two messages about a leak and they never called back. Went with someone else."
+      },
+      "likes": 2
+    },
+    {
+      "position": 4,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChGYQQViUFktQwOV03ic0OEmcQDBj2OvQsaz?hl=en",
+      "rating": 3.0,
+      "date": "2 months ago",
+      "iso_date": "2026-08-29T04:00:00Z",
+      "iso_date_of_last_edit": "2026-08-29T04:00:00Z",
+      "source": "Google",
+      "review_id": "ChGYQQViUFktQwOV03ic0OEmcQDBj2OvQsaz",
+      "user": {
+        "name": "Demo Reviewer 483",
+        "link": "https://www.google.com/maps/contrib/795260921513249015677?hl=en",
+        "contributor_id": "795260921513249015677",
+        "local_guide": false,
+        "reviews": 15,
+        "photos": 21
+      },
+      "snippet": "Work was fine but it took a week longer than quoted.",
+      "extracted_snippet": {
+        "original": "Work was fine but it took a week longer than quoted."
+      },
+      "likes": 3
+    },
+    {
+      "position": 5,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChxnUDBg3p8PxvfzgQkmjOXUl9yBpdXD36td?hl=en",
+      "rating": 3.0,
+      "date": "2 months ago",
+      "iso_date": "2026-08-06T04:00:00Z",
+      "iso_date_of_last_edit": "2026-08-06T04:00:00Z",
+      "source": "Google",
+      "review_id": "ChxnUDBg3p8PxvfzgQkmjOXUl9yBpdXD36td",
+      "user": {
+        "name": "Demo Reviewer 610",
+        "link": "https://www.google.com/maps/contrib/963688878112184921204?hl=en",
+        "contributor_id": "963688878112184921204",
+        "local_guide": false,
+        "reviews": 66,
+        "photos": 38
+      },
+      "snippet": "Decent repair, a bit pricey for what it was.",
+      "extracted_snippet": {
+        "original": "Decent repair, a bit pricey for what it was."
+      },
+      "likes": 0
+    },
+    {
+      "position": 6,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChE14wo2s49qccP9fikPRHCiHrWHxK6VJXPh?hl=en",
+      "rating": 1.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-04T22:00:00Z",
+      "iso_date_of_last_edit": "2026-07-04T22:00:00Z",
+      "source": "Google",
+      "review_id": "ChE14wo2s49qccP9fikPRHCiHrWHxK6VJXPh",
+      "user": {
+        "name": "Demo Reviewer 561",
+        "link": "https://www.google.com/maps/contrib/945776533291771993187?hl=en",
+        "contributor_id": "945776533291771993187",
+        "local_guide": false,
+        "reviews": 30,
+        "photos": 0
+      },
+      "snippet": "Called three times for an estimate and it went straight to voicemail every time.",
+      "extracted_snippet": {
+        "original": "Called three times for an estimate and it went straight to voicemail every time."
+      },
+      "likes": 3,
+      "response": {
+        "date": "3 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 7,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChmX7n5rHGYVZEFCla0gQ7LRiV9Hfz8NS7a6?hl=en",
+      "rating": 3.0,
+      "date": "4 months ago",
+      "iso_date": "2026-06-24T20:00:00Z",
+      "iso_date_of_last_edit": "2026-06-24T20:00:00Z",
+      "source": "Google",
+      "review_id": "ChmX7n5rHGYVZEFCla0gQ7LRiV9Hfz8NS7a6",
+      "user": {
+        "name": "Demo Reviewer 670",
+        "link": "https://www.google.com/maps/contrib/820799041601889328859?hl=en",
+        "contributor_id": "820799041601889328859",
+        "local_guide": false,
+        "reviews": 21,
+        "photos": 28
+      },
+      "snippet": "Work was fine but it took a week longer than quoted.",
+      "extracted_snippet": {
+        "original": "Work was fine but it took a week longer than quoted."
+      },
+      "likes": 2
+    },
+    {
+      "position": 8,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChmNhsWK03DlrvNcvWG8AOLBGrXkboldXnBr?hl=en",
+      "rating": 4.0,
+      "date": "5 months ago",
+      "iso_date": "2026-05-19T20:00:00Z",
+      "iso_date_of_last_edit": "2026-05-19T20:00:00Z",
+      "source": "Google",
+      "review_id": "ChmNhsWK03DlrvNcvWG8AOLBGrXkboldXnBr",
+      "user": {
+        "name": "Demo Reviewer 762",
+        "link": "https://www.google.com/maps/contrib/153356691637150515121?hl=en",
+        "contributor_id": "153356691637150515121",
+        "local_guide": true,
+        "reviews": 71,
+        "photos": 29
+      },
+      "snippet": "Professional from start to finish. The office staff were lovely to deal with.",
+      "extracted_snippet": {
+        "original": "Professional from start to finish. The office staff were lovely to deal with."
+      },
+      "likes": 0
+    },
+    {
+      "position": 9,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChasxWXxFrCEr524nhg2QWTw78trbNqWPzyO?hl=en",
+      "rating": 5.0,
+      "date": "6 months ago",
+      "iso_date": "2026-04-20T13:00:00Z",
+      "iso_date_of_last_edit": "2026-04-20T13:00:00Z",
+      "source": "Google",
+      "review_id": "ChasxWXxFrCEr524nhg2QWTw78trbNqWPzyO",
+      "user": {
+        "name": "Demo Reviewer 685",
+        "link": "https://www.google.com/maps/contrib/271448129121582216839?hl=en",
+        "contributor_id": "271448129121582216839",
+        "local_guide": false,
+        "reviews": 42,
+        "photos": 14
+      },
+      "snippet": "Quick repair of a few lifted tiles. Reasonable price and friendly crew.",
+      "extracted_snippet": {
+        "original": "Quick repair of a few lifted tiles. Reasonable price and friendly crew."
+      },
+      "likes": 3
+    }
+  ]
+}

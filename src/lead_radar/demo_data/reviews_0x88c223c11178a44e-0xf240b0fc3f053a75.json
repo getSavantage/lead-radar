@@ -1,0 +1,270 @@
+{
+  "search_metadata": {
+    "id": "demo-suncoast-roofing",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps_reviews",
+    "data_id": "0x88c223c11178a44e:0xf240b0fc3f053a75",
+    "hl": "en",
+    "sort_by": "newestFirst"
+  },
+  "place_info": {
+    "title": "Suncoast Roofing",
+    "address": "3622 W Waters Ave, Tampa, FL 33614",
+    "rating": 4.7,
+    "reviews": 362,
+    "type": "Roofing contractor"
+  },
+  "reviews": [
+    {
+      "position": 1,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh7xoltK1fWzYILEdCsAXDz42uGEknjrTDJx?hl=en",
+      "rating": 4.0,
+      "date": "a week ago",
+      "iso_date": "2026-10-26T12:00:00Z",
+      "iso_date_of_last_edit": "2026-10-26T12:00:00Z",
+      "source": "Google",
+      "review_id": "Ch7xoltK1fWzYILEdCsAXDz42uGEknjrTDJx",
+      "user": {
+        "name": "Demo Reviewer 182",
+        "link": "https://www.google.com/maps/contrib/327849649277659351382?hl=en",
+        "contributor_id": "327849649277659351382",
+        "local_guide": true,
+        "reviews": 16,
+        "photos": 13
+      },
+      "snippet": "Fair quote, no pressure, and the new roof passed inspection first try.",
+      "extracted_snippet": {
+        "original": "Fair quote, no pressure, and the new roof passed inspection first try."
+      },
+      "likes": 3,
+      "response": {
+        "date": "a week ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 2,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChqNu6puH5z1O4eeqK0G9G6MjYoKpKh3sSp2?hl=en",
+      "rating": 5.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-24T13:00:00Z",
+      "iso_date_of_last_edit": "2026-09-24T13:00:00Z",
+      "source": "Google",
+      "review_id": "ChqNu6puH5z1O4eeqK0G9G6MjYoKpKh3sSp2",
+      "user": {
+        "name": "Demo Reviewer 210",
+        "link": "https://www.google.com/maps/contrib/891023718245906260705?hl=en",
+        "contributor_id": "891023718245906260705",
+        "local_guide": false,
+        "reviews": 20,
+        "photos": 17
+      },
+      "snippet": "Great communication from estimate to final walkthrough. Highly recommend.",
+      "extracted_snippet": {
+        "original": "Great communication from estimate to final walkthrough. Highly recommend."
+      },
+      "likes": 0,
+      "response": {
+        "date": "1 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 3,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChMQbHmc4e11j8aRbcVc1lsP9g5Mn2eurahZ?hl=en",
+      "rating": 5.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-03T21:00:00Z",
+      "iso_date_of_last_edit": "2026-09-03T21:00:00Z",
+      "source": "Google",
+      "review_id": "ChMQbHmc4e11j8aRbcVc1lsP9g5Mn2eurahZ",
+      "user": {
+        "name": "Demo Reviewer 953",
+        "link": "https://www.google.com/maps/contrib/514961970495474058548?hl=en",
+        "contributor_id": "514961970495474058548",
+        "local_guide": false,
+        "reviews": 75,
+        "photos": 29
+      },
+      "snippet": "Quick repair of a few lifted tiles. Reasonable price and friendly crew.",
+      "extracted_snippet": {
+        "original": "Quick repair of a few lifted tiles. Reasonable price and friendly crew."
+      },
+      "likes": 0,
+      "response": {
+        "date": "1 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 4,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh75V2JqvXFRtyvFQVGIqOgYg4z5d9EOjrGm?hl=en",
+      "rating": 5.0,
+      "date": "2 months ago",
+      "iso_date": "2026-08-19T02:00:00Z",
+      "iso_date_of_last_edit": "2026-08-19T02:00:00Z",
+      "source": "Google",
+      "review_id": "Ch75V2JqvXFRtyvFQVGIqOgYg4z5d9EOjrGm",
+      "user": {
+        "name": "Demo Reviewer 958",
+        "link": "https://www.google.com/maps/contrib/696706909945990466597?hl=en",
+        "contributor_id": "696706909945990466597",
+        "local_guide": false,
+        "reviews": 72,
+        "photos": 6
+      },
+      "snippet": "They found the leak around the vent pipe that two other roofers missed.",
+      "extracted_snippet": {
+        "original": "They found the leak around the vent pipe that two other roofers missed."
+      },
+      "likes": 0,
+      "response": {
+        "date": "2 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 5,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh292iZk3WDVUJQAfWsGh7XhU0aCbVVI7UlD?hl=en",
+      "rating": 5.0,
+      "date": "2 months ago",
+      "iso_date": "2026-08-04T11:00:00Z",
+      "iso_date_of_last_edit": "2026-08-04T11:00:00Z",
+      "source": "Google",
+      "review_id": "Ch292iZk3WDVUJQAfWsGh7XhU0aCbVVI7UlD",
+      "user": {
+        "name": "Demo Reviewer 469",
+        "link": "https://www.google.com/maps/contrib/924216745102351602687?hl=en",
+        "contributor_id": "924216745102351602687",
+        "local_guide": true,
+        "reviews": 60,
+        "photos": 38
+      },
+      "snippet": "Handled the insurance paperwork after the storm and kept us updated the whole time.",
+      "extracted_snippet": {
+        "original": "Handled the insurance paperwork after the storm and kept us updated the whole time."
+      },
+      "likes": 0
+    },
+    {
+      "position": 6,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh30XNnds3VKLSqAyUhREwn19z73Wo4r8bxD?hl=en",
+      "rating": 5.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-20T21:00:00Z",
+      "iso_date_of_last_edit": "2026-07-20T21:00:00Z",
+      "source": "Google",
+      "review_id": "Ch30XNnds3VKLSqAyUhREwn19z73Wo4r8bxD",
+      "user": {
+        "name": "Demo Reviewer 745",
+        "link": "https://www.google.com/maps/contrib/832347818872948239331?hl=en",
+        "contributor_id": "832347818872948239331",
+        "local_guide": true,
+        "reviews": 6,
+        "photos": 40
+      },
+      "snippet": "Handled the insurance paperwork after the storm and kept us updated the whole time.",
+      "extracted_snippet": {
+        "original": "Handled the insurance paperwork after the storm and kept us updated the whole time."
+      },
+      "likes": 3
+    },
+    {
+      "position": 7,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChi6ZyGATE3NUD2mGpGC2qYoTigTL1JETre2?hl=en",
+      "rating": 5.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-13T02:00:00Z",
+      "iso_date_of_last_edit": "2026-07-13T02:00:00Z",
+      "source": "Google",
+      "review_id": "Chi6ZyGATE3NUD2mGpGC2qYoTigTL1JETre2",
+      "user": {
+        "name": "Demo Reviewer 863",
+        "link": "https://www.google.com/maps/contrib/133875251074170925378?hl=en",
+        "contributor_id": "133875251074170925378",
+        "local_guide": false,
+        "reviews": 15,
+        "photos": 25
+      },
+      "snippet": "Quick repair of a few lifted tiles. Reasonable price and friendly crew.",
+      "extracted_snippet": {
+        "original": "Quick repair of a few lifted tiles. Reasonable price and friendly crew."
+      },
+      "likes": 2,
+      "response": {
+        "date": "3 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 8,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChgF3QLwMp31uQHcYvw69uQe9WUabpyPeZqW?hl=en",
+      "rating": 5.0,
+      "date": "4 months ago",
+      "iso_date": "2026-06-17T22:00:00Z",
+      "iso_date_of_last_edit": "2026-06-17T22:00:00Z",
+      "source": "Google",
+      "review_id": "ChgF3QLwMp31uQHcYvw69uQe9WUabpyPeZqW",
+      "user": {
+        "name": "Demo Reviewer 708",
+        "link": "https://www.google.com/maps/contrib/660960538266729744146?hl=en",
+        "contributor_id": "660960538266729744146",
+        "local_guide": false,
+        "reviews": 45,
+        "photos": 0
+      },
+      "snippet": "Quick repair of a few lifted tiles. Reasonable price and friendly crew.",
+      "extracted_snippet": {
+        "original": "Quick repair of a few lifted tiles. Reasonable price and friendly crew."
+      },
+      "likes": 2,
+      "response": {
+        "date": "4 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 9,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChAfmkKKpA4aHefFNP9h4aKYythXPBy9XLWf?hl=en",
+      "rating": 4.0,
+      "date": "5 months ago",
+      "iso_date": "2026-05-27T16:00:00Z",
+      "iso_date_of_last_edit": "2026-05-27T16:00:00Z",
+      "source": "Google",
+      "review_id": "ChAfmkKKpA4aHefFNP9h4aKYythXPBy9XLWf",
+      "user": {
+        "name": "Demo Reviewer 899",
+        "link": "https://www.google.com/maps/contrib/768916368488475180539?hl=en",
+        "contributor_id": "768916368488475180539",
+        "local_guide": false,
+        "reviews": 11,
+        "photos": 19
+      },
+      "snippet": "They found the leak around the vent pipe that two other roofers missed.",
+      "extracted_snippet": {
+        "original": "They found the leak around the vent pipe that two other roofers missed."
+      },
+      "likes": 2
+    }
+  ]
+}

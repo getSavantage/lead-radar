@@ -1,0 +1,314 @@
+{
+  "search_metadata": {
+    "id": "demo-channelside-roofing-group",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps_reviews",
+    "data_id": "0x88c2a68ea022383a:0xa3863d8fd8f8ce01",
+    "hl": "en",
+    "sort_by": "newestFirst"
+  },
+  "place_info": {
+    "title": "Channelside Roofing Group",
+    "address": "3055 W Kennedy Blvd, St. Petersburg, FL 33789",
+    "rating": 4.6,
+    "reviews": 183,
+    "type": "Roofing contractor"
+  },
+  "reviews": [
+    {
+      "position": 1,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChMgF9InvGVQf427Md0JRbZK9UYZeuanzR95?hl=en",
+      "rating": 5.0,
+      "date": "a week ago",
+      "iso_date": "2026-10-25T12:00:00Z",
+      "iso_date_of_last_edit": "2026-10-25T12:00:00Z",
+      "source": "Google",
+      "review_id": "ChMgF9InvGVQf427Md0JRbZK9UYZeuanzR95",
+      "user": {
+        "name": "Demo Reviewer 562",
+        "link": "https://www.google.com/maps/contrib/807725334410678744289?hl=en",
+        "contributor_id": "807725334410678744289",
+        "local_guide": true,
+        "reviews": 42,
+        "photos": 24
+      },
+      "snippet": "Quick repair of a few lifted tiles. Reasonable price and friendly crew.",
+      "extracted_snippet": {
+        "original": "Quick repair of a few lifted tiles. Reasonable price and friendly crew."
+      },
+      "likes": 3,
+      "response": {
+        "date": "a week ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 2,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh63RihcmlPZ8NkEEdTr0tO2EZKEjYEu4IaZ?hl=en",
+      "rating": 5.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-29T21:00:00Z",
+      "iso_date_of_last_edit": "2026-09-29T21:00:00Z",
+      "source": "Google",
+      "review_id": "Ch63RihcmlPZ8NkEEdTr0tO2EZKEjYEu4IaZ",
+      "user": {
+        "name": "Demo Reviewer 411",
+        "link": "https://www.google.com/maps/contrib/313276471992642260144?hl=en",
+        "contributor_id": "313276471992642260144",
+        "local_guide": false,
+        "reviews": 42,
+        "photos": 1
+      },
+      "snippet": "Quick repair of a few lifted tiles. Reasonable price and friendly crew.",
+      "extracted_snippet": {
+        "original": "Quick repair of a few lifted tiles. Reasonable price and friendly crew."
+      },
+      "likes": 3,
+      "response": {
+        "date": "1 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 3,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChrvEWyNFjMHBCXbwGO0W5HFrz6i3peVSF1a?hl=en",
+      "rating": 5.0,
+      "date": "2 months ago",
+      "iso_date": "2026-08-21T12:00:00Z",
+      "iso_date_of_last_edit": "2026-08-21T12:00:00Z",
+      "source": "Google",
+      "review_id": "ChrvEWyNFjMHBCXbwGO0W5HFrz6i3peVSF1a",
+      "user": {
+        "name": "Demo Reviewer 614",
+        "link": "https://www.google.com/maps/contrib/282462985365451760564?hl=en",
+        "contributor_id": "282462985365451760564",
+        "local_guide": true,
+        "reviews": 48,
+        "photos": 16
+      },
+      "snippet": "They found the leak around the vent pipe that two other roofers missed.",
+      "extracted_snippet": {
+        "original": "They found the leak around the vent pipe that two other roofers missed."
+      },
+      "likes": 0,
+      "response": {
+        "date": "2 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 4,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChIpKqGrnu9JBH0ludGsR1aZuCCRlf7nnpJ6?hl=en",
+      "rating": 5.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-30T03:00:00Z",
+      "iso_date_of_last_edit": "2026-07-30T03:00:00Z",
+      "source": "Google",
+      "review_id": "ChIpKqGrnu9JBH0ludGsR1aZuCCRlf7nnpJ6",
+      "user": {
+        "name": "Demo Reviewer 518",
+        "link": "https://www.google.com/maps/contrib/774867350649124751548?hl=en",
+        "contributor_id": "774867350649124751548",
+        "local_guide": true,
+        "reviews": 1,
+        "photos": 4
+      },
+      "snippet": "Handled the insurance paperwork after the storm and kept us updated the whole time.",
+      "extracted_snippet": {
+        "original": "Handled the insurance paperwork after the storm and kept us updated the whole time."
+      },
+      "likes": 1,
+      "response": {
+        "date": "3 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 5,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChmJjiEzoWx6KU0uzSyAZxL9I1tCfe28bllT?hl=en",
+      "rating": 5.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-26T17:00:00Z",
+      "iso_date_of_last_edit": "2026-07-26T17:00:00Z",
+      "source": "Google",
+      "review_id": "ChmJjiEzoWx6KU0uzSyAZxL9I1tCfe28bllT",
+      "user": {
+        "name": "Demo Reviewer 510",
+        "link": "https://www.google.com/maps/contrib/719536709856723301358?hl=en",
+        "contributor_id": "719536709856723301358",
+        "local_guide": false,
+        "reviews": 57,
+        "photos": 3
+      },
+      "snippet": "Fair quote, no pressure, and the new roof passed inspection first try.",
+      "extracted_snippet": {
+        "original": "Fair quote, no pressure, and the new roof passed inspection first try."
+      },
+      "likes": 2,
+      "response": {
+        "date": "3 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 6,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChBGmE86BI1C7nfRoy5sHTO9IK0KuAQIRmjn?hl=en",
+      "rating": 5.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-06T01:00:00Z",
+      "iso_date_of_last_edit": "2026-07-06T01:00:00Z",
+      "source": "Google",
+      "review_id": "ChBGmE86BI1C7nfRoy5sHTO9IK0KuAQIRmjn",
+      "user": {
+        "name": "Demo Reviewer 931",
+        "link": "https://www.google.com/maps/contrib/675046463343604286664?hl=en",
+        "contributor_id": "675046463343604286664",
+        "local_guide": false,
+        "reviews": 42,
+        "photos": 27
+      },
+      "snippet": "Fair quote, no pressure, and the new roof passed inspection first try.",
+      "extracted_snippet": {
+        "original": "Fair quote, no pressure, and the new roof passed inspection first try."
+      },
+      "likes": 0,
+      "response": {
+        "date": "3 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 7,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChsG3NsyXGFFRgskFQ2bE7YfMaTygt8J1a2O?hl=en",
+      "rating": 5.0,
+      "date": "4 months ago",
+      "iso_date": "2026-06-26T17:00:00Z",
+      "iso_date_of_last_edit": "2026-06-26T17:00:00Z",
+      "source": "Google",
+      "review_id": "ChsG3NsyXGFFRgskFQ2bE7YfMaTygt8J1a2O",
+      "user": {
+        "name": "Demo Reviewer 329",
+        "link": "https://www.google.com/maps/contrib/730045938592435410931?hl=en",
+        "contributor_id": "730045938592435410931",
+        "local_guide": false,
+        "reviews": 6,
+        "photos": 36
+      },
+      "snippet": "Handled the insurance paperwork after the storm and kept us updated the whole time.",
+      "extracted_snippet": {
+        "original": "Handled the insurance paperwork after the storm and kept us updated the whole time."
+      },
+      "likes": 2
+    },
+    {
+      "position": 8,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh8VvkyIxhUbzpURViSQlAC71Jq2HMHE7Ida?hl=en",
+      "rating": 5.0,
+      "date": "5 months ago",
+      "iso_date": "2026-05-17T15:00:00Z",
+      "iso_date_of_last_edit": "2026-05-17T15:00:00Z",
+      "source": "Google",
+      "review_id": "Ch8VvkyIxhUbzpURViSQlAC71Jq2HMHE7Ida",
+      "user": {
+        "name": "Demo Reviewer 759",
+        "link": "https://www.google.com/maps/contrib/630953197673819814049?hl=en",
+        "contributor_id": "630953197673819814049",
+        "local_guide": false,
+        "reviews": 74,
+        "photos": 26
+      },
+      "snippet": "Handled the insurance paperwork after the storm and kept us updated the whole time.",
+      "extracted_snippet": {
+        "original": "Handled the insurance paperwork after the storm and kept us updated the whole time."
+      },
+      "likes": 3,
+      "response": {
+        "date": "5 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 9,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChLo03u42XkXwzTUgqzVnHfz4azX5J6UIgWM?hl=en",
+      "rating": 4.0,
+      "date": "6 months ago",
+      "iso_date": "2026-04-16T22:00:00Z",
+      "iso_date_of_last_edit": "2026-04-16T22:00:00Z",
+      "source": "Google",
+      "review_id": "ChLo03u42XkXwzTUgqzVnHfz4azX5J6UIgWM",
+      "user": {
+        "name": "Demo Reviewer 130",
+        "link": "https://www.google.com/maps/contrib/894741674208148326326?hl=en",
+        "contributor_id": "894741674208148326326",
+        "local_guide": true,
+        "reviews": 69,
+        "photos": 22
+      },
+      "snippet": "Professional from start to finish. The office staff were lovely to deal with.",
+      "extracted_snippet": {
+        "original": "Professional from start to finish. The office staff were lovely to deal with."
+      },
+      "likes": 3,
+      "response": {
+        "date": "6 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 10,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChBkDwIAydPkY0ebkjG723N0ivzOWLhNnmqq?hl=en",
+      "rating": 5.0,
+      "date": "7 months ago",
+      "iso_date": "2026-03-23T00:00:00Z",
+      "iso_date_of_last_edit": "2026-03-23T00:00:00Z",
+      "source": "Google",
+      "review_id": "ChBkDwIAydPkY0ebkjG723N0ivzOWLhNnmqq",
+      "user": {
+        "name": "Demo Reviewer 737",
+        "link": "https://www.google.com/maps/contrib/764461591434088360849?hl=en",
+        "contributor_id": "764461591434088360849",
+        "local_guide": true,
+        "reviews": 76,
+        "photos": 24
+      },
+      "snippet": "Professional from start to finish. The office staff were lovely to deal with.",
+      "extracted_snippet": {
+        "original": "Professional from start to finish. The office staff were lovely to deal with."
+      },
+      "likes": 0,
+      "response": {
+        "date": "7 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,606 @@
+{
+  "search_metadata": {
+    "id": "demo-st-petersburg-fl-0",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps",
+    "type": "search",
+    "q": "roofing contractor",
+    "hl": "en"
+  },
+  "search_information": {
+    "local_results_state": "Results for exact spelling",
+    "query_displayed": "roofing contractor"
+  },
+  "local_results": [
+    {
+      "position": 1,
+      "title": "Citrus Park Exteriors & Roofing",
+      "place_id": "ChIJnfM_gefiu5ugtqq0J-q1aSk",
+      "data_id": "0x88c2bc079b088066:0xb6af5974f8c67e08",
+      "data_cid": "6407597274871494397",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2bc079b088066%3A0xb6af5974f8c67e08&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2bc079b088066%3A0xb6af5974f8c67e08&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.7918952,
+        "longitude": -82.5958672
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2bc079b088066%3A0xb6af5974f8c67e08%218m2%213d27.7918952%214d-82.5958672&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/rman1c3__",
+      "rating": 3.8,
+      "reviews": 51,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "7892 Gandy Blvd, St. Petersburg, FL 33770",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(727) 555-0129",
+      "website": "https://www.facebook.com/citrusparkexteriorsroofing",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 2,
+      "title": "Gulf Breeze Roof Pros",
+      "place_id": "ChIJnEVVuM7_DHUIkT974xgi1x4",
+      "data_id": "0x88c2833c7279f056:0x141fcb51f8cd081a",
+      "data_cid": "9457393150215997543",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2833c7279f056%3A0x141fcb51f8cd081a&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2833c7279f056%3A0x141fcb51f8cd081a&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.935565,
+        "longitude": -82.379151
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2833c7279f056%3A0x141fcb51f8cd081a%218m2%213d27.935565%214d-82.379151&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/wq81dlkvq",
+      "rating": 4.2,
+      "reviews": 140,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "1153 E Hillsborough Ave, Tampa, FL 33617",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0102",
+      "website": "https://www.gulf-breeze-roof-pros.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 3,
+      "title": "Westshore Roofing",
+      "place_id": "ChIJUqphFESbVDd4rH3LsKOJr4d",
+      "data_id": "0x88c204a7d56e633a:0xabb1fb16f0c88e3b",
+      "data_cid": "4276631961436733717",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c204a7d56e633a%3A0xabb1fb16f0c88e3b&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c204a7d56e633a%3A0xabb1fb16f0c88e3b&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.7744371,
+        "longitude": -82.6767884
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c204a7d56e633a%3A0xabb1fb16f0c88e3b%218m2%213d27.7744371%214d-82.6767884&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/lrn0soyny",
+      "rating": 4.7,
+      "reviews": 556,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "6458 Central Ave, St. Petersburg, FL 33754",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(727) 555-0130",
+      "website": "https://www.westshore-roofing.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services",
+            "Online estimates",
+            "Online appointments"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_estimates": true,
+        "online_appointments": true
+      }
+    },
+    {
+      "position": 4,
+      "title": "Seminole Heights Roofing Co.",
+      "place_id": "ChIJU0VCK2A2SKx9duZhGSnfAdp",
+      "data_id": "0x88c238fe939aec45:0x176bfb51629c9272",
+      "data_cid": "7029668124786204675",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c238fe939aec45%3A0x176bfb51629c9272&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c238fe939aec45%3A0x176bfb51629c9272&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.7352752,
+        "longitude": -82.673244
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c238fe939aec45%3A0x176bfb51629c9272%218m2%213d27.7352752%214d-82.673244&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/ybndggyxh",
+      "rating": 4.4,
+      "reviews": 5,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "3438 W Waters Ave, St. Petersburg, FL 33724",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(727) 555-0131",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 5,
+      "title": "Davis Island Roof Pros",
+      "place_id": "ChIJGsAcmVjCDCnuo6aN1deptsC",
+      "data_id": "0x88c221a211860d1a:0x494366f0b49e1a78",
+      "data_cid": "2801293388185276756",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c221a211860d1a%3A0x494366f0b49e1a78&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c221a211860d1a%3A0x494366f0b49e1a78&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.7836825,
+        "longitude": -82.7282359
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c221a211860d1a%3A0x494366f0b49e1a78%218m2%213d27.7836825%214d-82.7282359&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/9fcc4exwy",
+      "rating": 4.2,
+      "reviews": 152,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor",
+        "Gutter service"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor",
+        "gutter_service"
+      ],
+      "address": "3773 S MacDill Ave, St. Petersburg, FL 33750",
+      "phone": "(727) 555-0132",
+      "website": "https://www.davis-island-roof-pros.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 6,
+      "title": "Egret Family Roofing",
+      "place_id": "ChIJF3dx-ZjfBoQCCdWgN4S1q5F",
+      "data_id": "0x88c2270428053b65:0x4f993e5a5d20b944",
+      "data_cid": "6767728655714045616",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2270428053b65%3A0x4f993e5a5d20b944&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2270428053b65%3A0x4f993e5a5d20b944&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.9647212,
+        "longitude": -82.4371892
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2270428053b65%3A0x4f993e5a5d20b944%218m2%213d27.9647212%214d-82.4371892&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/cdiqcbiic",
+      "rating": 4.0,
+      "reviews": 18,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "8991 4th St N, Tampa, FL 33671",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0106",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      },
+      "unclaimed_listing": true
+    },
+    {
+      "position": 7,
+      "title": "Channelside Roofing Group",
+      "place_id": "ChIJwmMlLMmuVhf7Cg845XDJkCF",
+      "data_id": "0x88c2a68ea022383a:0xa3863d8fd8f8ce01",
+      "data_cid": "2569279244628236283",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2a68ea022383a%3A0xa3863d8fd8f8ce01&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2a68ea022383a%3A0xa3863d8fd8f8ce01&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.6805958,
+        "longitude": -82.6985113
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2a68ea022383a%3A0xa3863d8fd8f8ce01%218m2%213d27.6805958%214d-82.6985113&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/pr2tt5a3v",
+      "rating": 4.6,
+      "reviews": 183,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "3055 W Kennedy Blvd, St. Petersburg, FL 33789",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(727) 555-0133",
+      "website": "https://www.channelside-roofing-group.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services",
+            "Online estimates",
+            "Online appointments"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_estimates": true,
+        "online_appointments": true
+      }
+    },
+    {
+      "position": 8,
+      "title": "Riverview Roof Repair",
+      "place_id": "ChIJTnoytbcDpdGLV_eJQWcClW5",
+      "data_id": "0x88c2a0a2a8d6f826:0x014fc2c00baa4c61",
+      "data_cid": "7410474857223576460",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2a0a2a8d6f826%3A0x014fc2c00baa4c61&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2a0a2a8d6f826%3A0x014fc2c00baa4c61&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.7794717,
+        "longitude": -82.5752296
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2a0a2a8d6f826%3A0x014fc2c00baa4c61%218m2%213d27.7794717%214d-82.5752296&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/idn4hd4m4",
+      "rating": 4.7,
+      "reviews": 22,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "6351 N Dale Mabry Hwy, St. Petersburg, FL 33792",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(727) 555-0134",
+      "website": "https://www.facebook.com/riverviewroofrepair",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 9,
+      "title": "Bay Pines Roofing Solutions",
+      "place_id": "ChIJ0o7Qhlsfe9CrcGLkqoTsJfr",
+      "data_id": "0x88c2dcb3f5e076ae:0xc7717e3034fc9896",
+      "data_cid": "5015170078110151101",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2dcb3f5e076ae%3A0xc7717e3034fc9896&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2dcb3f5e076ae%3A0xc7717e3034fc9896&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.7668097,
+        "longitude": -82.6966839
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2dcb3f5e076ae%3A0xc7717e3034fc9896%218m2%213d27.7668097%214d-82.6966839&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/hmw8hznb9",
+      "rating": 4.7,
+      "reviews": 276,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "3759 4th St N, St. Petersburg, FL 33750",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(727) 555-0135",
+      "website": "https://www.bay-pines-roofing-solutions.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 10,
+      "title": "Gulfport Family Roofing",
+      "place_id": "ChIJ2R5J-TTjLCQmPRGGzpPdYOV",
+      "data_id": "0x88c2f72153e432a7:0xdf22ed6dbacdd514",
+      "data_cid": "4238557285850302003",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c2f72153e432a7%3A0xdf22ed6dbacdd514&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c2f72153e432a7%3A0xdf22ed6dbacdd514&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.8213464,
+        "longitude": -82.7054016
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c2f72153e432a7%3A0xdf22ed6dbacdd514%218m2%213d27.8213464%214d-82.7054016&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/luy5nqg5f",
+      "rating": 4.0,
+      "reviews": 21,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor",
+        "Gutter service"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor",
+        "gutter_service"
+      ],
+      "address": "1930 S MacDill Ave, St. Petersburg, FL 33779",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "8 AM–5 PM",
+        "tuesday": "8 AM–5 PM",
+        "wednesday": "8 AM–5 PM",
+        "thursday": "8 AM–5 PM",
+        "friday": "8 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(727) 555-0136",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 11,
+      "title": "Gandy Roofing Co.",
+      "place_id": "ChIJNhxy83gaJBJt1UPy7abq3Al",
+      "data_id": "0x88c280113b457eec:0x1cf11de0daaec74a",
+      "data_cid": "8230252202319014697",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c280113b457eec%3A0x1cf11de0daaec74a&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c280113b457eec%3A0x1cf11de0daaec74a&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.9183065,
+        "longitude": -82.4985536
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c280113b457eec%3A0x1cf11de0daaec74a%218m2%213d27.9183065%214d-82.4985536&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/_om8wllt5",
+      "rating": 4.1,
+      "reviews": 5,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "1867 N Dale Mabry Hwy, Tampa, FL 33631",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "8 AM–12 PM",
+        "sunday": "Closed"
+      },
+      "phone": "(813) 555-0121",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true
+      }
+    },
+    {
+      "position": 12,
+      "title": "Pass-a-Grille Roofing & Sheet Metal",
+      "place_id": "ChIJGCv3UrdfJoIJWx6yKwvh-XE",
+      "data_id": "0x88c21494fb386a69:0x48d68a96519948a6",
+      "data_cid": "6942141821407100694",
+      "reviews_link": "https://serpapi.com/search.json?data_id=0x88c21494fb386a69%3A0x48d68a96519948a6&engine=google_maps_reviews&hl=en",
+      "photos_link": "https://serpapi.com/search.json?data_id=0x88c21494fb386a69%3A0x48d68a96519948a6&engine=google_maps_photos&hl=en",
+      "gps_coordinates": {
+        "latitude": 27.7724903,
+        "longitude": -82.6804322
+      },
+      "place_id_search": "https://serpapi.com/search.json?data=%214m5%213m4%211s0x88c21494fb386a69%3A0x48d68a96519948a6%218m2%213d27.7724903%214d-82.6804322&engine=google_maps&google_domain=google.com&hl=en&type=place",
+      "provider_id": "/g/bvozm695t",
+      "rating": 4.8,
+      "reviews": 513,
+      "type": "Roofing contractor",
+      "types": [
+        "Roofing contractor"
+      ],
+      "type_id": "roofing_contractor",
+      "type_ids": [
+        "roofing_contractor"
+      ],
+      "address": "6144 4th St N, St. Petersburg, FL 33786",
+      "open_state": "Open ⋅ Closes 5 PM",
+      "hours": "Open ⋅ Closes 5 PM",
+      "operating_hours": {
+        "monday": "7 AM–5 PM",
+        "tuesday": "7 AM–5 PM",
+        "wednesday": "7 AM–5 PM",
+        "thursday": "7 AM–5 PM",
+        "friday": "7 AM–5 PM",
+        "saturday": "Closed",
+        "sunday": "Closed"
+      },
+      "phone": "(727) 555-0137",
+      "website": "https://www.pass-a-grille-roofing-sheet-metal.example/",
+      "extensions": [
+        {
+          "service_options": [
+            "Onsite services",
+            "Online estimates"
+          ]
+        }
+      ],
+      "service_options": {
+        "onsite_services": true,
+        "online_estimates": true
+      }
+    }
+  ]
+}

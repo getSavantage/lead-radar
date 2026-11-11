@@ -1,0 +1,242 @@
+{
+  "search_metadata": {
+    "id": "demo-palm-river-roofing-solutions",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps_reviews",
+    "data_id": "0x88c25c3e66a5d021:0xe3660cf2e0652cc9",
+    "hl": "en",
+    "sort_by": "newestFirst"
+  },
+  "place_info": {
+    "title": "Palm River Roofing Solutions",
+    "address": "1535 N Florida Ave, Tampa, FL 33654",
+    "rating": 4.6,
+    "reviews": 297,
+    "type": "Roofing contractor"
+  },
+  "reviews": [
+    {
+      "position": 1,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChWfmquiyRXGfsSMgpqcHItyjvdEXcTNHx9z?hl=en",
+      "rating": 1.0,
+      "date": "a week ago",
+      "iso_date": "2026-10-25T12:00:00Z",
+      "iso_date_of_last_edit": "2026-10-25T12:00:00Z",
+      "source": "Google",
+      "review_id": "ChWfmquiyRXGfsSMgpqcHItyjvdEXcTNHx9z",
+      "user": {
+        "name": "Demo Reviewer 734",
+        "link": "https://www.google.com/maps/contrib/758274516376470437908?hl=en",
+        "contributor_id": "758274516376470437908",
+        "local_guide": true,
+        "reviews": 73,
+        "photos": 29
+      },
+      "snippet": "Decent repair, a bit pricey for what it was.",
+      "extracted_snippet": {
+        "original": "Decent repair, a bit pricey for what it was."
+      },
+      "likes": 1,
+      "response": {
+        "date": "a week ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 2,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChIA1RLP6plIIltkHyGH0ODk9ifizM0VKhLD?hl=en",
+      "rating": 2.0,
+      "date": "a week ago",
+      "iso_date": "2026-10-20T15:00:00Z",
+      "iso_date_of_last_edit": "2026-10-20T15:00:00Z",
+      "source": "Google",
+      "review_id": "ChIA1RLP6plIIltkHyGH0ODk9ifizM0VKhLD",
+      "user": {
+        "name": "Demo Reviewer 697",
+        "link": "https://www.google.com/maps/contrib/867414472827954536238?hl=en",
+        "contributor_id": "867414472827954536238",
+        "local_guide": true,
+        "reviews": 53,
+        "photos": 5
+      },
+      "snippet": "Decent repair, a bit pricey for what it was.",
+      "extracted_snippet": {
+        "original": "Decent repair, a bit pricey for what it was."
+      },
+      "likes": 2
+    },
+    {
+      "position": 3,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChse5rulIoTHHTLt5wCajLDYsIjCGTCNsb82?hl=en",
+      "rating": 3.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-25T07:00:00Z",
+      "iso_date_of_last_edit": "2026-09-25T07:00:00Z",
+      "source": "Google",
+      "review_id": "Chse5rulIoTHHTLt5wCajLDYsIjCGTCNsb82",
+      "user": {
+        "name": "Demo Reviewer 153",
+        "link": "https://www.google.com/maps/contrib/855608792367987230337?hl=en",
+        "contributor_id": "855608792367987230337",
+        "local_guide": false,
+        "reviews": 33,
+        "photos": 18
+      },
+      "snippet": "Roof started leaking again after the first heavy rain. Not impressed.",
+      "extracted_snippet": {
+        "original": "Roof started leaking again after the first heavy rain. Not impressed."
+      },
+      "likes": 3
+    },
+    {
+      "position": 4,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChhhu6na0NqgrQy7YyN1ZK8Khphxe2jpaKEI?hl=en",
+      "rating": 1.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-14T23:00:00Z",
+      "iso_date_of_last_edit": "2026-09-14T23:00:00Z",
+      "source": "Google",
+      "review_id": "Chhhu6na0NqgrQy7YyN1ZK8Khphxe2jpaKEI",
+      "user": {
+        "name": "Demo Reviewer 789",
+        "link": "https://www.google.com/maps/contrib/112621343812566243853?hl=en",
+        "contributor_id": "112621343812566243853",
+        "local_guide": true,
+        "reviews": 63,
+        "photos": 7
+      },
+      "snippet": "Roof looks good. Cleanup could have been better, found nails in the driveway.",
+      "extracted_snippet": {
+        "original": "Roof looks good. Cleanup could have been better, found nails in the driveway."
+      },
+      "likes": 2
+    },
+    {
+      "position": 5,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCh63hjLm0yizc8W6Qxk8Af6hqNwBW2IbaDyb?hl=en",
+      "rating": 3.0,
+      "date": "1 months ago",
+      "iso_date": "2026-09-07T19:00:00Z",
+      "iso_date_of_last_edit": "2026-09-07T19:00:00Z",
+      "source": "Google",
+      "review_id": "Ch63hjLm0yizc8W6Qxk8Af6hqNwBW2IbaDyb",
+      "user": {
+        "name": "Demo Reviewer 629",
+        "link": "https://www.google.com/maps/contrib/586994352207415059875?hl=en",
+        "contributor_id": "586994352207415059875",
+        "local_guide": false,
+        "reviews": 52,
+        "photos": 37
+      },
+      "snippet": "Roof looks good. Cleanup could have been better, found nails in the driveway.",
+      "extracted_snippet": {
+        "original": "Roof looks good. Cleanup could have been better, found nails in the driveway."
+      },
+      "likes": 1
+    },
+    {
+      "position": 6,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChLfaMxURP6tyjFZbvXzo1ClWnOhmXSwQqgc?hl=en",
+      "rating": 2.0,
+      "date": "2 months ago",
+      "iso_date": "2026-08-22T06:00:00Z",
+      "iso_date_of_last_edit": "2026-08-22T06:00:00Z",
+      "source": "Google",
+      "review_id": "ChLfaMxURP6tyjFZbvXzo1ClWnOhmXSwQqgc",
+      "user": {
+        "name": "Demo Reviewer 236",
+        "link": "https://www.google.com/maps/contrib/582007015074904944348?hl=en",
+        "contributor_id": "582007015074904944348",
+        "local_guide": true,
+        "reviews": 17,
+        "photos": 4
+      },
+      "snippet": "Roof started leaking again after the first heavy rain. Not impressed.",
+      "extracted_snippet": {
+        "original": "Roof started leaking again after the first heavy rain. Not impressed."
+      },
+      "likes": 1
+    },
+    {
+      "position": 7,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChKVgpO0dGCvOCNaart8e7s4KLdCZPy6MzuD?hl=en",
+      "rating": 3.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-23T16:00:00Z",
+      "iso_date_of_last_edit": "2026-07-23T16:00:00Z",
+      "source": "Google",
+      "review_id": "ChKVgpO0dGCvOCNaart8e7s4KLdCZPy6MzuD",
+      "user": {
+        "name": "Demo Reviewer 342",
+        "link": "https://www.google.com/maps/contrib/925580356419032058168?hl=en",
+        "contributor_id": "925580356419032058168",
+        "local_guide": true,
+        "reviews": 47,
+        "photos": 3
+      },
+      "snippet": "Price went up twice after we signed. Finish quality was poor.",
+      "extracted_snippet": {
+        "original": "Price went up twice after we signed. Finish quality was poor."
+      },
+      "likes": 1,
+      "response": {
+        "date": "3 months ago",
+        "snippet": "Thank you for taking the time to leave a review. We appreciate your business!",
+        "extracted_snippet": {
+          "original": "Thank you for taking the time to leave a review. We appreciate your business!"
+        }
+      }
+    },
+    {
+      "position": 8,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChY4Z3pSXfLiJbNGpdWstx52ZwYGEwDJ3Ipb?hl=en",
+      "rating": 5.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-11T02:00:00Z",
+      "iso_date_of_last_edit": "2026-07-11T02:00:00Z",
+      "source": "Google",
+      "review_id": "ChY4Z3pSXfLiJbNGpdWstx52ZwYGEwDJ3Ipb",
+      "user": {
+        "name": "Demo Reviewer 379",
+        "link": "https://www.google.com/maps/contrib/726509309169179101988?hl=en",
+        "contributor_id": "726509309169179101988",
+        "local_guide": false,
+        "reviews": 80,
+        "photos": 35
+      },
+      "snippet": "Professional from start to finish. The office staff were lovely to deal with.",
+      "extracted_snippet": {
+        "original": "Professional from start to finish. The office staff were lovely to deal with."
+      },
+      "likes": 3
+    },
+    {
+      "position": 9,
+      "link": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChTRShjargjbedNdhcKjuYhQJjbM6mcd0p9k?hl=en",
+      "rating": 5.0,
+      "date": "3 months ago",
+      "iso_date": "2026-07-07T17:00:00Z",
+      "iso_date_of_last_edit": "2026-07-07T17:00:00Z",
+      "source": "Google",
+      "review_id": "ChTRShjargjbedNdhcKjuYhQJjbM6mcd0p9k",
+      "user": {
+        "name": "Demo Reviewer 308",
+        "link": "https://www.google.com/maps/contrib/620551341840519575173?hl=en",
+        "contributor_id": "620551341840519575173",
+        "local_guide": false,
+        "reviews": 6,
+        "photos": 29
+      },
+      "snippet": "Crew showed up on time and replaced our shingle roof in two days. Clean job site.",
+      "extracted_snippet": {
+        "original": "Crew showed up on time and replaced our shingle roof in two days. Clean job site."
+      },
+      "likes": 0
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "search_metadata": {
+    "id": "demo-sawgrass-roofing-sheet-metal",
+    "status": "Success"
+  },
+  "search_parameters": {
+    "engine": "google_maps_reviews",
+    "data_id": "0x88c23551e44713e7:0x559318b400af5e48",
+    "hl": "en",
+    "sort_by": "newestFirst"
+  },
+  "place_info": {
+    "title": "Sawgrass Roofing & Sheet Metal",
+    "address": "9508 4th St N, Tampa, FL 33611",
+    "rating": null,
+    "reviews": 0,
+    "type": "Roofing contractor"
+  },
+  "reviews": [],
+  "error": "Google hasn't returned any results for this query."
+}
