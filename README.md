@@ -115,17 +115,31 @@ format (`"@27.9506,-82.4572,12z"`).
 
 ## How it uses SerpApi
 
-Field and parameter names below come from the SerpApi documentation, not from guesswork.
+Field and parameter names below come from the SerpApi documentation and were then checked
+against real responses. Two real-data findings changed the code; both are described below.
 
 ### 1. Search: `engine=google_maps`, `type=search`
 
 | Parameter | Value |
 | --- | --- |
 | `q` | the niche, e.g. `roofing contractor` |
-| `location` + `z` | for a place name; SerpApi resolves it to GPS coordinates |
-| `ll` | sent instead when the location is already `@lat,lng,zoom`. `ll` can't be combined with `location` or `z`, so neither is sent |
+| `ll` | `@lat,lng,zoom`: typed by the user, or built from the Locations API (below) |
+| `location` + `z` | fallback only, when a place name can't be resolved. `ll` can't be combined with them |
 | `start` | `0`, `20`, `40`... |
 | `hl` | interface language |
+
+**Where the map is centred: the Locations API.** The first real run sent
+`location=Tampa, FL`. `search_parameters.location_used` came back as
+`Tampa-St Petersburg (Sarasota),FL,...`: SerpApi had matched the TV *media market*, and
+`search_metadata.google_maps_url` showed the map centred near Clearwater, so 19 of 20
+"Tampa" roofers were across the bay. Lead Radar now asks the free
+[Locations API](https://serpapi.com/locations-api) first. It picks the candidate whose
+name matches, whose `canonical_name` contains the state ("FL" is expanded to "Florida"), and
+whose `target_type` is the most specific (City before DMA Region). It then sends
+`ll=@27.950575,-82.4571776,12z` built from its `gps` (which is `[lng, lat]`). Same query, same
+cost: 12 of 20 results in Tampa and its suburbs instead of 1. The lookup is cached, never
+counted, skipped for coordinates, and if nothing matches the run falls back to `location`
+with a visible warning. The report states where each map was centred.
 
 **Pagination.** Lead Radar advances `start` by 20 and stops as soon as any of these is true:
 
@@ -144,14 +158,16 @@ wins). `data_id` and `data_cid` are fallbacks for a result without a `place_id`.
 **Fields read from each `local_results` item:** `title`, `place_id`, `data_id`, `data_cid`,
 `type`, `address`, `phone`, `website`, `rating`, `reviews`, `hours`, `operating_hours`,
 `gps_coordinates`, `unclaimed_listing`, `service_options`, `extensions`, and the booking links
-`reserve_a_table` / `order_online`.
+`book_online` / `reserve_a_table` / `order_online`.
 
 > **About online booking.** The documented booking link fields are `reserve_a_table` and
-> `order_online`, which are restaurant-oriented. For home services Lead Radar also matches
-> keywords such as "Online appointments" in `service_options` and `extensions`. Both lists are
-> configurable (`detection.booking_link_fields`, `detection.booking_keywords`), so adding a
-> field takes one line of YAML. "No online booking" therefore means "none visible on the
-> Maps listing", which is exactly what a prospect's customers see.
+> `order_online`, which are restaurant-oriented. Real roofing results also carry an
+> undocumented `book_online` field holding a scheduling link (a ServiceTitan URL in one case),
+> so it is checked first. Lead Radar also matches keywords such as "Online appointments" in
+> `service_options` and `extensions`. Both lists are configurable
+> (`detection.booking_link_fields`, `detection.booking_keywords`), so adding a field takes one
+> line of YAML. "No online booking" therefore means "none visible on the Maps listing", which
+> is exactly what a prospect's customers see.
 
 ### 2. Reviews (optional): `engine=google_maps_reviews`
 
@@ -252,6 +268,7 @@ src/lead_radar/
   client.py     SerpApi gateway: official `serpapi` client + cache + retries + typed errors
   cache.py      Disk cache keyed by a hash of the request parameters
   pipeline.py   Search params, pagination, dedupe, credit estimate, run orchestration
+  locations.py  Pick the right Locations API candidate for "City, ST"
   models.py     Pydantic models; SerpApi field names kept as validation aliases
   reviews.py    Reviews request params and complaint / response-rate analysis
   scoring.py    One small function per rule; returns score + reasons
@@ -262,7 +279,7 @@ src/lead_radar/
   web/          FastAPI app (app.py, jobs.py) + plain HTML/CSS/JS front end (static/)
   demo.py       Offline transport that replays JSON fixtures (demo_data/)
   errors.py     Error types mapped from SerpApi's HTTP status codes
-tests/          178 tests, all offline
+tests/          186 tests, all offline
 examples/       Sample CSV and HTML report, generated from the fixtures
 scripts/        build_demo_fixtures.py regenerates demo_data/
 ```
@@ -278,7 +295,7 @@ all logic stays in Python. The browser only ever sees run summaries and rendered
 
 ```bash
 pip install -e ".[dev]"
-pytest          # 178 tests, about 3 seconds, no network
+pytest          # 186 tests, about 3 seconds, no network
 ruff check . && ruff format --check .
 mypy            # strict
 ```
