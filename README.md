@@ -31,7 +31,7 @@ Lead Radar turns one command into a ranked call list, and every score comes with
 ## 60-second quickstart
 
 ```bash
-git clone <this repo> && cd lead-radar
+git clone https://github.com/getSavantage/lead-radar.git && cd lead-radar
 python3.11 -m venv .venv && source .venv/bin/activate
 pip install -e .
 
